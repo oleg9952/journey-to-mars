@@ -1,0 +1,170 @@
+@use '../../../styles/variables.scss' as *;
+
+.nav {
+    height: 80px;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    .content {
+        max-width: 1200px;
+        height: 100%;
+        margin: 0 auto;
+        // border: 2px solid black;
+        display: grid;
+        grid-template-columns: 1fr 75px 1fr;
+    }
+    // &__column {
+    //     border: 1px solid black;
+    // }
+    .column--middle {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+
+    // ----- NAV_LIST -----
+
+    &__column-list {
+        list-style: none;
+        height: 100%;
+        display: flex;
+        justify-content: left;
+        align-items: center;
+    }
+    &__item-link {
+        text-decoration: none;
+        color: $links_color;
+        padding: 10px 20px;
+        font-size: $links_size;
+        transition: .3s;
+    }
+    &__item-link:hover {
+        color: $links_color-hover;
+    }
+
+    // ----- NAV_LOGO -----
+
+    &__column-logo {
+        cursor: pointer;
+        height: 70px;
+        width: 70px;
+        border-radius: 50%;
+        position: relative;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-image: url(../assets/nav/logo.png);
+        transition: .5s;
+    }
+    .column--middle:hover > &__column-logo {
+        filter: brightness(150%);
+    }
+    &__column-agencies {
+        width: 280px;
+        height: calc(100% + 50px);
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, calc(100% - 50px));
+        overflow: hidden;
+        display: none;
+        .nav__agencies-agency {
+            border: 1px solid black;
+            height: 70px;
+            width: 70px;
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translate(-50%, -100%);
+            background-color: #fff;
+            cursor: pointer;
+        }
+        .agency--one {
+            animation: agency_one .5s forwards;
+        }
+        .agency--two {
+            animation: agency_two .5s forwards;
+            z-index: 1;        }
+        .agency--three {
+            animation: agency_three .5s forwards;
+        }
+    }
+    &__column-logo:hover + &__column-agencies,
+    .column--middle:hover > &__column-agencies {
+        display: block;
+    }
+
+    // ----- NAV_AUTH -----
+
+    .column--right {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    &__column-btn {
+        background-color: #fff;
+        padding: 8px 30px;
+        margin: 0 20px;
+        cursor: pointer;
+        color: #e40707;
+        text-align: right;
+        font-size: 18px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+        transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    }
+    &__column-btn:hover {
+        background-color: orange;
+        color: #fff;
+    }
+    .signup--btn {
+        background-color: #e40707;
+        color: #fff;
+    }
+}
+
+// ***** ANIMATIONS *****
+
+@keyframes agency_one {
+    0% {
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, -100%);
+    } 
+    100% {
+        top: 50%;
+        left: 0%;
+        transform: translate(0%, -70%);
+    }
+}
+
+@keyframes agency_two {
+    0% {
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, -100%);
+    } 
+    100% {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -30%);
+    }
+}
+
+@keyframes agency_three {
+    0% {
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, -100%);
+    } 
+    100% {
+        top: 50%;
+        left: 100%;
+        transform: translate(-100%, -70%);
+    }
+}

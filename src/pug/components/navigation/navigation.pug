@@ -1,7 +1,21 @@
-ul.nav
-    li.na__item
-        a.nav__link(href="./index.html") Home
-    li.na__item
-        a.nav__link(href="./booking.html") Booking
-    li.na__item
-        a.nav__link(href="./gallery.html") Gallery
+mixin nav
+    .nav
+        .content
+            .nav__column
+                ul.nav__column-list
+                    li.nav__list-item
+                        a.nav__item-link(href="#") Home
+                    li.nav__list-item
+                        a.nav__item-link(href="#") Booking
+                    li.nav__list-item
+                        a.nav__item-link(href="#") Gallery
+            .nav__column.column--middle
+                .nav__column-logo
+                .nav__column-agencies
+                    .nav__agencies-agency.agency--one
+                    .nav__agencies-agency.agency--two
+                    .nav__agencies-agency.agency--three
+            .nav__column.column--right
+                .nav__column-btn Sign in
+                .nav__column-btn.signup--btn Sign up
+
