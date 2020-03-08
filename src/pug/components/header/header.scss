@@ -4,6 +4,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url(../assets/header/header_bg.jpg);
     &__content {
         // border: 2px solid #fff;
         width: 65%;

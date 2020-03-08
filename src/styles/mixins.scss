@@ -1,0 +1,28 @@
+// ***** SECTION_TITLES *****
+@mixin section_title {
+    font-size: 40px;
+    text-align: center;
+    font-family: 'Oxanium', cursive;
+    margin-bottom: 40px;
+}
+
+// ***** SIDES *****
+@mixin sides_title($align, $bg_color, $color) {
+    width: 50%;
+    height: 100%;
+    float: $align;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    color: $color;
+    background-color: $bg_color;
+}
+
+// ***** IMAGE_BACKGROUND *****
+@mixin image_background($img) {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-image: url($img);
+}

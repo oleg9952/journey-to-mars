@@ -4,9 +4,9 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const PUG_TO_HTML_PATS = [
-    { output: 'index.html', input: './pug/pages/index.pug' },
-    { output: 'booking.html', input: './pug/pages/booking.pug' },
-    { output: 'gallery.html', input: './pug/pages/gallery.pug' }
+    { output: 'index.html', input: './pug/pages/home/index.pug' },
+    { output: 'booking.html', input: './pug/pages/booking/booking.pug' },
+    { output: 'gallery.html', input: './pug/pages/gallery/gallery.pug' }
 ]
  
 module.exports = {
