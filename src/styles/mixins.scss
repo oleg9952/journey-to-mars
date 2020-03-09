@@ -26,3 +26,9 @@
     background-size: cover;
     background-image: url($img);
 }
+
+// ***** BOOKING_AGENCIES *****
+@mixin agencies_align($left, $translate) {
+    left: $left;
+    transform: translateX($translate);
+}

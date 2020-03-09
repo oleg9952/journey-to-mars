@@ -4,4 +4,35 @@ block variables
 	- var title = 'Booking'
 
 block content
-	//- h1 Booking
+	.booking
+		.booking__bg.active
+		.booking__bg
+		.booking__bg
+		.booking__bg
+		.booking__content
+			h1.booking__title Choose Your Agency.
+			.booking__content-agencies
+				.booking__agencies-agency.agency--nasa
+				.booking__agencies-agency.agency--ukr
+				.booking__agencies-agency.agency--spacex
+			form.booking__content-form
+				input.booking__form-input(
+					type="text"
+					placeholder="First name..."
+				)
+				input.booking__form-input(
+					type="text"
+					placeholder="Last name..."
+				)
+				input.booking__form-input(
+					type="number"
+					placeholder="Age..."
+				)
+				input.booking__form-input(
+					type="email"
+					placeholder="Email..."
+					required
+				)
+				button.booking__form-submit(type="submit") Apply
+			
+
