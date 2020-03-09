@@ -32,3 +32,11 @@
     left: $left;
     transform: translateX($translate);
 }
+
+// ***** INFO_MODAL-AGENCIES *****
+@mixin init_state($delay) {
+    transform: translateY(25px);
+    opacity: 0;
+    animation: animateInfo 1s forwards;
+    animation-delay: $delay;
+}

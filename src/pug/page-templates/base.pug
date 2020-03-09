@@ -1,6 +1,7 @@
 include ../components/navigation/navigation
 include ../components/header/header
 include ../components/footer/footer
+include ../components/infomodal/infomodal
 
 block variables
 
@@ -13,6 +14,8 @@ html(lang="en")
 		link(rel="stylesheet", href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous")
 	body
 		.wrapper
+			+infomodal
+
 			+nav
 			
 			if title!= 'Booking'

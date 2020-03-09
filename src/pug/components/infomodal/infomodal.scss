@@ -1,0 +1,135 @@
+@use '../../../styles/mixins.scss' as mixins;
+
+.infomodal {
+    position: fixed;
+    min-height: 100vh;
+    width: 100%;
+    top: 0;
+    left: 0;
+    backdrop-filter: blur(20px);
+    z-index: 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-y: scroll;
+    display: none;
+    opacity: 0;
+    animation: animateInfoModal .7s forwards;
+    &__close-btn {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        right: 15px;
+        top: 15px;
+        cursor: pointer;
+        border-radius: 50%;
+        background-color: rgba(0, 0, 0, 0.3);
+        box-shadow: 0 0px 6px rgba(0,0,0,0.16), 0 0px 6px rgba(0,0,0,0.23);
+        transition: .3s;
+        .infomodal__btn-line {
+            width: 30px;
+            height: 5px;
+            background-color: rgb(191, 191, 191);
+            border-radius: 15px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .infomodal__btn-line:nth-child(1) {
+            transform: translate(-50%, -50%) rotate(-45deg);
+        }
+        .infomodal__btn-line:nth-child(2) {
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+    }
+    &__close-btn:hover {
+        cursor: pointer;
+        box-shadow: 0 0 28px rgba(0,0,0,0.25), 0 0 10px rgba(0,0,0,0.22);
+    }
+    &__content {
+        width: 1200px;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, 0);
+        padding: 100px 15px 40px;
+        display: none;
+        .infomodal__content-title {
+            @include mixins.section_title;
+            color: #fff;
+            text-shadow: 0 0 5px #000;
+            margin-bottom: 15px;
+            @include mixins.init_state(.7s);
+        }
+        .infomodal__picture {
+            width: 250px;
+            height: 200px;
+            // background-color: #fff;
+            float: right;
+            margin-left: 15px;
+            @include mixins.init_state(.9s);
+        }
+        .nasa--logo {
+            @include mixins.image_background('../assets/agencies-logos/nasa.png');
+        }
+        .ukraine--logo {
+            @include mixins.image_background('../assets/agencies-logos/ukraine.png');
+            background-size: contain;
+        } 
+        .spacex--logo {
+            @include mixins.image_background('../assets/agencies-logos/spacex.jpg');
+            background-size: contain;
+        }          
+        .infomodal__text {
+            font-size: 18px;
+            color: #fff;
+            line-height: 30px;
+            text-shadow: 0 0 3px #000;
+            margin-bottom: 15px;
+            @include mixins.init_state(1.1s);
+        }
+        iframe {
+            @include mixins.init_state(1.3s);
+        }
+    }
+}
+
+.infomodal.show--nasa {
+    display: block;
+    .nasa--info {
+        display: block;
+    }
+}
+
+.infomodal.show--ukr {
+    display: block;
+    .ukr--info {
+        display: block;
+    }
+}
+
+.infomodal.show--spacex {
+    display: block;
+    .spacex--info {
+        display: block;
+    }
+}
+
+@keyframes animateInfoModal {
+    0% {
+        opacity: 0;
+    } 100% {
+        opacity: 1;
+    }
+}
+
+@keyframes animateInfo {
+    0% {
+        transform: translateY(25px);
+        opacity: 0;
+    } 100% {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
