@@ -1,3 +1,5 @@
+@use './reset.scss';
+
 @use './global.scss';
 
 // **** Components ****
@@ -7,6 +9,7 @@
 @use '../pug/components/sides/sides.scss';
 @use '../pug/components/whyus/whyus.scss';
 @use '../pug/components/infomodal/infomodal.scss';
+@use '../pug/components/spinner/spinner.scss';
 
 // **** Pages ****
 @use '../pug/pages/home/home.scss';

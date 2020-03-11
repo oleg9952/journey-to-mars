@@ -1,0 +1,102 @@
+@use '../../../styles/mixins.scss' as mixins;
+
+.gallery {
+    min-height: 100vh;
+    padding: 40px 15px;
+    &__interface {
+        max-width: 1200px;
+        // border: 1px solid black;
+        margin: 0 auto 30px;
+    }
+    &__title {
+        @include mixins.section_title;
+    }
+    // &__interface-filters {
+    //     border: 1px solid red;
+    // }
+    &__filters-title {
+        padding: 0 0 15px;
+        font-size: 28px;
+    }
+    &__filters-cameras {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 15px;
+        margin-bottom: 30px;
+        .gallery__cameras-camera {
+            padding: 15px 10px;
+            background-color: #fff;
+            font-size: 18px;
+            text-align: center;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 0px 3px rgba(0,0,0,0.12), 0 0px 2px rgba(0,0,0,0.24);
+            transition: 0.3s;
+        }
+        .gallery__cameras-camera:hover,
+        .gallery__cameras-camera.active {
+            background-color: #e40707;
+            color: #fff;
+        }
+    }
+    &__filters-sol {
+        font-size: 18px;
+        margin-bottom: 30px;
+        .gallery__sol-selection {
+            font-size: 15px;
+            outline: none;
+        }
+    }
+    &__filters-submit {
+        padding: 10px 35px;
+        border-radius: 5px;
+        outline: none;
+        font-size: 18px;
+        border: none;
+        box-shadow: 0 0px 3px rgba(0,0,0,0.12), 0 0px 2px rgba(0,0,0,0.24);
+        background-color: #fff;
+        cursor: pointer;
+        transition: .3s;
+    }
+    &__filters-submit:hover {
+        background-color: #e40707;
+        color: #fff;
+    }
+    &__pictures-output {
+        // border: 1px solid red;
+        max-width: 1200px;
+        min-height: 50px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+    }
+
+    &__output-spinner {
+        display: none;
+    }
+
+    &__output-pictures {
+        width: 100%;
+        display: none;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 10px;
+        .gallery__pictures-picture {
+            height: 300px;
+            box-shadow: 0 0px 3px rgba(0,0,0,0.12), 0 0px 2px rgba(0,0,0,0.24);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+        }
+    }
+
+    // ***** DINAMICS *****
+
+    &__output-spinner.active {
+        display: block;
+    }
+
+    &__output-pictures.active {
+        display: grid;
+    }
+
+}
