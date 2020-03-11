@@ -1,7 +1,44 @@
 extends ../../page-templates/base
+include ../../components/spinner/spinner
 
 block variables
 	- var title = 'Gallery'
 
 block content
-	//- h1 Gallery
+	.gallery
+		.gallery__interface
+			h1.gallery__title Form Your Request
+			form.gallery__interface-filters
+				h2.gallery__filters-title Rover Cameras
+				.gallery__filters-cameras
+					.gallery__cameras-camera#FHAZ Front Hazard Avoidance Camera
+					.gallery__cameras-camera#RHAZ Rear Hazard Avoidance Camera
+					.gallery__cameras-camera#MAST Mast Camera
+					.gallery__cameras-camera#CHEMCAM Chemistry and Camera Complex
+					.gallery__cameras-camera#MAHLI Mars Hand Lens Imager
+					.gallery__cameras-camera#MARDI Mars Descent Imager
+					.gallery__cameras-camera#NAVCAM Navigation Camera
+					.gallery__cameras-camera#PANCAM Panoramic Camera
+					.gallery__cameras-camera#all All
+				.gallery__filters-sol
+					label(for='sol') Sol:
+					select.gallery__sol-selection
+						option(value='50') 50
+						option(value='100') 100
+						option(value='200') 200
+						option(value='300') 300
+						option(value='400') 400
+						option(value='500') 500
+						option(value='600') 600
+						option(value='700') 700
+						option(value='800') 800
+						option(value='900') 900
+						option(value='1000') 1000
+				button.gallery__filters-submit(type="submit") Search
+		.gallery__pictures-output
+			.gallery__output-spinner
+				+spinner
+			.gallery__output-pictures
+				.gallery__pictures-picture
+				
+
