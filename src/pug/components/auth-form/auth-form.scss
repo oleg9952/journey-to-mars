@@ -1,3 +1,5 @@
+@use '../../../styles/mixins.scss' as mixins;
+
 .auth {
     background: 
         radial-gradient(ellipse at top, #206681, rgba(0, 0, 0, 0.5)),
@@ -30,34 +32,16 @@
     // ----- SIGN IN -----
 
     &__form-signin {
-        width: 100%;
-        height: 100%;
-        padding-top: 60px;
-        backface-visibility: hidden;
-        // display: none;
-        background-color: #fff;
-        position: absolute;
-        top: 0;
-        left: 0;
-        transform: perspective(1000px) rotateY(0deg);
-        transition: .5s;
+        @include mixins.form_wrapper(60px, 0deg);
     }
     &__signin-icon {
-        width: 80px;
-        height: 80px;
-        border-radius: 50%;
-        margin: 0 auto;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 60px;
-        color: rgba(0, 0, 0, 0.5);
-        margin-bottom: 10px;
+        @include mixins.form_icon;
     }
     &__signin-title {
-        text-align: center;
-        font-size: 30px;
-        margin-bottom: 15px;
+        // text-align: center;
+        // font-size: 30px;
+        // margin-bottom: 15px;
+        @include mixins.form_title;
     }
     &__signin-subtitle {
         text-align: center;
@@ -123,17 +107,7 @@
     // ----- SIGN UP -----
 
     &__form-signup {
-        width: 100%;
-        height: 100%;
-        padding-top: 30px;
-        backface-visibility: hidden;
-        // display: none;
-        background-color: #fff;
-        position: absolute;
-        top: 0;
-        left: 0;
-        transform: perspective(1000px) rotateY(180deg);
-        transition: .5s;
+        @include mixins.form_wrapper(30px, 180deg);
     }
     &__form-backbtn {
         width: 30px;
@@ -153,21 +127,13 @@
         color: #000;
     }
     &__signup-icon {
-        width: 80px;
-        height: 80px;
-        border-radius: 50%;
-        margin: 0 auto;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 60px;
-        color: rgba(0, 0, 0, 0.5);
-        margin-bottom: 10px;
+        @include mixins.form_icon;
     }
     &__signup-title {
-        text-align: center;
-        font-size: 30px;
-        margin-bottom: 15px;
+        // text-align: center;
+        // font-size: 30px;
+        // margin-bottom: 15px;
+        @include mixins.form_title;
     }   
     
     &__signup-inputs {
@@ -246,21 +212,13 @@
         transition: .3s;
     }
     &__reset-icon {
-        width: 80px;
-        height: 80px;
-        border-radius: 50%;
-        margin: 0 auto;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 60px;
-        color: rgba(0, 0, 0, 0.5);
-        margin-bottom: 10px;
+        @include mixins.form_icon;
     }
     &__reset-title {
-        text-align: center;
-        font-size: 30px;
-        margin-bottom: 15px;
+        // text-align: center;
+        // font-size: 30px;
+        // margin-bottom: 15px;
+        @include mixins.form_title;
     }
     &__reset-subtitle {
         text-align: center;

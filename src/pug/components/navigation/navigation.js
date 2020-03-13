@@ -26,6 +26,20 @@ export const navigation = () => {
 		triggers.forEach((trigger) => infomodal.classList.remove(trigger));
 	});
 
+	// ----- USER-NAV -----
+	const userPicture = document.querySelector('.nav__column-user');
+	const userNav = document.querySelector('.nav__column-usernav');
+
+	userPicture.addEventListener('click', () => {
+		userNav.classList.toggle('active');
+	});
+
+	userNav.addEventListener('click', e => {
+		if (e.target.classList[0] === 'nav__listitem-link') {
+			userNav.classList.remove('active');
+		}
+	});
+
 	// ----- AUTH FORM Events ----- 
 	const signInBtn = document.querySelector('#sign--in');
 	const authForm = document.querySelector('.auth');
