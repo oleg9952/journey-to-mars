@@ -1,0 +1,69 @@
+mixin auth-form
+    .auth
+        .auth__form
+            form.auth__form-signin
+                .auth__signin-icon
+                    i.far.fa-user-circle
+                h2.auth__signin-title Sign in
+                p.auth__signin-subtitle Login using your email and password.
+                .auth__signin-inputs
+                    input.auth__inputs-input(
+                        type="email", 
+                        name="email"
+                        placeholder="Email..."
+                    )
+                    input.auth__inputs-input(
+                        type="password", 
+                        name="password"
+                        placeholder="Password..."
+                    )
+                button.auth__signin-submit(type="submit") Sign in
+                p.auth__signin-alternative#auth__reset Forgot Password?
+                p.auth__signin-alternative#auth__signup Not registered? Click here to register
+            form.auth__form-signup
+                .auth__form-backbtn
+                    i.fas.fa-arrow-circle-left
+                .auth__signup-icon
+                    i.far.fa-user-circle
+                h2.auth__signup-title Sign up
+                .auth__signup-inputs
+                    input.auth__inputs-input(
+                        type="text", 
+                        name="firstname"
+                        placeholder="First name..."
+                    )
+                    input.auth__inputs-input(
+                        type="text", 
+                        name="lastname"
+                        placeholder="Last name..."
+                    )
+                    input.auth__inputs-input(
+                        type="number", 
+                        name="age"
+                        placeholder="Age..."
+                    )
+                    input.auth__inputs-input(
+                        type="email", 
+                        name="email"
+                        placeholder="Email..."
+                    )
+                    input.auth__inputs-input(
+                        type="password", 
+                        name="password"
+                        placeholder="Password..."
+                    )
+                button.auth__signup-submit(type="submit") Sign up
+            form.auth__form-reset
+                .auth__form-backbtn#close__reset
+                    i.fas.fa-times-circle
+                .auth__reset-icon
+                    i.far.fa-user-circle
+                h2.auth__reset-title Password Reset
+                p.auth__reset-subtitle Type in your email.
+                .auth__reset-inputs
+                    input.auth__inputs-input(
+                        type="email", 
+                        name="email"
+                        placeholder="Email..."
+                    )
+                button.auth__reset-submit(type="submit") Confirm

@@ -2,6 +2,7 @@ include ../components/navigation/navigation
 include ../components/header/header
 include ../components/footer/footer
 include ../components/infomodal/infomodal
+include ../components/auth-form/auth-form
 
 block variables
 
@@ -15,6 +16,8 @@ html(lang="en")
 	body
 		.wrapper
 			+infomodal
+
+			+auth-form
 
 			+nav
 			

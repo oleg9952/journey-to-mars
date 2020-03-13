@@ -25,4 +25,19 @@ export const navigation = () => {
 		document.body.style.overflow = 'visible';
 		triggers.forEach((trigger) => infomodal.classList.remove(trigger));
 	});
+
+	// ----- AUTH FORM Events ----- 
+	const signInBtn = document.querySelector('#sign--in');
+	const authForm = document.querySelector('.auth');
+	const auth = document.querySelector('.auth');
+	// const form = document.querySelector('.auth__form');
+
+	signInBtn.addEventListener('click', () => {
+		authForm.classList.add('active');
+	});
+
+	auth.addEventListener('click', e => {
+		if (e.target !== e.currentTarget) return;
+		auth.classList.remove('active');
+	});
 };
