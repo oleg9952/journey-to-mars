@@ -1,0 +1,365 @@
+.auth {
+    background: 
+        radial-gradient(ellipse at top, #206681, rgba(0, 0, 0, 0.5)),
+        radial-gradient(ellipse at bottom, #104e15, rgba(0, 0, 0, 0.5));
+    backdrop-filter: blur(15px);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 3;
+    display: none;
+    opacity: 0;
+    animation: animateGradient 10s linear infinite, fadeIn 1s forwards;
+    &__form {
+        width: 450px;
+        height: 500px;
+        // background-color: rgba(255, 255, 255, .8);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(.8);
+        animation: showForm 1s forwards;
+        animation-delay: .7s;
+        // box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+    }
+
+    // ----- SIGN IN -----
+
+    &__form-signin {
+        width: 100%;
+        height: 100%;
+        padding-top: 60px;
+        backface-visibility: hidden;
+        // display: none;
+        background-color: #fff;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: perspective(1000px) rotateY(0deg);
+        transition: .5s;
+    }
+    &__signin-icon {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 60px;
+        color: rgba(0, 0, 0, 0.5);
+        margin-bottom: 10px;
+    }
+    &__signin-title {
+        text-align: center;
+        font-size: 30px;
+        margin-bottom: 15px;
+    }
+    &__signin-subtitle {
+        text-align: center;
+        font-size: 18px;
+        margin-bottom: 25px;
+    }
+    &__signin-inputs {
+        display: flex;
+        flex-direction: column;
+        padding: 0 70px;
+        margin-bottom: 30px;
+        .auth__inputs-input {
+            height: 40px;
+            outline: none;
+            background-color: transparent;
+            border: none;
+            border-bottom: 3px solid rgba(0, 0, 0, 0.3);
+            font-size: 18px;
+            transition: .3s;
+            color: #000;
+        }
+        .auth__inputs-input:nth-child(1) {
+            margin-bottom: 10px;
+        }
+        .auth__inputs-input::placeholder {
+            color: rgba(0, 0, 0, 0.3);
+        }
+        .auth__inputs-input:focus::placeholder {
+            color: #000;
+        }
+        .auth__inputs-input:focus {
+            border-color: #000;
+        }
+    }
+    &__signin-submit {
+        display: block;
+        padding: 10px 60px;
+        font-size: 18px;
+        margin: 0 auto 20px;
+        cursor: pointer;
+        outline: none;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: #fff;
+        border: none;
+        transition: .3s;
+    }
+    &__signin-submit:hover {
+        background-color: rgba(0, 0, 0, 1);
+    }
+
+    &__signin-alternative {
+        text-align: center;
+        margin-bottom: 10px;
+        text-decoration: underline;
+        cursor: pointer;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 15px;
+    }
+    &__signin-alternative:hover {
+        color: #000;
+    }
+
+    // ----- SIGN UP -----
+
+    &__form-signup {
+        width: 100%;
+        height: 100%;
+        padding-top: 30px;
+        backface-visibility: hidden;
+        // display: none;
+        background-color: #fff;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: perspective(1000px) rotateY(180deg);
+        transition: .5s;
+    }
+    &__form-backbtn {
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 30px;
+        color: rgba(0, 0, 0, 0.5);
+        cursor: pointer;
+        transition: .3s;
+    }
+    &__form-backbtn:hover {
+        color: #000;
+    }
+    &__signup-icon {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 60px;
+        color: rgba(0, 0, 0, 0.5);
+        margin-bottom: 10px;
+    }
+    &__signup-title {
+        text-align: center;
+        font-size: 30px;
+        margin-bottom: 15px;
+    }   
+    
+    &__signup-inputs {
+        display: flex;
+        flex-direction: column;
+        padding: 0 70px;
+        margin-bottom: 30px;
+        .auth__inputs-input {
+            height: 40px;
+            outline: none;
+            background-color: transparent;
+            border: none;
+            border-bottom: 3px solid rgba(0, 0, 0, 0.3);
+            font-size: 18px;
+            transition: .3s;
+            color: #000;
+            margin-bottom: 10px;
+        }
+        .auth__inputs-input:last-child {
+            margin-bottom: 0;
+        }
+        .auth__inputs-input::placeholder {
+            color: rgba(0, 0, 0, 0.3);
+        }
+        .auth__inputs-input:focus::placeholder {
+            color: #000;
+        }
+        .auth__inputs-input:focus {
+            border-color: #000;
+        }
+    }
+    &__signup-submit {
+        display: block;
+        padding: 10px 60px;
+        font-size: 18px;
+        margin: 0 auto 20px;
+        cursor: pointer;
+        outline: none;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: #fff;
+        border: none;
+        transition: .3s;
+    }
+    &__signup-submit:hover {
+        background-color: rgba(0, 0, 0, 1);
+    }
+
+    // ----- PASSWORD RESET -----
+
+    &__form-reset {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        background-color: #fff;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        padding-top: 80px;
+        visibility: hidden;
+        opacity: 0;
+        transform: scale(.5);
+        transition: .5s;
+    }
+    &__form-backbtn {
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 30px;
+        color: rgba(0, 0, 0, 0.5);
+        cursor: pointer;
+        transition: .3s;
+    }
+    &__reset-icon {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 60px;
+        color: rgba(0, 0, 0, 0.5);
+        margin-bottom: 10px;
+    }
+    &__reset-title {
+        text-align: center;
+        font-size: 30px;
+        margin-bottom: 15px;
+    }
+    &__reset-subtitle {
+        text-align: center;
+        font-size: 18px;
+        margin-bottom: 25px;
+    }
+    &__reset-inputs {
+        display: flex;
+        flex-direction: column;
+        padding: 0 70px;
+        margin-bottom: 30px;
+        .auth__inputs-input {
+            height: 40px;
+            outline: none;
+            background-color: transparent;
+            border: none;
+            border-bottom: 3px solid rgba(0, 0, 0, 0.3);
+            font-size: 18px;
+            transition: .3s;
+            color: #000;
+        }
+        .auth__inputs-input:nth-child(1) {
+            margin-bottom: 10px;
+        }
+        .auth__inputs-input::placeholder {
+            color: rgba(0, 0, 0, 0.3);
+        }
+        .auth__inputs-input:focus::placeholder {
+            color: #000;
+        }
+        .auth__inputs-input:focus {
+            border-color: #000;
+        }
+    }
+    &__reset-submit {
+        display: block;
+        padding: 10px 60px;
+        font-size: 18px;
+        margin: 0 auto 20px;
+        cursor: pointer;
+        outline: none;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: #fff;
+        border: none;
+        transition: .3s;
+    }
+    &__reset-submit:hover {
+        background-color: rgba(0, 0, 0, 1);
+    }
+
+    // ----- DINAMICS -----
+
+    &__form-signin.active {
+        top: 0;
+        left: 0;
+        transform: perspective(1000px) rotateY(180deg);
+    }
+    &__form-signup.active {
+        top: 0;
+        left: 0;
+        transform: perspective(1000px) rotateY(360deg);
+    }
+    &__form-reset.active {
+        visibility: visible;
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.auth.active {
+    display: block;
+}
+
+
+@keyframes animateGradient {
+    0% {
+        filter: hue-rotate(0deg);
+    }
+    50% {
+        filter: hue-rotate(360deg);
+    }
+    100% {
+        filter: hue-rotate(0deg);
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    } 100% {
+        opacity: 1;
+    }
+}
+
+@keyframes showForm {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(.8);
+    } 100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
