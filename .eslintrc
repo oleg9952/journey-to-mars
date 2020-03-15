@@ -6,10 +6,7 @@
         "linebreak-style": 0,
         "no-alert": "off",
         "no-console": "off",
-        "indent": [
-            1,
-            "tab"
-        ],
+        "indent": "off",
         "no-tabs": 0,
         "no-mixed-spaces-and-tabs": [
             2,
@@ -22,6 +19,7 @@
         "no-trailing-spaces": 0,
         "arrow-parens": 0,
         "arrow-body-style": 0,
-        "eol-last": 0
+        "eol-last": 0,
+        "no-use-before-define": 0
     }
 }

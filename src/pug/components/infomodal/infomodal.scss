@@ -65,7 +65,6 @@
         .infomodal__picture {
             width: 250px;
             height: 200px;
-            // background-color: #fff;
             float: right;
             margin-left: 15px;
             @include mixins.init_state(.9s);

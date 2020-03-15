@@ -3,11 +3,15 @@
 // ***** GENERAL *****
 $font: 'Oxanium', cursive;
 
-// ***** HEADER_NAV *****
-$links_color: #000;
-$links_size: 18px;
-// ::HOVER
-$links_color-hover: #e40707;
+// ***** COMPONENTS *****
+// --- header ---
+$headerTitleColor: #fff;
+// --- navigation ---
+$navLinksColor: #fff;
+$navLinksHoverColor: #e40707;
+$navLinksSize: 18px;
 
-
-
+// ***** PAGES *****
+// --- gallery ---
+$galleryFilterBtnHoverBgColor: #e40707; 
+$galleryFilterBtnHoverColor: #fff;

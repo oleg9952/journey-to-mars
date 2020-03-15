@@ -6,12 +6,19 @@ export const navigation = () => {
 
 	agencies.addEventListener('click', (e) => {
 		document.body.style.overflow = 'hidden';
-		if (e.target.classList[1] === 'agency--one') {
-			infomodal.classList.add('show--nasa');
-		} else if (e.target.classList[1] === 'agency--two') {
-			infomodal.classList.add('show--ukr');
-		} else if (e.target.classList[1] === 'agency--three') {
-			infomodal.classList.add('show--spacex');
+		
+		switch (e.target.classList[1]) {
+			case 'agency--one':
+				infomodal.classList.add('show--nasa');		
+				break;
+			case 'agency--two':
+				infomodal.classList.add('show--ukr');		
+				break;	
+			case 'agency--three':
+				infomodal.classList.add('show--spacex');		
+				break;	
+			default:
+				break;
 		}
 	});
 

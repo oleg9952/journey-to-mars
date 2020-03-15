@@ -26,44 +26,44 @@ export const gallery = () => {
 	cameras.addEventListener('click', (e) => {
 		camera.forEach((element) => element.classList.remove('active'));
 		switch (e.target.id) {
-		case 'FHAZ':
-			e.target.classList.add('active');
-			selectedFilter = 'FHAZ';
-			break;
-		case 'RHAZ':
-			e.target.classList.add('active');
-			selectedFilter = 'RHAZ';
-			break;
-		case 'MAST':
-			e.target.classList.add('active');
-			selectedFilter = 'MAST';
-			break;	
-		case 'CHEMCAM':
-			e.target.classList.add('active');
-			selectedFilter = 'CHEMCAM';
-			break;
-		case 'MAHLI':
-			e.target.classList.add('active');
-			selectedFilter = 'MAHLI';
-			break;
-		case 'MARDI':
-			e.target.classList.add('active');
-			selectedFilter = 'MARDI';
-			break;
-		case 'NAVCAM':
-			e.target.classList.add('active');
-			selectedFilter = 'NAVCAM';
-			break;
-		case 'PANCAM':
-			e.target.classList.add('active');
-			selectedFilter = 'PANCAM';
-			break;
-		case 'all':
-			e.target.classList.add('active');
-			selectedFilter = 'none';
-			break;
-		default:
-			break;
+			case 'FHAZ':
+				e.target.classList.add('active');
+				selectedFilter = 'FHAZ';
+				break;
+			case 'RHAZ':
+				e.target.classList.add('active');
+				selectedFilter = 'RHAZ';
+				break;
+			case 'MAST':
+				e.target.classList.add('active');
+				selectedFilter = 'MAST';
+				break;	
+			case 'CHEMCAM':
+				e.target.classList.add('active');
+				selectedFilter = 'CHEMCAM';
+				break;
+			case 'MAHLI':
+				e.target.classList.add('active');
+				selectedFilter = 'MAHLI';
+				break;
+			case 'MARDI':
+				e.target.classList.add('active');
+				selectedFilter = 'MARDI';
+				break;
+			case 'NAVCAM':
+				e.target.classList.add('active');
+				selectedFilter = 'NAVCAM';
+				break;
+			case 'PANCAM':
+				e.target.classList.add('active');
+				selectedFilter = 'PANCAM';
+				break;
+			case 'all':
+				e.target.classList.add('active');
+				selectedFilter = 'none';
+				break;
+			default:
+				break;
 		}
 	});
 

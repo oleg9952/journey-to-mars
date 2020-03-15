@@ -73,3 +73,22 @@
     font-size: 30px;
     margin-bottom: 15px;
 }
+
+@mixin form_subtitle {
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 25px;
+}
+
+@mixin form_submit-btn {
+    display: block;
+    padding: 10px 60px;
+    font-size: 18px;
+    margin: 0 auto 20px;
+    cursor: pointer;
+    outline: none;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    transition: .3s;
+}

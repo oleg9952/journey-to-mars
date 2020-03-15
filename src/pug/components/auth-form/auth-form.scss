@@ -13,12 +13,10 @@
     z-index: 3;
     display: none;
     opacity: 0;
-    // animation: animateGradient 10s linear infinite, fadeIn 1s forwards;
     animation: fadeIn .5s forwards;
     &__form {
         width: 450px;
         height: 500px;
-        // background-color: rgba(255, 255, 255, .8);
         position: absolute;
         top: 50%;
         left: 50%;
@@ -26,7 +24,6 @@
         transform: translate(-50%, -50%) scale(.8);
         animation: showForm 1s forwards;
         animation-delay: .3s;
-        // box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
     }
 
     // ----- SIGN IN -----
@@ -38,15 +35,10 @@
         @include mixins.form_icon;
     }
     &__signin-title {
-        // text-align: center;
-        // font-size: 30px;
-        // margin-bottom: 15px;
         @include mixins.form_title;
     }
     &__signin-subtitle {
-        text-align: center;
-        font-size: 18px;
-        margin-bottom: 25px;
+        @include mixins.form_subtitle;
     }
     &__signin-inputs {
         display: flex;
@@ -77,16 +69,7 @@
         }
     }
     &__signin-submit {
-        display: block;
-        padding: 10px 60px;
-        font-size: 18px;
-        margin: 0 auto 20px;
-        cursor: pointer;
-        outline: none;
-        background-color: rgba(0, 0, 0, 0.5);
-        color: #fff;
-        border: none;
-        transition: .3s;
+        @include mixins.form_submit-btn;
     }
     &__signin-submit:hover {
         background-color: rgba(0, 0, 0, 1);
@@ -130,9 +113,6 @@
         @include mixins.form_icon;
     }
     &__signup-title {
-        // text-align: center;
-        // font-size: 30px;
-        // margin-bottom: 15px;
         @include mixins.form_title;
     }   
     
@@ -166,16 +146,17 @@
         }
     }
     &__signup-submit {
-        display: block;
-        padding: 10px 60px;
-        font-size: 18px;
-        margin: 0 auto 20px;
-        cursor: pointer;
-        outline: none;
-        background-color: rgba(0, 0, 0, 0.5);
-        color: #fff;
-        border: none;
-        transition: .3s;
+        // display: block;
+        // padding: 10px 60px;
+        // font-size: 18px;
+        // margin: 0 auto 20px;
+        // cursor: pointer;
+        // outline: none;
+        // background-color: rgba(0, 0, 0, 0.5);
+        // color: #fff;
+        // border: none;
+        // transition: .3s;
+        @include mixins.form_submit-btn;
     }
     &__signup-submit:hover {
         background-color: rgba(0, 0, 0, 1);
@@ -215,15 +196,10 @@
         @include mixins.form_icon;
     }
     &__reset-title {
-        // text-align: center;
-        // font-size: 30px;
-        // margin-bottom: 15px;
         @include mixins.form_title;
     }
     &__reset-subtitle {
-        text-align: center;
-        font-size: 18px;
-        margin-bottom: 25px;
+        @include mixins.form_subtitle;
     }
     &__reset-inputs {
         display: flex;
@@ -254,16 +230,7 @@
         }
     }
     &__reset-submit {
-        display: block;
-        padding: 10px 60px;
-        font-size: 18px;
-        margin: 0 auto 20px;
-        cursor: pointer;
-        outline: none;
-        background-color: rgba(0, 0, 0, 0.5);
-        color: #fff;
-        border: none;
-        transition: .3s;
+        @include mixins.form_submit-btn;
     }
     &__reset-submit:hover {
         background-color: rgba(0, 0, 0, 1);
