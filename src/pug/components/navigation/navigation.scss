@@ -14,13 +14,9 @@
         max-width: 1200px;
         height: 100%;
         margin: 0 auto;
-        // border: 2px solid black;
         display: grid;
         grid-template-columns: 1fr 75px 1fr;
     }
-    // &__column {
-    //     border: 1px solid black;
-    // }
     .column--middle {
         display: flex;
         justify-content: center;
@@ -39,14 +35,14 @@
     }
     &__item-link {
         text-decoration: none;
-        color: #fff;
+        color: $navLinksColor;
         padding: 10px 20px;
-        font-size: $links_size;
+        font-size: $navLinksSize;
         transition: .3s;
         text-shadow: 0 0 5px #000;
     }
     &__item-link:hover {
-        color: $links_color-hover;
+        color: $navLinksHoverColor;
     }
 
     // ----- NAV_LOGO -----
@@ -108,7 +104,6 @@
         display: flex;
         justify-content: flex-end;
         align-items: center;
-        // border: 2px solid red;
         position: relative;
     }
 
@@ -140,7 +135,6 @@
     }
 
     &__column-user {
-        // border: 1px solid #fff;
         height: 55px;
         width: 55px;
         border-radius: 50%;

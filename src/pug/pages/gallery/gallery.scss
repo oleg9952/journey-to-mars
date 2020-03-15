@@ -1,3 +1,4 @@
+@use '../../../styles/variables.scss' as *;
 @use '../../../styles/mixins.scss' as mixins;
 
 .gallery {
@@ -5,15 +6,11 @@
     padding: 40px 15px;
     &__interface {
         max-width: 1200px;
-        // border: 1px solid black;
         margin: 0 auto 30px;
     }
     &__title {
         @include mixins.section_title;
     }
-    // &__interface-filters {
-    //     border: 1px solid red;
-    // }
     &__filters-title {
         padding: 0 0 15px;
         font-size: 28px;
@@ -35,8 +32,8 @@
         }
         .gallery__cameras-camera:hover,
         .gallery__cameras-camera.active {
-            background-color: #e40707;
-            color: #fff;
+            background-color: $galleryFilterBtnHoverBgColor;
+            color: $galleryFilterBtnHoverColor;
         }
     }
     &__filters-sol {
@@ -64,8 +61,8 @@
         transition: .3s;
     }
     &__filters-submit:hover {
-        background-color: #e40707;
-        color: #fff;
+        background-color: $galleryFilterBtnHoverBgColor;
+        color: $galleryFilterBtnHoverColor;
     }
     &__pictures-output {
         // border: 1px solid red;

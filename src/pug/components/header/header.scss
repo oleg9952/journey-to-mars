@@ -1,6 +1,7 @@
+@use '../../../styles/variables.scss' as *;
+
 .header {
     height: 100vh;
-    background-color: orange;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -9,7 +10,6 @@
     background-repeat: no-repeat;
     background-image: url(../assets/header/header_bg.jpg);
     &__content {
-        // border: 2px solid #fff;
         width: 65%;
         min-height: 200px;
         display: flex;
@@ -20,7 +20,7 @@
             text-align: center;
             margin-bottom: 50px;
             font-size: 75px;
-            color: #fff;
+            color: $headerTitleColor;
             text-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
         }
         .header__btn {
