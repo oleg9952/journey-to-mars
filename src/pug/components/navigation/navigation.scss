@@ -1,4 +1,5 @@
 @use '../../../styles/variables.scss' as *;
+@use '../../../styles/mixins.scss' as mixins;
 
 .nav {
     height: 80px;
@@ -74,7 +75,6 @@
         overflow: hidden;
         display: none;
         .nav__agencies-agency {
-            border: 1px solid black;
             height: 70px;
             width: 70px;
             border-radius: 50%;
@@ -82,17 +82,26 @@
             top: 0;
             left: 50%;
             transform: translate(-50%, -100%);
-            background-color: #fff;
             cursor: pointer;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
         }
         .agency--one {
             animation: agency_one .5s forwards;
+            @include mixins.image_background('../assets/agencies-logos/nasa.png');
+            background-position: -8.5px -4px;
+            background-size: 137%;
         }
         .agency--two {
             animation: agency_two .5s forwards;
-            z-index: 1;        }
+            z-index: 1;   
+            @include mixins.image_background('../assets/agencies-logos/ukraine.png'); 
+            background-size: 135%;  
+        }
         .agency--three {
             animation: agency_three .5s forwards;
+            @include mixins.image_background('../assets/agencies-logos/spacex.png'); 
+            background-size: 130%;
+            background-color: rgba(180, 221, 255, .8);
         }
     }
     &__column-logo:hover + &__column-agencies,
