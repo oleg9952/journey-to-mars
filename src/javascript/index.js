@@ -7,7 +7,7 @@ import { authForm } from '../pug/components/auth-form/auth-form';
 
 const currentPage = document.title;
 
-navigation();
+navigation(currentPage);
 authForm();
 
 if (currentPage === 'Home') {

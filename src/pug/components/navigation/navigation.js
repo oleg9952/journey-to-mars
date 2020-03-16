@@ -1,5 +1,27 @@
-export const navigation = () => {
-	// ----- DOM Elements -----
+export const navigation = (currentPage) => {
+	// ----- Intersection Observer -----
+	if (currentPage !== 'Booking') {
+		const nav = document.querySelector('.nav');
+		const header = document.querySelector('.header');
+	
+		const intersectionOptions = {
+			rootMargin: '-80px 0px 0px 0px'
+		};
+	
+		const navigationObserver = new IntersectionObserver((entries) => {
+			entries.forEach(entry => {
+				if (!entry.isIntersecting) {
+					nav.classList.add('scrolled');
+				} else {
+					nav.classList.remove('scrolled');
+				}
+			});
+		}, intersectionOptions);
+	
+		navigationObserver.observe(header);
+	}
+
+	// ----- AGENCIES INFO -----
 	const agencies = document.querySelector('.nav__column-agencies');
 	const infomodal = document.querySelector('.infomodal');
 	const closeBtn = document.querySelector('.infomodal__close-btn');
