@@ -1,9 +1,9 @@
+import { navDom } from '../../../javascript/dom_elements';
+import { signOut } from '../../../javascript/auth';
+
 export const navigation = (currentPage) => {
 	// ----- Intersection Observer -----
-	if (currentPage !== 'Booking') {
-		const nav = document.querySelector('.nav');
-		const header = document.querySelector('.header');
-	
+	if (currentPage !== 'Booking') {	
 		const intersectionOptions = {
 			rootMargin: '-80px 0px 0px 0px'
 		};
@@ -11,33 +11,29 @@ export const navigation = (currentPage) => {
 		const navigationObserver = new IntersectionObserver((entries) => {
 			entries.forEach(entry => {
 				if (!entry.isIntersecting) {
-					nav.classList.add('scrolled');
+					navDom.nav.classList.add('scrolled');
 				} else {
-					nav.classList.remove('scrolled');
+					navDom.nav.classList.remove('scrolled');
 				}
 			});
 		}, intersectionOptions);
 	
-		navigationObserver.observe(header);
+		navigationObserver.observe(navDom.header);
 	}
 
 	// ----- AGENCIES INFO -----
-	const agencies = document.querySelector('.nav__column-agencies');
-	const infomodal = document.querySelector('.infomodal');
-	const closeBtn = document.querySelector('.infomodal__close-btn');
-
-	agencies.addEventListener('click', (e) => {
+	navDom.agencies.addEventListener('click', (e) => {
 		document.body.style.overflow = 'hidden';
 		
 		switch (e.target.classList[1]) {
 			case 'agency--one':
-				infomodal.classList.add('show--nasa');		
+				navDom.infomodal.classList.add('show--nasa');		
 				break;
 			case 'agency--two':
-				infomodal.classList.add('show--ukr');		
+				navDom.infomodal.classList.add('show--ukr');		
 				break;	
 			case 'agency--three':
-				infomodal.classList.add('show--spacex');		
+				navDom.infomodal.classList.add('show--spacex');		
 				break;	
 			default:
 				break;
@@ -50,37 +46,28 @@ export const navigation = (currentPage) => {
 		'show--spacex',
 	];
 
-	closeBtn.addEventListener('click', () => {
+	navDom.closeBtn.addEventListener('click', () => {
 		document.body.style.overflow = 'visible';
-		triggers.forEach((trigger) => infomodal.classList.remove(trigger));
+		triggers.forEach((trigger) => navDom.infomodal.classList.remove(trigger));
 	});
 
 	// ----- USER-NAV -----
-	const userPicture = document.querySelector('.nav__column-user');
-	const userNav = document.querySelector('.nav__column-usernav');
-
-	userPicture.addEventListener('click', () => {
-		userNav.classList.toggle('active');
+	navDom.userPicture.addEventListener('click', () => {
+		navDom.userNav.classList.toggle('active');
 	});
 
-	userNav.addEventListener('click', e => {
+	navDom.userNav.addEventListener('click', e => {
 		if (e.target.classList[0] === 'nav__listitem-link') {
-			userNav.classList.remove('active');
+			navDom.userNav.classList.remove('active');
 		}
 	});
 
-	// ----- AUTH FORM Events ----- 
-	const signInBtn = document.querySelector('#sign--in');
-	const authForm = document.querySelector('.auth');
-	const auth = document.querySelector('.auth');
-	// const form = document.querySelector('.auth__form');
-
-	signInBtn.addEventListener('click', () => {
-		authForm.classList.add('active');
+	navDom.signOutBtn.addEventListener('click', () => {
+		signOut();
 	});
 
-	auth.addEventListener('click', e => {
-		if (e.target !== e.currentTarget) return;
-		auth.classList.remove('active');
+	// ----- AUTH FORM Events ----- 
+	navDom.signInBtn.addEventListener('click', () => {
+		navDom.authForm.classList.add('active');
 	});
 };
