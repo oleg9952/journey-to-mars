@@ -1,0 +1,38 @@
+.fspinner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(7px);
+    transition: .5s;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1;
+    &__circle {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        border-top: 5px solid rgb(0, 132, 255);
+        border-bottom: 5px solid rgb(255, 166, 0);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(0deg);
+        animation: rotateCircle 1s infinite linear;
+    }
+}
+
+.fspinner.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+@keyframes rotateCircle {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    } 100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}

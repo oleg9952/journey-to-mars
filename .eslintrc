@@ -20,6 +20,9 @@
         "arrow-parens": 0,
         "arrow-body-style": 0,
         "eol-last": 0,
-        "no-use-before-define": 0
+        "no-use-before-define": 0,
+        "import/no-extraneous-dependencies": "off",
+        "prefer-const": "off",
+        "function-paren-newline": "off"
     }
 }

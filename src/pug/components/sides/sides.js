@@ -1,23 +1,21 @@
+import { sidesDom } from '../../../javascript/dom_elements';
+
 export const sides = () => {
-	// --- DOM Elements ---
-	const sideDay = document.querySelector('.side--day');
-	const sideNight = document.querySelector('.side--night');
-
-	sideDay.addEventListener('mouseover', () => {
-		sideDay.classList.add('show');
-		sideNight.classList.add('hide');
+	sidesDom.sideDay.addEventListener('mouseover', () => {
+		sidesDom.sideDay.classList.add('show');
+		sidesDom.sideNight.classList.add('hide');
 	});
-	sideDay.addEventListener('mouseout', () => {
-		sideDay.classList.remove('show');
-		sideNight.classList.remove('hide');
+	sidesDom.sideDay.addEventListener('mouseout', () => {
+		sidesDom.sideDay.classList.remove('show');
+		sidesDom.sideNight.classList.remove('hide');
 	});
 
-	sideNight.addEventListener('mouseover', () => {
-		sideNight.classList.add('show');
-		sideDay.classList.add('hide');
+	sidesDom.sideNight.addEventListener('mouseover', () => {
+		sidesDom.sideNight.classList.add('show');
+		sidesDom.sideDay.classList.add('hide');
 	});
-	sideNight.addEventListener('mouseout', () => {
-		sideNight.classList.remove('show');
-		sideDay.classList.remove('hide');
+	sidesDom.sideNight.addEventListener('mouseout', () => {
+		sidesDom.sideNight.classList.remove('show');
+		sidesDom.sideDay.classList.remove('hide');
 	});
 };

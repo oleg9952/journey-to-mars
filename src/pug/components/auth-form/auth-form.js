@@ -1,28 +1,94 @@
+import { signUpNewUser, signIn, resetPass } from '../../../javascript/auth';
+import { authFormsDom } from '../../../javascript/dom_elements';
+import { validateInputs } from '../../../javascript/forms';
+
 export const authForm = () => {
-	// ----- DOM Elements -----
-	const signInForm = document.querySelector('.auth__form-signin');
-	const signUpForm = document.querySelector('.auth__form-signup');
-	const passResetForm = document.querySelector('.auth__form-reset');
-	const goToSignUpBtn = document.querySelector('#auth__signup');
-	const goBackToLogInBtn = document.querySelector('.auth__form-backbtn');
-	const goToResetBtn = document.querySelector('#auth__reset');
-	const closeResetFormBtn = document.querySelector('#close__reset');
-
-
-	goToSignUpBtn.addEventListener('click', () => {
-		signInForm.classList.add('active');
-		signUpForm.classList.add('active');
+	// ----- DOM Manipulations -----
+	authFormsDom.goToSignUpBtn.addEventListener('click', () => {
+		authFormsDom.signInForm.classList.add('active');
+		authFormsDom.signUpForm.classList.add('active');
 	});
 
-	goBackToLogInBtn.addEventListener('click', () => {
-		signInForm.classList.remove('active');
-		signUpForm.classList.remove('active');
+	authFormsDom.goBackToLogInBtn.addEventListener('click', () => {
+		authFormsDom.signInForm.classList.remove('active');
+		authFormsDom.signUpForm.classList.remove('active');
 	});
 
-	goToResetBtn.addEventListener('click', () => {
-		passResetForm.classList.add('active');
+	authFormsDom.goToResetBtn.addEventListener('click', () => {
+		authFormsDom.passResetForm.classList.add('active');
 	});
-	closeResetFormBtn.addEventListener('click', () => {
-		passResetForm.classList.remove('active');
+	authFormsDom.closeResetFormBtn.addEventListener('click', () => {
+		authFormsDom.passResetForm.classList.remove('active');
+	});
+
+	authFormsDom.auth.addEventListener('click', e => {
+		if (e.target !== e.currentTarget) return;
+		authFormsDom.auth.classList.remove('active');
+		authFormsDom.signInForm.classList.remove('active');
+		authFormsDom.signUpForm.classList.remove('active');
+		authFormsDom.passResetForm.classList.remove('active');
+	});
+
+	// ----- SignUp -----
+	authFormsDom.signUpForm.addEventListener('submit', (e) => {
+		e.preventDefault();
+		const {
+			firstname,
+			lastname,
+			age,
+			email,
+			password
+		} = e.currentTarget;
+		
+		if (
+			firstname.value.length 
+			&& lastname.value.length 
+			&& age.value.length 
+			&& email.value.length 
+			&& password.value.length
+		) {
+			signUpNewUser(
+				{
+					firstname: firstname.value,
+					lastname: lastname.value,
+					age: age.value,
+					email: email.value,
+					password: password.value
+				},
+				e.currentTarget
+			);
+		} else {
+			validateInputs('signUp', 
+				firstname,
+				lastname,
+				age,
+				email,
+				password
+			);
+		}
+	});
+
+	// ----- SignIn -----
+	authFormsDom.signInForm.addEventListener('submit', (e) => {
+		e.preventDefault();
+		const { email, password } = e.currentTarget;
+
+		if (email.value.length && password.value.length) {
+			signIn({ email: email.value, password: password.value }, e.currentTarget);
+		} else {
+			validateInputs('signIn', email, password);
+		}
+	});
+
+	// ----- ResetPassword -----
+	authFormsDom.passResetForm.addEventListener('submit', (e) => {
+		e.preventDefault();
+		const { email } = e.currentTarget;
+
+		if (email.value.length) {
+			resetPass(email.value, e.currentTarget);
+		} else {
+			validateInputs('resetPass', email);
+		}
 	});
 };

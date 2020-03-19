@@ -1,7 +1,10 @@
+include ../form-spinner/form-spinner.pug
+
 mixin auth-form
     .auth
         .auth__form
             form.auth__form-signin
+                +fspinner
                 .auth__signin-icon
                     i.far.fa-user-circle
                 h2.auth__signin-title Sign in
@@ -21,6 +24,7 @@ mixin auth-form
                 p.auth__signin-alternative#auth__reset Forgot Password?
                 p.auth__signin-alternative#auth__signup Not registered? Click here to register
             form.auth__form-signup
+                +fspinner
                 .auth__form-backbtn
                     i.fas.fa-arrow-circle-left
                 .auth__signup-icon
@@ -54,6 +58,7 @@ mixin auth-form
                     )
                 button.auth__signup-submit(type="submit") Sign up
             form.auth__form-reset
+                +fspinner
                 .auth__form-backbtn#close__reset
                     i.fas.fa-times-circle
                 .auth__reset-icon

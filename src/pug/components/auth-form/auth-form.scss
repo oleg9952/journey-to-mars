@@ -67,6 +67,13 @@
         .auth__inputs-input:focus {
             border-color: #000;
         }
+
+        .auth__inputs-input.empty {
+            background-color: red;
+        }
+        .auth__inputs-input.empty::placeholder {
+            color: #fff;
+        }
     }
     &__signin-submit {
         @include mixins.form_submit-btn;
@@ -144,18 +151,15 @@
         .auth__inputs-input:focus {
             border-color: #000;
         }
+
+        .auth__inputs-input.empty {
+            background-color: red;
+        }
+        .auth__inputs-input.empty::placeholder {
+            color: #fff;
+        }
     }
     &__signup-submit {
-        // display: block;
-        // padding: 10px 60px;
-        // font-size: 18px;
-        // margin: 0 auto 20px;
-        // cursor: pointer;
-        // outline: none;
-        // background-color: rgba(0, 0, 0, 0.5);
-        // color: #fff;
-        // border: none;
-        // transition: .3s;
         @include mixins.form_submit-btn;
     }
     &__signup-submit:hover {
@@ -227,6 +231,13 @@
         }
         .auth__inputs-input:focus {
             border-color: #000;
+        }
+
+        .auth__inputs-input.empty {
+            background-color: red;
+        }
+        .auth__inputs-input.empty::placeholder {
+            color: #fff;
         }
     }
     &__reset-submit {

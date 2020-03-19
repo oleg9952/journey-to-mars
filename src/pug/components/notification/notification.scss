@@ -1,0 +1,35 @@
+.notification {
+    position: fixed;
+    width: 300px;
+    height: 80px;
+    bottom: 20px;
+    right: 20px;
+    transform: translateY(calc(100% + 20px));
+    z-index: 4;
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    box-shadow: 0 7px 20px rgba(0,0,0,0.19), 0 3px 6px rgba(0,0,0,0.23);
+    transition: .3s;
+    &--icon {
+        background-color: #ff5b29;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 30px;
+        color: #fff;
+    }
+    &--message {
+        display: flex;
+        align-items: center;
+        padding: 5px;
+        background-color: #fff;
+        .notification__column-message {
+            font-size: 15px;
+            line-height: 20px;
+        }
+    }
+}
+
+.notification.active {
+    transform: translateY(0%);   
+}
