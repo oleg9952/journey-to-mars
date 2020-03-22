@@ -21,7 +21,7 @@
         // animation: whyus_bg 30s infinite linear;
     }
     &__content {
-        width: 1200px;
+        max-width: 1200px;
         z-index: 1;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -38,6 +38,7 @@
     }
     &__column-title {
         @include mixins.section_title;
+        font-weight: bold;
         text-align: left;
         margin-bottom: 15px;
         color: #fff;
@@ -86,3 +87,70 @@
 //         transform: scale(1);
 //     }
 // }
+
+@media screen and (max-width: 1024px) {
+    .whyus {
+        &__content {
+            grid-template-columns: repeat(1, 1fr);
+        }
+        &--first {
+            height: auto;
+            padding: 30px 15px;
+            text-align: center;
+        }
+        &__column-title {
+            text-align: center;
+        }
+        &--second {
+            height: auto;
+        }
+        &__column-img {
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            .whyus__img-item {
+                transform: none;
+                width: 320px;
+                height: 220px;
+                position: relative;
+                display: block;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .whyus {
+        &__column-img {
+            height: auto;
+            flex-direction: column;
+            .whyus__img-item {
+                margin: 15px 0px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .whyus {
+        &__column-title {
+            font-size: 24px;
+        }
+        &__column-text {
+            font-size: 18px;
+            line-height: 30px;
+        }
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .whyus {
+        &__column-img {
+            .whyus__img-item {
+                width: 300px;
+                height: 220px;
+            }
+        }
+    }
+}

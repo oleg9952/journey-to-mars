@@ -40,3 +40,13 @@
         }
     }
 }
+
+@media screen and (max-width: 375px) {
+    .footer {
+        &__content-nav {
+            .footer__li-link {
+                padding: 10px 20px;
+            }
+        }
+    }
+}
