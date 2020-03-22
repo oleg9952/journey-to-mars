@@ -64,7 +64,6 @@
             transition: 1s;
             cursor: pointer;
         }
-
         .booking__agencies-agency:nth-child(1) {
             @include mixins.agencies_align(0%, 0%);
             @include mixins.image_background('../assets/agencies-logos/nasa.png');
@@ -84,7 +83,7 @@
             height: 110px;
             width: 110px;
             top: 50%;
-            transform: translate(-100%, -50%);
+            transform: translate(-110%, -50%);
         }
     }
     &__content-form {
@@ -166,5 +165,19 @@
         opacity: 1;
         transform: scale(1);
     }
+}
 
+@media screen and (max-width: 576px) {
+    .booking {
+        &__content-agencies {
+            height: 100px;
+            .booking__agencies-agency {
+                width: 100px;
+            }
+            .booking__agencies-agency:nth-child(3) {
+                height: 70px;
+                width: 70px;
+            }
+        }
+    }
 }

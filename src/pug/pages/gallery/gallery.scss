@@ -109,5 +109,22 @@
     &__output-pictures.active {
         display: grid;
     }
+}
 
+@media screen and (max-width: 768px) {
+    .gallery {
+        &__filters-cameras,
+        &__output-pictures {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .gallery {
+        &__filters-cameras,
+        &__output-pictures {
+            grid-template-columns: repeat(1, 1fr);
+        }
+    }
 }
