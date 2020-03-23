@@ -1,0 +1,154 @@
+.navmobile {
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(228, 7, 7, 1);
+    clip-path: circle(20px at 40px 40px);
+    visibility: hidden;
+    z-index: 3;
+    transition: .8s;
+    &__colse-btn {
+        width: 50px;
+        height: 50px;
+        border: 4px solid #fff;
+        border-radius: 50%;
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        .navmobile__btn-line {
+            width: 25px;
+            height: 4px;
+            background-color: #fff;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .navmobile__btn-line:first-child {
+            transform: translate(-50%, -50%) rotate(-45deg);
+        }
+        .navmobile__btn-line:last-child {
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+    }
+    &__list {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        list-style: none;
+        .navmobile__list-item {
+            transform: translateY(0px) scale(1);
+        }
+        .navmobile__list-item:nth-child(1) {
+            animation-delay: 2.1s;
+        }
+        .navmobile__list-item:nth-child(2) {
+            animation-delay: 2.4s;
+        }
+        .navmobile__list-item:nth-child(3) {
+            animation-delay: 2.7s;
+        }
+        .navmobile__item-link {
+            text-decoration: none;
+            color: #fff;
+            font-size: 30px;
+            font-weight: bold;
+            display: block;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.2);
+            width: 300px;
+            height: 90px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            margin: 15px 0;
+            border-radius: 15px;
+
+        }
+    }
+}
+
+.navmobile.active {
+    clip-path: circle(100% at 50% 50%);
+    visibility: visible;
+}
+
+@media screen and (max-width: 768px) {
+    .navmobile.active {
+        display: block;
+        pointer-events: all;
+    }
+}
+
+// @keyframes animateMobileNav {
+//     0% {
+//         top: 20px;
+//         left: 20px;
+//         border-radius: 50%;
+//         height: 40px;
+//         width: 40px;
+//         background-color: rgba(228, 7, 7, 0);
+//     } 10% {
+//         background-color: rgb(255, 255, 255);
+//     } 50% {
+//         top: 50%;
+//         left: 50%;
+//         border-radius: 50%;
+//         height: 40px;
+//         width: 40px;
+//         background-color: rgb(255, 255, 255);
+//         transform: translate(-50%, -50%);
+//     } 70% {
+//         top: 50%;
+//         left: 50%;
+//         border-radius: 50%;
+//         height: 40px;
+//         width: 100%;
+//         background-color: rgb(255, 255, 255);
+//         transform: translate(-50%, -50%);
+//     } 100% {
+//         top: 0;
+//         left: 0;
+//         border-radius: 0%;
+//         height: 100vh;
+//         width: 100%;
+//         background-color: rgba(228, 7, 7, 1);
+//     }
+// }
+
+// @keyframes navCloseBtnAnim {
+//     0% {
+//         opacity: 0;
+//     } 100% {
+//         opacity: 1;
+//     }
+// }
+
+// @keyframes animateNavList {
+//     0% {
+//         top: 30%;
+//         left: 50%;
+//         transform: translate(-50%, -50%) scale(0);
+//         opacity: .5;
+//     } 100% {
+//         top: 50%;
+//         left: 50%;
+//         transform: translate(-50%, -50%) scale(1);
+//         opacity: 1;
+//     }
+// }
+
+// @keyframes animateNavItems {
+//     0% {
+//         opacity: 0;
+//         transform: translateY(-20px) scale(.5);
+//     } 100% {
+//         opacity: 1;
+//         transform: translateY(0px) scale(1);
+//     }
+// }

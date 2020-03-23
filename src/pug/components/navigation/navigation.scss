@@ -97,13 +97,13 @@
         }
         .agency--two {
             animation: agency_two .5s forwards;
-            z-index: 1;   
-            @include mixins.image_background('../assets/agencies-logos/ukraine.png'); 
-            background-size: 135%;  
+            z-index: 1;
+            @include mixins.image_background('../assets/agencies-logos/ukraine.png');
+            background-size: 135%;
         }
         .agency--three {
             animation: agency_three .5s forwards;
-            @include mixins.image_background('../assets/agencies-logos/spacex.png'); 
+            @include mixins.image_background('../assets/agencies-logos/spacex.png');
             background-size: 130%;
             background-color: rgba(180, 221, 255, .8);
         }
@@ -228,7 +228,7 @@
         top: 0;
         left: 50%;
         transform: translate(-50%, -100%);
-    } 
+    }
     100% {
         top: 50%;
         left: 0%;
@@ -241,7 +241,7 @@
         top: 0;
         left: 50%;
         transform: translate(-50%, -100%);
-    } 
+    }
     100% {
         top: 50%;
         left: 50%;
@@ -254,7 +254,7 @@
         top: 0;
         left: 50%;
         transform: translate(-50%, -100%);
-    } 
+    }
     100% {
         top: 50%;
         left: 100%;
@@ -279,6 +279,7 @@
             background-color: #e40707;
             box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
             cursor: pointer;
+            overflow: hidden;
             .nav__mobile-line {
                 width: 20px;
                 height: 3px;
@@ -287,7 +288,7 @@
                 top: 50%;
                 left: 50%;
                 transform: translate(-50%, -50%);
-                transition: .3s;
+                transition: 1s;
             }
             .nav__mobile-line:nth-child(1) {
                 top: calc(50% - 7px);
@@ -297,19 +298,26 @@
             }
         }
 
-        &__column-mobile.active {
-            .nav__mobile-line:nth-child(1) {
-                top: 50%;
-                transform: translate(-50%, -50%) rotate(45deg);
-            }
-            .nav__mobile-line:nth-child(2) {
-                opacity: 0;
-            }
-            .nav__mobile-line:nth-child(3) {
-                top: 50%;
-                transform: translate(-50%, -50%) rotate(-45deg);
-            }
-        }
+        // &__column-mobile.active {
+        //     .nav__mobile-line:nth-child(1) {
+        //         top: 50%;
+        //         left: 100%;
+        //         transform: translate(1%, -50%);
+        //     }
+        //     .nav__mobile-line:nth-child(2) {
+        //         width: 5px;
+        //         height: 5px;
+        //         border-radius: 50%;
+        //         background-color: #fff;
+        //         animation: animateMobileBtn .5s forwards 1s;
+
+        //     }
+        //     .nav__mobile-line:nth-child(3) {
+        //         top: 50%;
+        //         left: 0;
+        //         transform: translate(-101%, -50%);
+        //     }
+        // }
 
         &__column-list {
             display: none;
@@ -329,5 +337,17 @@
                 display: block;
             }
         }
+    }
+}
+
+@keyframes animateMobileBtn {
+    0% {
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+    } 100% {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
     }
 }

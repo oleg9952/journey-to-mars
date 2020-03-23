@@ -270,6 +270,42 @@
     display: block;
 }
 
+@media screen and (max-width: 460px) {
+    .auth {
+        &__form {
+            width: 98%;
+        }
+        &__signin-inputs {
+            padding: 0;
+            .auth__inputs-input {
+                width: 290px;
+                margin: 0 auto;
+            }
+        }
+        &__signup-inputs {
+            padding: 0;
+            .auth__inputs-input {
+                width: 290px;
+                margin: 0 auto 10px;
+            }
+        }
+        &__reset-inputs {
+            padding: 0;
+            .auth__inputs-input {
+                width: 290px;
+                margin: 0 auto 10px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 460px) {
+    .auth {
+        &__form {
+            width: 98%;
+        }
+    }
+}
 
 @keyframes animateGradient {
     0% {
@@ -300,3 +336,4 @@
         transform: translate(-50%, -50%) scale(1);
     }
 }
+

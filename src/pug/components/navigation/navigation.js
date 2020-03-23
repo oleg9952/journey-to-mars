@@ -21,6 +21,19 @@ export const navigation = (currentPage) => {
 		navigationObserver.observe(navDom.header);
 	}
 
+	// ----- HIDE NAV ON SCROLL DOWN -----
+	let prevScrollPos = window.pageYOffset;
+	window.onscroll = () => {
+		let currentScrollPos = window.pageYOffset;
+		console.log(1);
+		if (prevScrollPos > currentScrollPos) {
+			navDom.nav.style.top = '0';
+		} else {
+			navDom.nav.style.top = '-80px';
+		}
+		prevScrollPos = currentScrollPos;
+	};
+
 	// ----- AGENCIES INFO -----
 	navDom.agencies.addEventListener('click', (e) => {
 		document.body.style.overflow = 'hidden';
@@ -69,5 +82,14 @@ export const navigation = (currentPage) => {
 	// ----- AUTH FORM Events ----- 
 	navDom.signInBtn.addEventListener('click', () => {
 		navDom.authForm.classList.add('active');
+	});
+
+	// ----- MOBILE NAV -----
+	navDom.openMobileNavBtn.addEventListener('click', () => {
+		navDom.mobileNav.classList.add('active');
+	});
+
+	navDom.closeBtnMobileNav.addEventListener('click', () => {
+		navDom.mobileNav.classList.remove('active');
 	});
 };

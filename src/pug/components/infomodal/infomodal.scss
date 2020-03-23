@@ -132,3 +132,11 @@
         opacity: 1;
     }
 }
+
+@media screen and (max-width: 1200px) {
+    .infomodal {
+        &__content {
+            width: 100%;
+        }
+    }
+}
