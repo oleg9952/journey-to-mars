@@ -29,6 +29,10 @@ export const navDom = {
     signInBtn: document.querySelector('#sign--in'),
     authForm: document.querySelector('.auth'),
     auth: document.querySelector('.auth'),
+    // ----- MOBILE-NAV -----
+    openMobileNavBtn: document.querySelector('.nav__column-mobile'),
+    mobileNav: document.querySelector('.navmobile'),
+    closeBtnMobileNav: document.querySelector('.navmobile__colse-btn'),
 };
 
 // ***** SIDES *****
