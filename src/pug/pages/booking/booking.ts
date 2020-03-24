@@ -2,10 +2,10 @@ import { bookingDom } from '../../../javascript/dom_elements';
 
 export const booking = () => {
 	// ----- DOM Manipulations -----
-	const agencySelection = (target, bgSelector, classSelector, iteration) => {
+	const agencySelection = (target: object, bgSelector: number, classSelector: string, iteration: number) => {
 		bookingDom.bookingBgs.forEach((bg) => bg.classList.remove('active'));
 		bookingDom.bookingBgs[bgSelector].classList.add('active');
-		
+
 		if (target.className === classSelector) {
 			bookingDom.bookingBgs.forEach((bg) => bg.classList.remove('active'));
 			bookingDom.bookingBgs[0].classList.add('active');

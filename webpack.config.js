@@ -10,13 +10,25 @@ const PUG_TO_HTML_PATS = [
 	{ output: 'booking.html', input: './pug/pages/booking/booking.pug' },
 	{ output: 'gallery.html', input: './pug/pages/gallery/gallery.pug' }
 ];
+
+const babelOptions = (preset) => {
+	const opts = {
+		presets: [
+			'@babel/preset-env'
+		]
+	}
+	if (preset) {
+		opts.presets.push(preset)
+	}
+	return opts
+};
  
 module.exports = {
 	devtool: '#@cheap-module-eval-source-map',
 	context: path.resolve(__dirname, 'src'),
 	mode: 'development',
 	entry: {
-		main: './javascript/index.js'
+		main: ['@babel/polyfill', './javascript/index.ts']
 	},
 	output: {
 		filename: '[name].[contenthash].js',
@@ -24,6 +36,9 @@ module.exports = {
 	},
 	devServer: {
 		port: 4200
+	},
+	resolve: {
+		extensions: ['.ts', '.js']
 	},
 	plugins: [
 		...PUG_TO_HTML_PATS.map(item => {
@@ -81,11 +96,37 @@ module.exports = {
 			}, 
 			{
 				test: /\.js$/,
-				loader: 'eslint-loader',
 				exclude: /node_modules/,
-				options: {
-					sourceMap: true
-				}
+				use: [
+					{
+						loader: 'babel-loader',
+						options: babelOptions()
+					},
+					// {
+					// 	loader: 'eslint-loader',
+					// 	options: {
+					// 		sourceMap: true
+					// 	}
+					// }
+				]
+				
+			},
+			{
+				test: /\.ts$/,
+				exclude: /node_modules/,
+				enforce: 'pre',
+				use: [
+					{
+						loader: 'babel-loader',
+						options: babelOptions('@babel/preset-typescript')
+					},
+					{
+						loader: require.resolve('eslint-loader'),
+						options: {
+							eslintPath: require.resolve('eslint')
+						}
+					}
+				]
 			}
 		]
 	}

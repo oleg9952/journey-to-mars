@@ -1,6 +1,5 @@
 import { sides } from '../../components/sides/sides';
 
-export const home = () => {
+export const home = ():void => {
 	sides();
-	console.log('home');
 };

@@ -1,5 +1,5 @@
 // ***** AUTH-FORMS *****
-export const authFormsDom = {
+export const authFormsDom: Object = {
     signInForm: document.querySelector('.auth__form-signin'),
     signUpForm: document.querySelector('.auth__form-signup'),
     passResetForm: document.querySelector('.auth__form-reset'),
@@ -11,7 +11,7 @@ export const authFormsDom = {
 };
 
 // ***** NAVIGATION *****
-export const navDom = {
+export const navDom: Object = {
     // ----- Intersection Observer -----
     nav: document.querySelector('.nav'),
     header: document.querySelector('.header'),
@@ -36,13 +36,13 @@ export const navDom = {
 };
 
 // ***** SIDES *****
-export const sidesDom = {
+export const sidesDom: Object = {
     sideDay: document.querySelector('.side--day'),
     sideNight: document.querySelector('.side--night')
 };
 
 // ***** GALLERY *****
-export const galleryDom = {
+export const galleryDom: Object = {
     form: document.querySelector('.gallery__interface-filters'),
     cameras: document.querySelector('.gallery__filters-cameras'),
     camera: document.querySelectorAll('.gallery__cameras-camera'),
@@ -53,7 +53,7 @@ export const galleryDom = {
 };
 
 // ***** BOOKING *****
-export const bookingDom = {
+export const bookingDom: Object = {
     bookingBgs: document.querySelectorAll('.booking__bg'),
     spaceAgencies: document.querySelectorAll('.booking__agencies-agency'),
     form: document.querySelector('.booking__content-form')
@@ -67,7 +67,7 @@ export const [
 ] = document.querySelectorAll('.fspinner');
 
 // ***** NOTIFICATION *****
-export const notificationDom = {
+export const notificationDom: Object = {
     notif: document.querySelector('.notification'),
     notifIcon: document.querySelector('.notification--icon'),
     notifMessage: document.querySelector('.notification__column-message')

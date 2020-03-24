@@ -1,11 +1,11 @@
 import API_KEY from '../../../../nasa_api';
 import { galleryDom } from '../../../javascript/dom_elements';
 
-export const gallery = () => {
-	let selectedFilter = null;
+export const gallery = (): void => {
+	let selectedFilter: string = null;
 
-	galleryDom.solSelection.addEventListener('input', (e) => {
-		const self = e.target;
+	galleryDom.solSelection.addEventListener('input', (e: Event): void => {
+		const self: object = e.target;
 		if (self.value > 1000) {
 			self.value = '';
 			self.placeholder = '1000 is maximum';
@@ -15,7 +15,7 @@ export const gallery = () => {
 		}
 	});
 
-	galleryDom.cameras.addEventListener('click', (e) => {
+	galleryDom.cameras.addEventListener('click', (e: Event): void => {
 		galleryDom.camera.forEach((element) => element.classList.remove('active'));
 		switch (e.target.id) {
 			case 'FHAZ':
@@ -59,15 +59,15 @@ export const gallery = () => {
 		}
 	});
 
-	galleryDom.form.addEventListener('submit', (e) => {
+	galleryDom.form.addEventListener('submit', (e: Event) => {
 		e.preventDefault();
 		if (selectedFilter && galleryDom.solSelection.value.length) {
 			galleryDom.placeholder.classList.remove('active');
 			galleryDom.output.classList.remove('active');
 			galleryDom.spinner.classList.add('active');
 			fetch(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=${galleryDom.solSelection.value}&${selectedFilter === 'none' ? '' : `&camera=${selectedFilter}&`}page=1&api_key=${API_KEY}`)
-				.then((resp) => resp.json())
-				.then((data) => {
+				.then((resp: Object) => resp.json())
+				.then((data: Array<object>) => {
 					galleryDom.spinner.classList.remove('active');
 					if (data.photos.length) {
 						galleryDom.output.innerHTML = '';

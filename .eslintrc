@@ -1,12 +1,19 @@
 {
+    "parser": "@typescript-eslint/parser",
     "extends": [
-        "airbnb/base"
+        "airbnb-typescript/base"
     ],
+    "parserOptions": {
+        "ecmaVersion": 2018,
+        "sourceType": "module",
+        "project": "./tsconfig.json"
+    },
     "rules": {
         "linebreak-style": 0,
         "no-alert": "off",
         "no-console": "off",
         "indent": "off",
+        "@typescript-eslint/indent": "off",
         "no-tabs": 0,
         "no-mixed-spaces-and-tabs": [
             2,

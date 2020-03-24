@@ -1,6 +1,6 @@
 import { navDom } from './dom_elements';
 
-export const setCurrentUser = (action, user) => {
+export const setCurrentUser = (action, user?) => {
     switch (action) {
         case 'signedIn':
             localStorage.setItem('user', JSON.stringify(user));
