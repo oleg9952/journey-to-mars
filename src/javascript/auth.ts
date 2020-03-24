@@ -29,7 +29,7 @@ auth.onAuthStateChanged((user) => {
 
 // ***** AUTH-FUNCTIONS *****
 
-export const signUpNewUser = async (credentials, target) => {
+export const signUpNewUser = async (credentials: object, target: object) => {
     fSpinnerSignUp.classList.add('active');
     const { 
         firstname,
@@ -59,7 +59,7 @@ export const signUpNewUser = async (credentials, target) => {
     }
 };
 
-export const signIn = (credentials, target) => {
+export const signIn = (credentials: object, target: object) => {
     const { email, password } = credentials;
     fSpinnerSignIn.classList.add('active');
     auth.signInWithEmailAndPassword(email, password)
@@ -73,7 +73,7 @@ export const signIn = (credentials, target) => {
         });
 };
 
-export const resetPass = (email, target) => {
+export const resetPass = (email: string, target: object) => {
     fSpinnerReset.classList.add('active');
     auth.sendPasswordResetEmail(email)
         .then(() => {

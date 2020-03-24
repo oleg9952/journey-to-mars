@@ -1,24 +1,24 @@
-export const wrongPassword = {
+export const wrongPassword: Object = {
     code: 'auth/wrong-password',
     message: 'The password is invalid or the user does not have a password.'
 };
 
-export const userNotFound = {
+export const userNotFound: Object = {
     code: 'auth/user-not-found',
     message: 'There is no user record corresponding to this identifier.'
 };
 
-export const weakPassword = {
+export const weakPassword: Object = {
     code: 'auth/weak-password',
     message: 'Password should be at least 6 characters.'
 };
 
-export const usedEmail = {
+export const usedEmail: Object = {
     code: 'auth/email-already-in-use',
     message: 'The email address is already in use by another account.'
 };
 
-export const invalidEmail = {
+export const invalidEmail: Object = {
     code: 'auth/invalid-email',
     message: 'The email address is badly formatted.'
 };  

@@ -1,10 +1,10 @@
 import { navDom } from '../../../javascript/dom_elements';
 import { signOut } from '../../../javascript/auth';
 
-export const navigation = (currentPage) => {
+export const navigation = (currentPage: string) => {
 	// ----- Intersection Observer -----
 	if (currentPage !== 'Booking') {	
-		const intersectionOptions = {
+		const intersectionOptions: Object = {
 			rootMargin: '-80px 0px 0px 0px'
 		};
 	
@@ -22,10 +22,10 @@ export const navigation = (currentPage) => {
 	}
 
 	// ----- HIDE NAV ON SCROLL DOWN -----
-	let prevScrollPos = window.pageYOffset;
-	window.onscroll = () => {
-		let currentScrollPos = window.pageYOffset;
-		console.log(1);
+	let prevScrollPos: number = window.pageYOffset;
+
+	window.onscroll = (): void => {
+		let currentScrollPos: number = window.pageYOffset;
 		if (prevScrollPos > currentScrollPos) {
 			navDom.nav.style.top = '0';
 		} else {
@@ -35,7 +35,7 @@ export const navigation = (currentPage) => {
 	};
 
 	// ----- AGENCIES INFO -----
-	navDom.agencies.addEventListener('click', (e) => {
+	navDom.agencies.addEventListener('click', (e: Event) => {
 		document.body.style.overflow = 'hidden';
 		
 		switch (e.target.classList[1]) {
@@ -53,7 +53,7 @@ export const navigation = (currentPage) => {
 		}
 	});
 
-	const triggers = [
+	const triggers: Array<string> = [
 		'show--nasa',
 		'show--ukr',
 		'show--spacex',
@@ -69,7 +69,7 @@ export const navigation = (currentPage) => {
 		navDom.userNav.classList.toggle('active');
 	});
 
-	navDom.userNav.addEventListener('click', e => {
+	navDom.userNav.addEventListener('click', (e: Event) => {
 		if (e.target.classList[0] === 'nav__listitem-link') {
 			navDom.userNav.classList.remove('active');
 		}

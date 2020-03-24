@@ -1,7 +1,7 @@
 import { authFormsDom } from './dom_elements';
 
-export const validateInputs = (action, ...inputs) => {
-    const toggleEmptyClass = (target) => {
+export const validateInputs = (action: string, ...inputs: Array<object>): void => {
+    const toggleEmptyClass = (target: object) => {
         target.classList.add('empty');
         setTimeout(() => {
             target.classList.remove('empty');
@@ -10,7 +10,7 @@ export const validateInputs = (action, ...inputs) => {
 
     switch (action) {
         case 'signUp':
-            inputs.forEach((input) => {
+            inputs.forEach((input: object) => {
                 if (input.name === 'firstname' && !input.value.length) {
                     toggleEmptyClass(input);
                 } else if (input.name === 'lastname' && !input.value.length) {
@@ -25,7 +25,7 @@ export const validateInputs = (action, ...inputs) => {
             });
             break;
         case 'signIn':
-            inputs.forEach((input) => {
+            inputs.forEach((input: object) => {
                 if (input.name === 'email' && !input.value.length) {
                     toggleEmptyClass(input);
                 } else if (input.name === 'password' && !input.value.length) {
@@ -34,7 +34,7 @@ export const validateInputs = (action, ...inputs) => {
             });
             break;
         case 'resetPass':
-            inputs.forEach((input) => {
+            inputs.forEach((input: object) => {
                 if (!input.value.length) {
                     toggleEmptyClass(input);
                 }
@@ -45,7 +45,7 @@ export const validateInputs = (action, ...inputs) => {
     }
 };
 
-export const resetForm = (action, target) => {
+export const resetForm = (action: string, target: object) => {
     switch (action) {
         case 'signUp':
             target.reset();

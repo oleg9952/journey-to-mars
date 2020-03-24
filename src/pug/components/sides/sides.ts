@@ -1,6 +1,6 @@
 import { sidesDom } from '../../../javascript/dom_elements';
 
-export const sides = () => {
+export const sides = (): void => {
 	sidesDom.sideDay.addEventListener('mouseover', () => {
 		sidesDom.sideDay.classList.add('show');
 		sidesDom.sideNight.classList.add('hide');
