@@ -10,18 +10,18 @@ import {
 
 // ***** AUTH-LISTENER *****
 
-auth.onAuthStateChanged((user) => {
+auth.onAuthStateChanged((user: object) => {
     if (user) {
         firestore.collection('users').doc(`${user.uid}`)
             .get()
-            .then((resp) => {
+            .then((resp: object) => {
                 setCurrentUser('signedIn', {
                     uid: user.uid,
                     email: user.email,
                     ...resp.data()
                 });
             })
-            .catch((error) => console.error(error));
+            .catch((error: object) => console.error(error));
     } else {
         setCurrentUser('signedOut');
     }

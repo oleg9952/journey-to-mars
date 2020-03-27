@@ -1,0 +1,24 @@
+extends ../../page-templates/base
+include ../../components/profile-nav/profile-nav
+include ./user-pages/my-page/my-page
+include ./user-pages/my-tickets/my-tickets
+include ./user-pages/support/support
+
+block variables
+    -var title = 'Profile'
+
+block content
+    .profile
+        +profile-nav
+        .profile__content
+            .profile__content-wrapper
+                .profile__content-user
+                    +my-page
+                    +my-tickets                
+                    +support-page
+                    
+                .profile__content-admin
+                    .profile__admin-customers Customers
+                    .profile__admin-booking booking
+                    .profile__admin-chats chats
+                

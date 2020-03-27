@@ -1,0 +1,50 @@
+mixin my-page
+    .profile__user-page.mypage.active
+        .profile__mypage-header
+            .profile__header-picture J
+            h2.profile__header-username James Anderson
+        .profile__mypage-body
+            .profile__body-userdetails
+                .profile__userdetails-header
+                    .profile__header-column
+                        i.fas.fa-id-card
+                        p.profile__header-text Profile Details
+                    .profile__header-column
+                        i.fas.fa-user-edit
+                        p.profile__header-text.profile--edit Edit
+                .profile__userdetails-body
+                    .profile__body-column
+                        p.profile__userdetails-item First Name
+                        p.profile__userdetails-item Last Name
+                        p.profile__userdetails-item Age
+                        p.profile__userdetails-item Email
+                    .profile__body-column
+                        p.profile__userdetails-item James
+                        p.profile__userdetails-item Anderson
+                        p.profile__userdetails-item 43
+                        p.profile__userdetails-item james.anderson@gmail.com
+            .profile__body-useractivity
+                .profile__useractivity-header
+                    i.fas.fa-history
+                    p.profile__header-text Activity History
+                .profile__useractivity-body
+                    .profile__body-filter
+                        ul.profile__filter-filters
+                            li.profile__filters-filter All
+                            li.profile__filters-filter.active Logins
+                            li.profile__filters-filter Bookings
+                    .profile__body-activities
+                        .profile__activities-content
+                            .profile__activities-historyitem
+                                .profile__historyitem-icon
+                                    i.fas.fa-sign-in-alt
+                                .profile__historyitem-type Login
+                                p.profile__historyitem-date 20.03.2020 || 13:55
+                            .profile__activities-historyitem
+                                .profile__historyitem-icon
+                                    i.fas.fa-sign-in-alt
+                                .profile__historyitem-type Login
+                                p.profile__historyitem-date 19.03.2020 || 23:00
+
+
+

@@ -1,5 +1,5 @@
 // ***** AUTH-FORMS *****
-export const authFormsDom: Object = {
+export const authFormsDom: object = {
     signInForm: document.querySelector('.auth__form-signin'),
     signUpForm: document.querySelector('.auth__form-signup'),
     passResetForm: document.querySelector('.auth__form-reset'),
@@ -11,7 +11,7 @@ export const authFormsDom: Object = {
 };
 
 // ***** NAVIGATION *****
-export const navDom: Object = {
+export const navDom: object = {
     // ----- Intersection Observer -----
     nav: document.querySelector('.nav'),
     header: document.querySelector('.header'),
@@ -36,13 +36,13 @@ export const navDom: Object = {
 };
 
 // ***** SIDES *****
-export const sidesDom: Object = {
+export const sidesDom: object = {
     sideDay: document.querySelector('.side--day'),
     sideNight: document.querySelector('.side--night')
 };
 
 // ***** GALLERY *****
-export const galleryDom: Object = {
+export const galleryDom: object = {
     form: document.querySelector('.gallery__interface-filters'),
     cameras: document.querySelector('.gallery__filters-cameras'),
     camera: document.querySelectorAll('.gallery__cameras-camera'),
@@ -53,7 +53,7 @@ export const galleryDom: Object = {
 };
 
 // ***** BOOKING *****
-export const bookingDom: Object = {
+export const bookingDom: object = {
     bookingBgs: document.querySelectorAll('.booking__bg'),
     spaceAgencies: document.querySelectorAll('.booking__agencies-agency'),
     form: document.querySelector('.booking__content-form')
@@ -67,8 +67,28 @@ export const [
 ] = document.querySelectorAll('.fspinner');
 
 // ***** NOTIFICATION *****
-export const notificationDom: Object = {
+export const notificationDom: object = {
     notif: document.querySelector('.notification'),
     notifIcon: document.querySelector('.notification--icon'),
     notifMessage: document.querySelector('.notification__column-message')
 };
+
+// ***** PROFILE PAGE *****
+export const profileDom: object = {
+    // ----- Navigation -----
+    userNav: document.querySelector('.profile__nav-user'),
+    adminNav: document.querySelector('.profile__nav-admin'),
+    navBtn: document.querySelectorAll('.profile__btn-name'),
+    navBtnParents: document.querySelectorAll('.profile__nav-btn'),
+    returnBtn: document.querySelector('.profile__nav-return'),
+    // ----- Content User Types -----
+    userContent: document.querySelector('.profile__content-user'),
+    adminContent: document.querySelector('.profile__content-admin'),
+    // ----- User Pages -----
+    myPage: document.querySelector('.mypage'),
+    myTickets: document.querySelector('.mytickets'),
+    support: document.querySelector('.support'),
+    userPages: document.querySelectorAll('.profile__user-page'),
+    // ----- Admin Pages -----
+    // customers: document.querySelector('.profile__user-support'),
+}

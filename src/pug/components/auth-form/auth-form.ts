@@ -69,7 +69,7 @@ export const authForm = () => {
 	});
 
 	// ----- SignIn -----
-	authFormsDom.signInForm.addEventListener('submit', (e) => {
+	authFormsDom.signInForm.addEventListener('submit', (e: Event) => {
 		e.preventDefault();
 		const { email, password } = e.currentTarget;
 
@@ -84,7 +84,7 @@ export const authForm = () => {
 	});
 
 	// ----- ResetPassword -----
-	authFormsDom.passResetForm.addEventListener('submit', (e) => {
+	authFormsDom.passResetForm.addEventListener('submit', (e: Event) => {
 		e.preventDefault();
 		const { email } = e.currentTarget;
 

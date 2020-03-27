@@ -1,0 +1,52 @@
+@use '../../../../../styles/mixins.scss' as mixins;
+
+.profile {
+    .mytickets {
+        padding-top: 20px;
+    }
+    &__mytickets-pagetitle {
+        @include mixins.section_title;
+    }
+    &__mytickets-tickets {
+        .profile__tickets-ticket {
+            max-width: 700px;
+            min-height: 200px;
+            margin: 0 auto 25px;
+            background-color: #fff;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+            border-radius: 5px;
+        }
+        .profile__ticket-header {
+            border-bottom: 2px solid #ccc;
+            height: 50px;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            padding: 0 15px;
+            color: #e40707;
+            font-weight: bold;
+        }
+        i {
+            display: block;
+            margin-right: 10px;
+        }
+        .profile__ticket-body {
+            min-height: 50px;
+            display: grid;
+            grid-template-columns: 180px 1fr;
+        }
+        .profile__body-column:first-child {
+            padding-right: 15px;
+            text-align: right;
+            font-weight: bold;
+        }
+        .profile__body-column:last-child {
+            padding-left: 15px;
+            text-align: left;
+        }
+        .profile__ticket-item {
+            line-height: 50px;
+            font-size: 18px;
+        }
+    }
+}
