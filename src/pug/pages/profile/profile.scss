@@ -1,0 +1,63 @@
+@use '../../components/profile-nav/profile-nav.scss';
+@use './user-pages/my-page/my-page.scss';
+@use './user-pages/my-tickets/my-tickets.scss';
+@use './user-pages/support/support.scss';
+
+.profile {
+    min-height: 100vh;
+    background-color: #f2f2f2;
+
+    // ----- CONTENT -----
+
+    &__content {
+        padding-left: 150px;
+    }
+
+    &__content-wrapper {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 15px 15px 15px 15px;
+    }
+
+    &__content-user,
+    &__content-admin {
+        display: none;
+    }
+
+    &__content-user.active,
+    &__content-admin.active {
+        display: block;
+    }
+
+    &__content-user {
+        .mypage,
+        .mytickets,
+        .support {
+            display: none;
+        }
+
+        .mypage.active,
+        .mytickets.active,
+        .support.active {
+            display: block;
+        }
+
+        .profile__user-page {
+            opacity: 0;
+            animation: fadeInProfilePage .7s forwards;
+        }
+    }
+
+    &__content-admin {
+        background-color: violet;
+    }
+    
+}
+
+@keyframes fadeInProfilePage {
+    0% {
+        opacity: 0;
+    } 100% {
+        opacity: 1;
+    }
+}

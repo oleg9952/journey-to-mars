@@ -72,7 +72,7 @@ export const gallery = (): void => {
 					if (data.photos.length) {
 						galleryDom.output.innerHTML = '';
 						galleryDom.output.classList.add('active');
-						galleryDom.output.innerHTML = data.photos.map((pic) => `
+						galleryDom.output.innerHTML = data.photos.map((pic: object) => `
 							<div class="gallery__pictures-picture"
 								style="background-image: url(${pic.img_src})"
 							></div>

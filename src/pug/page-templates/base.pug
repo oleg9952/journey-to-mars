@@ -19,16 +19,16 @@ html(lang="en")
 		.wrapper
 			+notification
 
-			+infomodal
-
-			+auth-form
-
-			+navmobile
-			+nav
+			if title!= 'Profile'
+				+infomodal
+				+auth-form
+				+navmobile
+				+nav
 			
-			if title!= 'Booking'
+			if (title!= 'Booking' && title!= 'Profile')
 				+header
 			
 			block content
 
-			+footer
+			if title!= 'Profile'
+				+footer

@@ -7,7 +7,7 @@ import {
     invalidEmail
 } from '../../../javascript/authErrors';
 
-export const notification = (error: Object): void => {
+export const notification = (error: object): void => {
     notificationDom.notif.classList.add('active');
 
     switch (error.code) {
@@ -29,6 +29,8 @@ export const notification = (error: Object): void => {
         default:
             break;
     }
+
+    // notificationDom.notifMessage.innerText = error.message;
 
     setTimeout((): void => {
         notificationDom.notif.classList.remove('active');

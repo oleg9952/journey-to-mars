@@ -8,7 +8,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const PUG_TO_HTML_PATS = [
 	{ output: 'index.html', input: './pug/pages/home/index.pug' },
 	{ output: 'booking.html', input: './pug/pages/booking/booking.pug' },
-	{ output: 'gallery.html', input: './pug/pages/gallery/gallery.pug' }
+	{ output: 'gallery.html', input: './pug/pages/gallery/gallery.pug' },
+	{ output: 'profile.html', input: './pug/pages/profile/profile.pug' }
 ];
 
 const babelOptions = (preset) => {
@@ -94,23 +95,23 @@ module.exports = {
 				loader: 'pug-loader',
 				options: { pretty: true }
 			}, 
-			{
-				test: /\.js$/,
-				exclude: /node_modules/,
-				use: [
-					{
-						loader: 'babel-loader',
-						options: babelOptions()
-					},
-					// {
-					// 	loader: 'eslint-loader',
-					// 	options: {
-					// 		sourceMap: true
-					// 	}
-					// }
-				]
+			// {
+			// 	test: /\.js$/,
+			// 	exclude: /node_modules/,
+			// 	use: [
+			// 		{
+			// 			loader: 'babel-loader',
+			// 			options: babelOptions()
+			// 		},
+			// 		// {
+			// 		// 	loader: 'eslint-loader',
+			// 		// 	options: {
+			// 		// 		sourceMap: true
+			// 		// 	}
+			// 		// }
+			// 	]
 				
-			},
+			// },
 			{
 				test: /\.ts$/,
 				exclude: /node_modules/,
@@ -120,12 +121,12 @@ module.exports = {
 						loader: 'babel-loader',
 						options: babelOptions('@babel/preset-typescript')
 					},
-					{
-						loader: require.resolve('eslint-loader'),
-						options: {
-							eslintPath: require.resolve('eslint')
-						}
-					}
+					// {
+					// 	loader: require.resolve('eslint-loader'),
+					// 	options: {
+					// 		eslintPath: require.resolve('eslint')
+					// 	}
+					// }
 				]
 			}
 		]
