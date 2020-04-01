@@ -7,10 +7,10 @@ import {
     invalidEmail
 } from '../../../javascript/authErrors';
 
-export const notification = (error: object): void => {
+export const notification = (trigger: object): void => {
     notificationDom.notif.classList.add('active');
 
-    switch (error.code) {
+    switch (trigger.code) {
         case wrongPassword.code:
             notificationDom.notifMessage.innerText = wrongPassword.message;
             break;
@@ -25,6 +25,9 @@ export const notification = (error: object): void => {
             break;
         case invalidEmail.code:
             notificationDom.notifMessage.innerText = invalidEmail.message;
+            break;
+        case 'booking':
+            notificationDom.notifMessage.innerText = trigger.message;
             break;
         default:
             break;

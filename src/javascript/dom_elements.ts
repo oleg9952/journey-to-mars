@@ -56,7 +56,17 @@ export const galleryDom: object = {
 export const bookingDom: object = {
     bookingBgs: document.querySelectorAll('.booking__bg'),
     spaceAgencies: document.querySelectorAll('.booking__agencies-agency'),
-    form: document.querySelector('.booking__content-form')
+    form: document.querySelector('.booking__content-form'),
+    // ----- NEXT -----
+    nextSection: document.querySelector('.booking__next'),
+    nextSectionClose: document.querySelector('.booking__next-close'),
+    seatClassSection: document.querySelector('.booking__next-types'),
+    seatClasses: document.querySelectorAll('.booking__types-type'),
+    seats: document.querySelector('.booking__next-seats'),
+    services: document.querySelector('.booking__next-services'),
+    servicesAll: document.querySelectorAll('.booking__services-service'),
+    bookingPrice: document.querySelector('.booking__next-price'),
+    confirmBtn: document.querySelector('.booking__next-submit')
 };
 
 // ***** FORM-SPINNER *****
