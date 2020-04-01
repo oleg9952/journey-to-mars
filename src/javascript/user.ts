@@ -38,7 +38,7 @@ export const setCurrentUser = (action: string, user?: object): void => {
     }
 }
 
-export const getUserFromStorage = (): void => {
+export const getUserFromStorage = (): object => {
     return JSON.parse(localStorage.getItem('user'));
 };
 
