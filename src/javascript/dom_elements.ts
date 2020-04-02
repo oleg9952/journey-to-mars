@@ -99,6 +99,17 @@ export const profileDom: object = {
     myTickets: document.querySelector('.mytickets'),
     support: document.querySelector('.support'),
     userPages: document.querySelectorAll('.profile__user-page'),
+    // My Page
+    userPic: document.querySelector('.profile__header-picture'),
+    userFullName: document.querySelector('.profile__header-username'),
+    userFirstName: document.querySelector('#user--first-name'),
+    userLastName: document.querySelector('#user--last-name'),
+    userAge: document.querySelector('#user--age'),
+    userEmail: document.querySelector('#user--email'),
+    // My Tickets
+    ticketsOutput: document.querySelector('.profile__mytickets-tickets')
+
+
     // ----- Admin Pages -----
     // customers: document.querySelector('.profile__user-support'),
 }

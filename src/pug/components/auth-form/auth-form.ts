@@ -1,7 +1,7 @@
 import { signUpNewUser, signIn, resetPass } from '../../../javascript/auth';
 import { authFormsDom } from '../../../javascript/dom_elements';
 import { validateInputs } from '../../../javascript/forms';
-import { AuthCreds } from '../../../javascript/classes';
+// import { AuthCreds } from '../../../javascript/classes';
 
 export const authForm = () => {
 	// ----- DOM Manipulations -----
@@ -48,13 +48,13 @@ export const authForm = () => {
 			&& email.value.length 
 			&& password.value.length
 		) {
-			signUpNewUser(new AuthCreds(
-					firstname.value,
-					lastname.value,
-					age.value,
-					email.value,
-					password.value
-				),
+			signUpNewUser({
+				firstname: firstname.value,
+				lastname: lastname.value,
+				age: age.value,
+				email: email.value,
+				password: password.value
+			},
 				e.currentTarget
 			);
 		} else {
@@ -74,10 +74,10 @@ export const authForm = () => {
 		const { email, password } = e.currentTarget;
 
 		if (email.value.length && password.value.length) {
-			signIn(new AuthCreds(
-				email.value,
-				password.value
-			), e.currentTarget);
+			signIn({
+				email: email.value,
+				password: password.value
+			}, e.currentTarget);
 		} else {
 			validateInputs('signIn', email, password);
 		}

@@ -15,11 +15,25 @@ auth.onAuthStateChanged((user: object) => {
         firestore.collection('users').doc(`${user.uid}`)
             .get()
             .then((resp: object) => {
-                setCurrentUser('signedIn', {
-                    uid: user.uid,
-                    email: user.email,
-                    ...resp.data()
-                });
+                firestore.collection('bookings')
+                    .get()
+                    .then((tickets: object) => {
+                        const bookings: Array<object> = [];
+
+                        tickets.docs.forEach((ticket: object) => {
+                            if (ticket.data().uid === user.uid) {
+                                bookings.push(ticket.data());
+                            }
+                        })
+
+                        setCurrentUser('signedIn', {
+                            uid: user.uid,
+                            email: user.email,
+                            bookings,
+                            ...resp.data()
+                        }); 
+                    })
+                    .catch((error: object) => console.error(error))
             })
             .catch((error: object) => console.error(error));
     } else {
@@ -38,7 +52,7 @@ export const signUpNewUser = async (credentials: object, target: object) => {
         email, 
         password 
     } = credentials;
-    
+    console.log(credentials)
     try {
         const request = await auth.createUserWithEmailAndPassword(email, password);
         const { uid } = request.user;
@@ -56,6 +70,7 @@ export const signUpNewUser = async (credentials: object, target: object) => {
     } catch (error) {
         fSpinnerSignUp.classList.remove('active');
         notification(error);
+        console.error(error)
     }
 };
 
