@@ -2,15 +2,15 @@ import { navDom } from './dom_elements';
 
 // ----- AUTH -----
 
-export class AuthCreds {
-    constructor(
-        public email: string,
-        public password?: string,
-        public firstname?: string,
-        public lastname?: string,
-        public age?: number,
-    ) {};
-}
+// export class AuthCreds {
+//     constructor(
+//         public email: string,
+//         public password?: string,
+//         public firstname?: string,
+//         public lastname?: string,
+//         public age?: number,
+//     ) {};
+// }
 
 // ----- USERS -----
 
@@ -21,7 +21,8 @@ export class User {
         public age: number,
         public firstname: string,
         public lastname: string,
-        public type: string
+        public type: string,
+        public bookings: Array<object>
     ) {}
     
     changeEmail(newEmail: string) {
@@ -45,7 +46,8 @@ export class Admin extends User {
         public age: number,
         public firstname: string,
         public lastname: string,
-        public type: string
+        public type: string,
+        public bookings: Array<object>
     ) {
         super(
             uid,
@@ -53,7 +55,8 @@ export class Admin extends User {
             age,
             firstname,
             lastname,
-            type
+            type,
+            bookings
         );
     }
 
@@ -116,6 +119,7 @@ export class Booking {
                 break;
         }
     }
+    
     setDetails(
         first: string,
         last: string,
@@ -128,35 +132,21 @@ export class Booking {
         this.customerDetails.email = email;
     }
 
-    // setSeatClass(classType: string): void {
-    //     this.seatClass = classType;
-    //     switch (this.seatClass) {
-    //         case 'Bussiness':
-    //             this.pricePerSeat = 7000;
-    //             break;
-    //         case 'Standard':
-    //             this.pricePerSeat = 5000;
-    //             break;
-    //         case 'Econom':
-    //             this.pricePerSeat = 3000;
-    //             break;
-    //         default:
-    //             break;
-    //     }
-    // }
-
     addSeat(seat: string): void {
         if (this.seats.indexOf(seat) === -1) {
             this.seats.push(seat.toLowerCase());
         }
     }
+
     removeSeat(seat: string): void {
         this.seats = this.seats.filter(s => s !== seat.toLowerCase());
     }
 
+
     addService(service: string): void {
         this.services.push(service.toLowerCase());
     }
+
     removeService(service: string): void {
         this.services = this.services.filter(s => s !== service.toLowerCase());
     }

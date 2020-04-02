@@ -1,5 +1,6 @@
 import { profileDom } from '../../../javascript/dom_elements';
 import { getUserFromStorage } from '../../../javascript/user';
+import { profileRenderer } from './profileRenderer';
 
 export const profile = (): void => {
 
@@ -9,10 +10,14 @@ export const profile = (): void => {
         case 'user':
             profileDom.userNav.classList.add('active');
             profileDom.userContent.classList.add('active');
+
+            profileRenderer(user.type, user);
             break;
         case 'admin':
             profileDom.adminNav.classList.add('active');
             profileDom.adminContent.classList.add('active');
+
+            profileRenderer(user.type, user);
             break;
         default:
             break;
