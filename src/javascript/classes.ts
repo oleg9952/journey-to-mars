@@ -22,7 +22,8 @@ export class User {
         public firstname: string,
         public lastname: string,
         public type: string,
-        public bookings: Array<object>
+        public bookings: Array<object>,
+        public logs: object
     ) {}
     
     changeEmail(newEmail: string) {
@@ -47,7 +48,8 @@ export class Admin extends User {
         public firstname: string,
         public lastname: string,
         public type: string,
-        public bookings: Array<object>
+        public bookings: Array<object>,
+        public logs: object
     ) {
         super(
             uid,
@@ -56,7 +58,8 @@ export class Admin extends User {
             firstname,
             lastname,
             type,
-            bookings
+            bookings,
+            logs
         );
     }
 

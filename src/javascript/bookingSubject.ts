@@ -1,6 +1,7 @@
 import { firestore } from '../../fb_config';
 import { notification } from "../pug/components/notification/notification";
 import { getUserFromStorage } from './user';
+import { activityLogger } from './activityLogger';
 
 class BookingSubject {
     observers: Array<object>;
@@ -53,6 +54,7 @@ const bookTickets = (data: object) => {
                         })
                         .catch(err => console.error(err))
                 })
+            activityLogger(getUserFromStorage().uid, 'booking')
         })
         .catch(err => console.error(err))
 }

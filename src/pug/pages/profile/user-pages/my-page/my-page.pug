@@ -1,3 +1,5 @@
+include ../../../../components/profile-activity/profile-activity
+
 mixin my-page
     .profile__user-page.mypage.active
         .profile__mypage-header
@@ -23,28 +25,7 @@ mixin my-page
                         p.profile__userdetails-item#user--last-name Anderson
                         p.profile__userdetails-item#user--age 43
                         p.profile__userdetails-item#user--email james.anderson@gmail.com
-            .profile__body-useractivity
-                .profile__useractivity-header
-                    i.fas.fa-history
-                    p.profile__header-text Activity History
-                .profile__useractivity-body
-                    .profile__body-filter
-                        ul.profile__filter-filters
-                            li.profile__filters-filter All
-                            li.profile__filters-filter.active Logins
-                            li.profile__filters-filter Bookings
-                    .profile__body-activities
-                        .profile__activities-content
-                            .profile__activities-historyitem
-                                .profile__historyitem-icon
-                                    i.fas.fa-sign-in-alt
-                                .profile__historyitem-type Login
-                                p.profile__historyitem-date 20.03.2020 || 13:55
-                            .profile__activities-historyitem
-                                .profile__historyitem-icon
-                                    i.fas.fa-sign-in-alt
-                                .profile__historyitem-type Login
-                                p.profile__historyitem-date 19.03.2020 || 23:00
+            +profile-activity
 
 
 

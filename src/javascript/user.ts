@@ -14,7 +14,8 @@ export const setCurrentUser = (action: string, user?: object): void => {
                     user.firstname,
                     user.lastname,
                     user.type,
-                    user.bookings
+                    user.bookings,
+                    user.logs
                 );
             } else {
                 currentUser = new Admin(
@@ -24,7 +25,8 @@ export const setCurrentUser = (action: string, user?: object): void => {
                     user.firstname,
                     user.lastname,
                     user.type,
-                    user.bookings
+                    user.bookings,
+                    user.logs
                 );
             }
             localStorage.setItem('user', JSON.stringify(currentUser));

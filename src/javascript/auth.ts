@@ -1,5 +1,5 @@
 import { auth, firestore } from '../../fb_config';
-import { setCurrentUser } from './user';
+import { setCurrentUser, getUserFromStorage } from './user';
 import { resetForm } from './forms';
 import { notification } from '../pug/components/notification/notification';
 import {
@@ -7,6 +7,7 @@ import {
     fSpinnerSignUp,
     fSpinnerReset
 } from './dom_elements';
+import { activityLogger } from './activityLogger';
 
 // ***** AUTH-LISTENER *****
 
@@ -26,12 +27,20 @@ auth.onAuthStateChanged((user: object) => {
                             }
                         })
 
-                        setCurrentUser('signedIn', {
-                            uid: user.uid,
-                            email: user.email,
-                            bookings,
-                            ...resp.data()
-                        }); 
+                        firestore.collection('logs').doc(`${user.uid}`)
+                            .get()
+                            .then((logs: object) => {
+                                setCurrentUser('signedIn', {
+                                    uid: user.uid,
+                                    email: user.email,
+                                    bookings,
+                                    ...resp.data(),
+                                    logs: logs.data()
+                                }); 
+                            })
+                            .catch((error: object) => console.error(`Logs: ${error}`))
+
+                        
                     })
                     .catch((error: object) => console.error(error))
             })
@@ -52,15 +61,18 @@ export const signUpNewUser = async (credentials: object, target: object) => {
         email, 
         password 
     } = credentials;
-    console.log(credentials)
     try {
         const request = await auth.createUserWithEmailAndPassword(email, password);
         const { uid } = request.user;
+
+        activityLogger(uid, 'signUp');
+
         firestore.collection('users').doc(`${uid}`)
             .set({
                 firstname,
                 lastname,
-                age
+                age,
+                type: 'user'
             })
             .then(() => {
                 fSpinnerSignUp.classList.remove('active');
@@ -78,11 +90,12 @@ export const signIn = (credentials: object, target: object) => {
     const { email, password } = credentials;
     fSpinnerSignIn.classList.add('active');
     auth.signInWithEmailAndPassword(email, password)
-        .then(() => {
+        .then((resp: object) => {
             fSpinnerSignIn.classList.remove('active');
             resetForm('signIn', target);
+            activityLogger(resp.user.uid, 'signIn');
         })
-        .catch((error) => {
+        .catch((error: object) => {
             fSpinnerSignIn.classList.remove('active');
             notification(error);
         });
@@ -102,6 +115,7 @@ export const resetPass = (email: string, target: object) => {
 };
 
 export const signOut = () => {
+        activityLogger(getUserFromStorage().uid, 'signOut')
         auth.signOut()
             .catch((error) => console.error(error));
 };
