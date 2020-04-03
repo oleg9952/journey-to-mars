@@ -1,6 +1,7 @@
 import { profileDom } from '../../../javascript/dom_elements';
 import { getUserFromStorage } from '../../../javascript/user';
 import { profileRenderer } from './profileRenderer';
+import { activityHistory } from '../../components/profile-activity/profile-activity';
 
 export const profile = (): void => {
 
@@ -12,6 +13,7 @@ export const profile = (): void => {
             profileDom.userContent.classList.add('active');
 
             profileRenderer(user.type, user);
+            activityHistory();
             break;
         case 'admin':
             profileDom.adminNav.classList.add('active');

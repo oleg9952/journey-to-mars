@@ -106,6 +106,13 @@ export const profileDom: object = {
     userLastName: document.querySelector('#user--last-name'),
     userAge: document.querySelector('#user--age'),
     userEmail: document.querySelector('#user--email'),
+    // Activity History Widget
+    filters: document.querySelector('.profile__filter-filters'),
+    allFilters: document.querySelectorAll('.profile__filters-filter'),
+    contentBlocks: document.querySelectorAll('.profile__activities-content'),
+    contentAll: document.querySelector('#history--all'),
+    contentLogins: document.querySelector('#history--logins'),
+    contentBookings: document.querySelector('#history--bookings'),
     // My Tickets
     ticketsOutput: document.querySelector('.profile__mytickets-tickets')
 
