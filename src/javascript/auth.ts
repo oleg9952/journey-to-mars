@@ -8,6 +8,7 @@ import {
     fSpinnerReset
 } from './dom_elements';
 import { activityLogger } from './activityLogger';
+import { flightsRenderer } from '../pug/components/flights/flightsRenderer';
 
 // ***** AUTH-LISTENER *****
 
@@ -36,17 +37,19 @@ auth.onAuthStateChanged((user: object) => {
                                     bookings,
                                     ...resp.data(),
                                     logs: logs.data()
-                                }); 
+                                });
+                                flightsRenderer('auth');
                             })
                             .catch((error: object) => console.error(`Logs: ${error}`))
 
-                        
+
                     })
                     .catch((error: object) => console.error(error))
             })
             .catch((error: object) => console.error(error));
     } else {
         setCurrentUser('signedOut');
+        flightsRenderer('auth');
     }
 });
 
@@ -54,12 +57,12 @@ auth.onAuthStateChanged((user: object) => {
 
 export const signUpNewUser = async (credentials: object, target: object) => {
     fSpinnerSignUp.classList.add('active');
-    const { 
+    const {
         firstname,
         lastname,
         age,
-        email, 
-        password 
+        email,
+        password
     } = credentials;
     try {
         const request = await auth.createUserWithEmailAndPassword(email, password);

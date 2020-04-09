@@ -34,7 +34,7 @@ export const setCurrentUser = (action: string, user?: object): void => {
             break;
         case 'signedOut':
             currentUser = null
-            localStorage.clear();
+            localStorage.removeItem('user');
             authUpdateUi(action)
             break;        
         default:

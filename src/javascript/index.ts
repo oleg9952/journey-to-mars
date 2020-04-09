@@ -5,6 +5,7 @@ import { booking } from '../pug/pages/booking/booking';
 import { gallery } from '../pug/pages/gallery/gallery';
 import { authForm } from '../pug/components/auth-form/auth-form';
 import { profile } from '../pug/pages/profile/profile';
+import { checkFlights } from '../pug/pages/booking/flightsChecker';
 
 const currentPage = document.title;
 
@@ -22,3 +23,5 @@ if (currentPage === 'Home') {
 } else if (currentPage === 'Profile') {
 	profile();
 }
+
+checkFlights(currentPage);
