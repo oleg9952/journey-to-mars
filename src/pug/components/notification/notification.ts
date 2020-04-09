@@ -29,6 +29,12 @@ export const notification = (trigger: object): void => {
         case 'booking':
             notificationDom.notifMessage.innerText = trigger.message;
             break;
+        case 'no-flights':
+            notificationDom.notifMessage.innerText = trigger.message;
+            break;
+        case 'no-flight-selected':
+            notificationDom.notifMessage.innerText = trigger.message;
+            break;
         default:
             break;
     }

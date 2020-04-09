@@ -43,9 +43,12 @@ const bookTickets = (data: object) => {
             firestore.collection('seats').doc(`${data.ticket.agency.toLowerCase()}`)
                 .get()
                 .then((resp: object) => {
+                    const response = resp.data();
+                    delete response[data.flight]
                     firestore.collection('seats').doc(`${data.ticket.agency.toLowerCase()}`)
-                        .update({
-                            booked: [...resp.data().booked, ...data.ticket.seats] 
+                        .set({
+                            [data.flight]: [...resp.data()[data.flight], ...data.ticket.seats],
+                            ...response
                         })
                         .then(() => {
                             setTimeout(() => {

@@ -181,6 +181,32 @@
             color: #fff;
             text-transform: uppercase;
         }
+        .booking__next-flights {
+            // border: 1px solid #fff;
+            width: 550px;
+            margin: 0 auto 30px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 10px;
+            .booking__flights-flight {
+                background-color: #fff;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 18px;
+                height: 50px;
+                cursor: pointer;
+                border: 3px solid #fff;
+            }
+        }
+        .booking__next-flights.center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .booking__flights-flight {
+                padding: 0 20px;
+            }
+        }
         .booking__next-types {
             width: 550px;
             margin: 0 auto 30px;
@@ -254,7 +280,8 @@
         }
         .booking__types-type.active,
         .booking__services-service.active,
-        .booking__seats-seat.active {
+        .booking__seats-seat.active,
+        .booking__flights-flight.active {
             border: 3px solid #6ff71b;
             color: #6ff71b;
             background-color: #fff;

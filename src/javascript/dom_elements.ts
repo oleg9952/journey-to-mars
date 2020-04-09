@@ -66,7 +66,14 @@ export const bookingDom: object = {
     services: document.querySelector('.booking__next-services'),
     servicesAll: document.querySelectorAll('.booking__services-service'),
     bookingPrice: document.querySelector('.booking__next-price'),
-    confirmBtn: document.querySelector('.booking__next-submit')
+    confirmBtn: document.querySelector('.booking__next-submit'),
+    // ----- Flights
+    flights: document.querySelectorAll('.booking__flights-flight'),
+    flightsHolder: document.querySelector('.booking__next-flights'),
+    // ----- Agencies
+    nasa: document.querySelector('.agency--nasa'),
+    ssau: document.querySelector('.agency--ukr'),
+    spacex: document.querySelector('.agency--spacex')
 };
 
 // ***** FORM-SPINNER *****
@@ -119,4 +126,17 @@ export const profileDom: object = {
 
     // ----- Admin Pages -----
     // customers: document.querySelector('.profile__user-support'),
+}
+
+// ***** FLIGHTS *****
+export const flightsDom = {
+    // ----- New flight -----
+    openModalBtn: document.querySelector('.flights__newflight-btn'),
+    modal: document.querySelector('.newflight'),
+    // ----- Form
+    form: document.querySelector('.newflight__form'),
+    agenciesHolder: document.querySelector('.newflight__form-agencies'),
+    agencies: document.querySelectorAll('.newflight__agencies-agency'),
+    // ----- Cards -----
+    flightsCardsOutput: document.querySelector('.flights__cards')
 }

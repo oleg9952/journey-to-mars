@@ -2,11 +2,15 @@ import { bookingDom } from '../../../javascript/dom_elements';
 import { Booking } from '../../../javascript/classes';
 import { getUserFromStorage } from '../../../javascript/user';
 import { bookingSubject } from '../../../javascript/bookingSubject';
-import { firestore } from '../../../../fb_config';
+import { renderSeats, renderAvailableFlights } from './renderers';
+import { localStorageService } from '../../../javascript/loaclStorageService';
+import { notification } from '../../components/notification/notification';
 
 export const booking = () => {
 	const booking = new Booking();
 	let selectedSeats: Array<string> = [];
+	let flightNodes: NodeListOf<Element> = null;
+
 
 	// ***** DOM Manipulations *****
 	const agencySelection = (target: object, bgSelector: number, classSelector: string, iteration: number) => {
@@ -35,16 +39,39 @@ export const booking = () => {
 		}
 	};
 
+
+
 	document.querySelector('.booking__content-agencies').addEventListener('click', (e) => {
 		if (e.target.classList[1] === bookingDom.spaceAgencies[0].classList[1]) {
-			agencySelection(e.target, 1, 'booking__agencies-agency agency--nasa active', 0);
-			booking.setAgency('NASA');
+			if (Object.keys(localStorageService('get', 'flights').nasa).length) {
+				agencySelection(e.target, 1, 'booking__agencies-agency agency--nasa active', 0);
+				booking.setAgency('NASA');
+			} else {
+				notification({
+					code: 'no-flights',
+					message: 'There are no available flights from Nasa!'
+				});
+			}
 		} else if (e.target.classList[1] === bookingDom.spaceAgencies[1].classList[1]) {
-			agencySelection(e.target, 2, 'booking__agencies-agency agency--ukr active', 1);
-			booking.setAgency('SSAU');
+			if (Object.keys(localStorageService('get', 'flights').ssau).length) {
+				agencySelection(e.target, 2, 'booking__agencies-agency agency--ukr active', 1);
+				booking.setAgency('SSAU');
+			} else {
+				notification({
+					code: 'no-flights',
+					message: 'There are no available flights from SSAU!'
+				});
+			}
 		} else if (e.target.classList[1] === bookingDom.spaceAgencies[2].classList[1]) {
-			agencySelection(e.target, 3, 'booking__agencies-agency agency--spacex active', 2);
-			booking.setAgency('SpaceX');
+			if (Object.keys(localStorageService('get', 'flights').spacex).length) {
+				agencySelection(e.target, 3, 'booking__agencies-agency agency--spacex active', 2);
+				booking.setAgency('SpaceX');
+			} else {
+				notification({
+					code: 'no-flights',
+					message: 'There are no available flights from SpaceX!'
+				});
+			}
 		}
 	});
 
@@ -69,6 +96,25 @@ export const booking = () => {
 			bookingDom.form.age.value,
 			bookingDom.form.email.value
 		);
+
+		// show available dates
+		const selectedAgency: string = booking.agency.toLowerCase();
+		switch (selectedAgency) {
+			case 'nasa':
+				renderAvailableFlights(selectedAgency);
+				flightNodes = renderAvailableFlights(selectedAgency);
+				break;
+			case 'ssau':
+				renderAvailableFlights(selectedAgency);
+				flightNodes = renderAvailableFlights(selectedAgency);
+				break;
+			case 'spacex':
+				renderAvailableFlights(selectedAgency);
+				flightNodes = renderAvailableFlights(selectedAgency);
+				break;
+			default:
+				break;
+		}
 	
 		bookingDom.nextSection.classList.add('active');
 	})
@@ -82,37 +128,70 @@ export const booking = () => {
 			service.classList.remove('active');
 		})
 		bookingDom.seats.classList.remove('active');
-		bookingDom.seats.innerHTML = '';
+		// bookingDom.seats.innerHTML = '';
 		bookingDom.services.classList.remove('active');
 		bookingDom.bookingPrice.classList.remove('active');
 		bookingDom.confirmBtn.classList.remove('active');
 
 		booking.reset();
 		selectedSeats = [];
+		flightNodes = null;
+	})
+
+	// ----- SELECT FLIGHT -----
+
+	bookingDom.flightsHolder.addEventListener('click', (e: Event): void => {
+		if (e.target.className === 'booking__flights-flight') {
+			flightNodes.forEach((btn: object) => btn.classList.remove('active'));
+		}
+		e.target.classList.add('active');
+
+		booking.setFlight(e.target.dataset.flight);
+		
+		// ----- RESET
+		selectedSeats = [];
+		booking.resetSeats();
+		booking.resetServices();
+		bookingDom.seats.classList.remove('active');
+		bookingDom.seatClasses.forEach((btn: object) => btn.classList.remove('active'));
+		bookingDom.servicesAll.forEach((btn: object) => btn.classList.remove('active'));
+
+		bookingDom.services.classList.remove('active');
+		bookingDom.bookingPrice.classList.remove('active');
+		bookingDom.confirmBtn.classList.remove('active');
 	})
 
 	// ----- SELECT SEATS CLASS -----
-	bookingDom.seatClassSection.addEventListener('click', (e: Event) => {
+	bookingDom.seatClassSection.addEventListener('click', (e: Event): void => {
 		if (e.target.className === 'booking__types-type') {
 			bookingDom.seatClasses.forEach((btn: object) => btn.classList.remove('active'));
+			if (booking.flight) {
+				e.target.classList.add('active');
+				switch (e.target.innerText) {
+					case 'Bussiness':
+						renderSeats(e.target.innerText, booking.agency, selectedSeats, booking.flight);
+						bookingDom.seats.classList.add('active');
+						break;
+					case 'Standard':
+						renderSeats(e.target.innerText, booking.agency, selectedSeats, booking.flight);
+						bookingDom.seats.classList.add('active');
+						break;
+					case 'Econom':
+						renderSeats(e.target.innerText, booking.agency, selectedSeats, booking.flight);
+						bookingDom.seats.classList.add('active');
+						break;
+					default:
+						break;
+				}
+			} else {
+				notification({
+					code: 'no-flight-selected',
+					message: 'First select one of the flights!'
+				})
+			}
 		}
-		e.target.classList.add('active');
-		switch (e.target.innerText) {
-			case 'Bussiness':
-				renderSeats(e.target.innerText, booking.agency, selectedSeats);
-				bookingDom.seats.classList.add('active');
-				break;
-			case 'Standard':
-				renderSeats(e.target.innerText, booking.agency, selectedSeats);
-				bookingDom.seats.classList.add('active');
-				break;
-			case 'Econom':
-				renderSeats(e.target.innerText, booking.agency, selectedSeats);
-				bookingDom.seats.classList.add('active');
-				break;
-			default:
-				break;
-		}
+		
+		
 	})
 
 	// ----- SELECT SEAT -----
@@ -163,9 +242,18 @@ export const booking = () => {
 
 	// ----- BOOK -----
 	bookingDom.confirmBtn.addEventListener('click', () => {
+		const [
+			date,
+			month,
+			year,
+			hour,
+			minute
+		] = booking.flight.split('.');
+
 		const bookingData = {
 			...booking.customerDetails,
 			agency: booking.agency,
+			departure: `${date}.${month}.${year} || ${hour}:${minute}`,
 			seats: booking.seats,
 			services: booking.services,
 			totalPrice: booking.priceTotal
@@ -176,32 +264,8 @@ export const booking = () => {
 			trigger: {
 				code: 'booking',
 				message: 'Thank you for your booking!'
-			}
+			},
+			flight: booking.flight
 		})
 	})
 };
-
-function renderSeats(seatType: string, agency: string, selected: Array<string>): void {
-	const agent: string = agency.toLowerCase();
-	const type: string = seatType.toLowerCase();
-
-	firestore.collection('seats').doc(`${agent}`)
-		.get()
-		.then((resp: object): string => {
-			const seats: Array<string> = resp.data()[type];
-			const booked: Array<string> = resp.data().booked;
-			const output: Array<string> = [];
-
-			seats.forEach((seat: string) => {
-				if (booked.indexOf(seat) > -1) {
-					output.push(`<button class="booking__seats-seat" disabled>${seat}</button>`);
-				} else if (selected.indexOf(seat) > -1) {
-					output.push(`<button class="booking__seats-seat active">${seat}</button>`);
-				} else {
-					output.push(`<button class="booking__seats-seat">${seat}</button>`);
-				}
-			})
-			bookingDom.seats.innerHTML = output.join('');
-		})
-		.catch((error: object) => console.error(error))
-}
