@@ -1,6 +1,8 @@
 class PubSub {
     instance: object;
+
     exists: boolean;
+
     subscribers: object;
 
     constructor() {
@@ -18,16 +20,18 @@ class PubSub {
         this.subscribers[event].push(callback);
         return this;
     }
+
     unsubscribe(event, callback) {
         if (!this.subscribers[event]) return;
         this.subscribers[event] = this.subscribers[event].filter(sub => sub !== callback);
         return this;
     }
+
     publish(event, data) {
         if (!this.subscribers[event]) return;
         this.subscribers[event].forEach(callback => {
-            callback(data)
-        })
+            callback(data);
+        });
         return this;
     }
 }

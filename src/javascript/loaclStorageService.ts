@@ -11,4 +11,4 @@ export const localStorageService = (action: string, key?: string, data?: any): o
         default:
             break;
     } 
-}
+};

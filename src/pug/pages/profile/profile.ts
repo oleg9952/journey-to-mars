@@ -1,10 +1,10 @@
+/* eslint-disable no-restricted-globals */
 import { profileDom } from '../../../javascript/dom_elements';
 import { getUserFromStorage } from '../../../javascript/user';
 import { profileRenderer } from './profileRenderer';
 import { activityHistory } from '../../components/profile-activity/profile-activity';
 
 export const profile = (): void => {
-
     const user: object = getUserFromStorage();
 
     switch (user.type) {
@@ -28,22 +28,22 @@ export const profile = (): void => {
     // ***** NAVIGATION *****
 
     profileDom.returnBtn.addEventListener('click', (): void => {
-        history.back()
-    })
+        history.back();
+    });
 
     profileDom.navBtn.forEach(btn => {
         btn.addEventListener('click', (e: Event): void => {
             const self: object = e.currentTarget;
             
-            profileDom.navBtnParents.forEach((btn): void => {
-                btn.classList.remove('active');
-            })
+            profileDom.navBtnParents.forEach((el): void => {
+                el.classList.remove('active');
+            });
 
             self.parentNode.classList.add('active');
 
             profileDom.userPages.forEach((page): void => {
                 page.classList.remove('active');
-            })
+            });
 
             switch (self.innerText) {
                 case 'My Page':
@@ -67,6 +67,6 @@ export const profile = (): void => {
                 default:
                     break;
             }
-        })
-    })
-}
+        });
+    });
+};

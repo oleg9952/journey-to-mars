@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-use-before-define */
 import { User, Admin } from './classes';
 import { navDom } from './dom_elements';
 
@@ -30,17 +31,17 @@ export const setCurrentUser = (action: string, user?: object): void => {
                 );
             }
             localStorage.setItem('user', JSON.stringify(currentUser));
-            authUpdateUi(action)
+            authUpdateUi(action);
             break;
         case 'signedOut':
-            currentUser = null
+            currentUser = null;
             localStorage.removeItem('user');
-            authUpdateUi(action)
+            authUpdateUi(action);
             break;        
         default:
             break;
     }
-}
+};
 
 export const getUserFromStorage = (): object => {
     return JSON.parse(localStorage.getItem('user'));

@@ -7,8 +7,13 @@
     "dev": "webpack --mode development",
     "build": "webpack --mode production",
     "start": "webpack-dev-server --mode development",
-    "lint": "eslint ./src --color",
-    "lint:fix": "eslint ./src --fix --color"
+    "lint": "eslint --ext .ts ./src --color",
+    "lint:fix": "eslint --ext .ts ./src --fix --color"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "lint-staged": {
     "*.ts": [
@@ -31,14 +36,17 @@
     "@babel/polyfill": "^7.8.7",
     "@babel/preset-env": "^7.9.0",
     "@babel/preset-typescript": "^7.9.0",
+    "@typescript-eslint/eslint-plugin": "^2.27.0",
+    "@typescript-eslint/parser": "^2.27.0",
     "autoprefixer": "^9.7.4",
     "babel-loader": "^8.1.0",
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^3.4.2",
     "eslint": "^6.1.0",
     "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-airbnb-typescript": "^7.2.1",
     "eslint-loader": "^3.0.3",
-    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.14.3",
     "eslint-plugin-react-hooks": "^1.7.0",

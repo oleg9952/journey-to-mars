@@ -1,7 +1,9 @@
-import { flightsDom } from "../../../javascript/dom_elements";
+/* eslint-disable @typescript-eslint/no-use-before-define */
+import { flightsDom } from '../../../javascript/dom_elements';
 // import { flightsRenderer } from "./flightsRenderer";
-import { getUserFromStorage } from "../../../javascript/user";
-import { addNewFlight } from "./newFlight";
+import { getUserFromStorage } from '../../../javascript/user';
+// eslint-disable-next-line import/no-cycle
+import { addNewFlight } from './newFlight';
 
 export const flights = () => {
     // ----- Toggle modal -----
@@ -10,11 +12,11 @@ export const flights = () => {
         if (user.type === 'admin') {
             flightsDom.openModalBtn.addEventListener('click', () => {
                 flightsDom.modal.classList.add('active');
-            })
+            });
             flightsDom.modal.addEventListener('click', (e: Event) => {
                 if (e.target !== e.currentTarget) return;
                 resetFlightsModal();
-            })
+            });
         
             // ----- Form -----
             let selectedAgency: string = null;
@@ -25,7 +27,7 @@ export const flights = () => {
                     selectedAgency = e.target.innerText.toLowerCase();
                     e.target.classList.add('active');
                 }
-            })
+            });
             flightsDom.form.addEventListener('submit', (e: Event) => {
                 e.preventDefault();
                 const {
@@ -38,7 +40,7 @@ export const flights = () => {
         
                 if (
                     date.value.length
-                    &&  month.value.length
+                    && month.value.length
                     && year.value.length
                     && hour.value.length
                     && minute.value.length
@@ -50,14 +52,14 @@ export const flights = () => {
                         year: year.value,
                         hour: hour.value,
                         minute: minute.value
-                    })
+                    });
                 } else {
-                    alert('Empty')
+                    alert('Empty');
                 }
-            })
+            });
         }  
     }
-}
+};
 
 export function resetFlightsModal() {
     flightsDom.modal.classList.remove('active');

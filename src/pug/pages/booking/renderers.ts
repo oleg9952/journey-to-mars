@@ -1,6 +1,6 @@
-import { firestore } from "../../../../fb_config";
-import { bookingDom } from "../../../javascript/dom_elements";
-import { localStorageService } from "../../../javascript/loaclStorageService";
+import { firestore } from '../../../../fb_config';
+import { bookingDom } from '../../../javascript/dom_elements';
+import { localStorageService } from '../../../javascript/loaclStorageService';
 
 export const renderAvailableFlights = (agency: string): NodeListOf<Element> => {
     const flights: Array<string> = Object.keys(localStorageService('get', 'flights')[agency]);
@@ -25,7 +25,7 @@ export const renderAvailableFlights = (agency: string): NodeListOf<Element> => {
     }).join('');
     
     return document.querySelectorAll('.booking__flights-flight');
-}
+};
 
 export const renderSeats = (
         seatType: string, 
@@ -33,7 +33,6 @@ export const renderSeats = (
         selected: Array<string>, 
         flight: string
     ): void => {
-
 	const agent: string = agency.toLowerCase();
     const type: string = seatType.toLowerCase();
 
@@ -52,9 +51,8 @@ export const renderSeats = (
                 } else {
                     output.push(`<button class="booking__seats-seat">${seat}</button>`);
                 }
-            })
+            });
             bookingDom.seats.innerHTML = output.join('');
         })
-        .catch((error: object) => console.error(error))
-	
-}
+        .catch((error: object) => console.error(error));
+};

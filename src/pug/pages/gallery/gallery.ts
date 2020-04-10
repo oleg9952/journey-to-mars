@@ -59,36 +59,6 @@ export const gallery = (): void => {
 		}
 	});
 
-	// ----- NATIVE -----
-
-	// galleryDom.form.addEventListener('submit', (e: Event) => {
-	// 	e.preventDefault();
-	// 	if (selectedFilter && galleryDom.solSelection.value.length) {
-	// 		galleryDom.placeholder.classList.remove('active');
-	// 		galleryDom.output.classList.remove('active');
-	// 		galleryDom.spinner.classList.add('active');
-	// 		fetch(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=${galleryDom.solSelection.value}&${selectedFilter === 'none' ? '' : `&camera=${selectedFilter}&`}page=1&api_key=${API_KEY}`)
-	// 			.then((resp: Object) => resp.json())
-	// 			.then((data: Array<object>) => {
-	// 				galleryDom.spinner.classList.remove('active');
-	// 				if (data.photos.length) {
-	// 					galleryDom.output.innerHTML = '';
-	// 					galleryDom.output.classList.add('active');
-	// 					galleryDom.output.innerHTML = data.photos.map((pic: object) => `
-	// 						<div class="gallery__pictures-picture"
-	// 							style="background-image: url(${pic.img_src})"
-	// 						></div>
-	// 					`).join('');
-	// 				} else {
-	// 					galleryDom.placeholder.classList.add('active');
-	// 				}
-	// 			})
-	// 			.catch((err) => console.error(err));
-	// 	} else {
-	// 		alert('empty');
-	// 	}
-	// });
-
 	// ----- RxJS -----
 
 	galleryDom.form.addEventListener('submit', (e: Event) => {
@@ -112,12 +82,9 @@ export const gallery = (): void => {
 					},
 					// error: (err: object) => console.error(err),
 					// complete: () => console.log('done')
-				})
-
+				});
 		} else {
 			alert('empty');
 		}
 	});
-
-	
 };

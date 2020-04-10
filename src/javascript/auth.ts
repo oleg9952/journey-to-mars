@@ -26,7 +26,7 @@ auth.onAuthStateChanged((user: object) => {
                             if (ticket.data().uid === user.uid) {
                                 bookings.push(ticket.data());
                             }
-                        })
+                        });
 
                         firestore.collection('logs').doc(`${user.uid}`)
                             .get()
@@ -40,11 +40,9 @@ auth.onAuthStateChanged((user: object) => {
                                 });
                                 flightsRenderer('auth');
                             })
-                            .catch((error: object) => console.error(`Logs: ${error}`))
-
-
+                            .catch((error: object) => console.error(`Logs: ${error}`));
                     })
-                    .catch((error: object) => console.error(error))
+                    .catch((error: object) => console.error(error));
             })
             .catch((error: object) => console.error(error));
     } else {
@@ -85,7 +83,7 @@ export const signUpNewUser = async (credentials: object, target: object) => {
     } catch (error) {
         fSpinnerSignUp.classList.remove('active');
         notification(error);
-        console.error(error)
+        console.error(error);
     }
 };
 
@@ -118,7 +116,7 @@ export const resetPass = (email: string, target: object) => {
 };
 
 export const signOut = () => {
-        activityLogger(getUserFromStorage().uid, 'signOut')
+        activityLogger(getUserFromStorage().uid, 'signOut');
         auth.signOut()
             .catch((error) => console.error(error));
 };
