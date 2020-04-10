@@ -1,9 +1,30 @@
-import { flightsDom } from "../../../javascript/dom_elements";
-import { getUserFromStorage } from "../../../javascript/user";
-import { flights } from "./flights";
-import { localStorageService } from "../../../javascript/loaclStorageService";
-import { Flight } from "../../../javascript/classes";
+/* eslint-disable @typescript-eslint/no-use-before-define */
+/* eslint-disable import/no-cycle */
 import * as moment from 'moment';
+import { flightsDom } from '../../../javascript/dom_elements';
+import { getUserFromStorage } from '../../../javascript/user';
+import { flights } from './flights';
+import { localStorageService } from '../../../javascript/loaclStorageService';
+import { Flight } from '../../../javascript/classes';
+
+interface OpenFlightsInstancesInterface {
+    nasa: any;
+    ssau: any;
+    spacex: any;
+}
+
+interface FlightInterface {
+    flight: string;
+    seats: Array<string>;
+    agency: string;
+    depTime: object;
+    timeNow: object;
+    timeDiff: number;
+    duration: object;
+    getDepartureDate: () => string;
+    calcAvailableSeats: () => object;
+    timer: () => object;
+}
 
 export const flightsRenderer = (action: string): void => {
     // ----- RENDER ADMIN BTN -----
@@ -31,13 +52,12 @@ export const flightsRenderer = (action: string): void => {
                     nasa,
                     ssau,
                     spacex
-                } = openFlights;
+                } = openFlights as OpenFlightsInstancesInterface;
 
                 const flightInstances: Array<object> = [];
 
                 if (Object.keys(nasa).length) {
-                    for(let i in nasa) {
-                        
+                    for (let i in nasa) {
                         const [
                             date,
                             month,
@@ -48,19 +68,18 @@ export const flightsRenderer = (action: string): void => {
 
                         flightInstances.push(
                             new Flight(i, nasa[i], 'nasa', moment().set({
-                                'date': Number(date),
-                                'month': Number(month - 1),
-                                'year': Number(year),
-                                'hour': Number(hour),
-                                'minute': Number(minute),
-                                'second': 0
+                                date: Number(date),
+                                month: (Number(month) - 1),
+                                year: Number(year),
+                                hour: Number(hour),
+                                minute: Number(minute),
+                                second: 0
                             }))
-                        )
+                        );
                     }
                 }
                 if (Object.keys(ssau).length) {
-                    for(let i in ssau) {
-
+                    for (let i in ssau) {
                         const [
                             date,
                             month,
@@ -71,19 +90,18 @@ export const flightsRenderer = (action: string): void => {
 
                         flightInstances.push(
                             new Flight(i, ssau[i], 'ssau', moment().set({
-                                'date': Number(date),
-                                'month': Number(month - 1),
-                                'year': Number(year),
-                                'hour': Number(hour),
-                                'minute': Number(minute),
-                                'second': 0
+                                date: Number(date),
+                                month: (Number(month) - 1),
+                                year: Number(year),
+                                hour: Number(hour),
+                                minute: Number(minute),
+                                second: 0
                             }))
-                        )
+                        );
                     }
                 }
                 if (Object.keys(spacex).length) {
-                    for(let i in spacex) {
-
+                    for (let i in spacex) {
                         const [
                             date,
                             month,
@@ -94,14 +112,14 @@ export const flightsRenderer = (action: string): void => {
 
                         flightInstances.push(
                             new Flight(i, spacex[i], 'spacex', moment().set({
-                                'date': Number(date),
-                                'month': Number(month - 1),
-                                'year': Number(year),
-                                'hour': Number(hour),
-                                'minute': Number(minute),
-                                'second': 0
+                                date: Number(date),
+                                month: (Number(month) - 1),
+                                year: Number(year),
+                                hour: Number(hour),
+                                minute: Number(minute),
+                                second: 0
                             }))
-                        )
+                        );
                     }
                 }
 
@@ -111,8 +129,8 @@ export const flightsRenderer = (action: string): void => {
                     flightsDom.flightsCardsOutput.classList.remove('center');
                 }
 
-                flightsDom.flightsCardsOutput.innerHTML = flightInstances.map((i: object) => {
-                    return generateFlight(i);
+                flightsDom.flightsCardsOutput.innerHTML = flightInstances.map((flight: FlightInterface) => {
+                    return generateFlight(flight);
                 }).join('');   
                 
                 const timerNodes: NodeListOf<Element> = document.querySelectorAll('.fligths__flight-timer');
@@ -120,17 +138,14 @@ export const flightsRenderer = (action: string): void => {
                 setInterval(() => {
                     flightInstances.forEach((flight: object, index: number) => {
                         timerNodes[index].innerHTML = generateTimer(flight.timer());
-                    })
+                    });
                 }, 1000);
                 break;
             default:
                 break;
         }
     }
-    
-    
-    
-}
+};
 
 interface AgenciesInterface {
     nasa: string;
@@ -138,7 +153,7 @@ interface AgenciesInterface {
     spacex: string;
 }
 
-function generateFlight(flight: object): string {
+function generateFlight(flight: FlightInterface): string {
     const agencies: AgenciesInterface = {
         nasa: 'agency--nasa',
         ssau: 'agency--ukraine',
@@ -213,10 +228,22 @@ function generateFlight(flight: object): string {
                 </div>
             </div>
         </div>
-    `
+    `;
 }
 
-function generateTimer({ daysLeft, hoursLeft, minutesLeft, secondsLeft }): string {
+function generateTimer(time: {
+    daysLeft: string,
+    hoursLeft: string,
+    minutesLeft: string,
+    secondsLeft: string
+}): string {
+    const {
+        daysLeft, 
+        hoursLeft, 
+        minutesLeft, 
+        secondsLeft 
+    } = time;
+
     return `
         <div class="flights__timer-column">
             <p class="flights__column-value">${daysLeft}</p>
@@ -242,5 +269,5 @@ function generateTimer({ daysLeft, hoursLeft, minutesLeft, secondsLeft }): strin
             <p class="flights__column-value">${secondsLeft}</p>
             <p class="flights__column-subtitle">Seconds</p>
         </div>
-    `
+    `;
 }

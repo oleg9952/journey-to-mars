@@ -40,7 +40,6 @@ export const booking = () => {
 	};
 
 
-
 	document.querySelector('.booking__content-agencies').addEventListener('click', (e) => {
 		if (e.target.classList[1] === bookingDom.spaceAgencies[0].classList[1]) {
 			if (Object.keys(localStorageService('get', 'flights').nasa).length) {
@@ -117,7 +116,7 @@ export const booking = () => {
 		}
 	
 		bookingDom.nextSection.classList.add('active');
-	})
+	});
 
 	// ----- CLOSE AND RESET BOOKING -----
 	bookingDom.nextSectionClose.addEventListener('click', () => {
@@ -126,7 +125,7 @@ export const booking = () => {
 		bookingDom.seatClasses.forEach((btn: object) => btn.classList.remove('active'));
 		bookingDom.servicesAll.forEach(service => {
 			service.classList.remove('active');
-		})
+		});
 		bookingDom.seats.classList.remove('active');
 		// bookingDom.seats.innerHTML = '';
 		bookingDom.services.classList.remove('active');
@@ -136,7 +135,7 @@ export const booking = () => {
 		booking.reset();
 		selectedSeats = [];
 		flightNodes = null;
-	})
+	});
 
 	// ----- SELECT FLIGHT -----
 
@@ -159,7 +158,7 @@ export const booking = () => {
 		bookingDom.services.classList.remove('active');
 		bookingDom.bookingPrice.classList.remove('active');
 		bookingDom.confirmBtn.classList.remove('active');
-	})
+	});
 
 	// ----- SELECT SEATS CLASS -----
 	bookingDom.seatClassSection.addEventListener('click', (e: Event): void => {
@@ -187,12 +186,10 @@ export const booking = () => {
 				notification({
 					code: 'no-flight-selected',
 					message: 'First select one of the flights!'
-				})
+				});
 			}
 		}
-		
-		
-	})
+	});
 
 	// ----- SELECT SEAT -----
 	bookingDom.seats.addEventListener('click', (e: Event) => {
@@ -207,8 +204,7 @@ export const booking = () => {
 				booking.removeSeat(e.target.innerText);
 				selectedSeats = selectedSeats.filter(seat => {
 					return seat !== e.target.innerText.toLowerCase();
-				})
-
+				});
 			}
 			bookingDom.bookingPrice.innerText = `$${booking.calcTotalPrice()}`;
 		}
@@ -222,13 +218,13 @@ export const booking = () => {
 			bookingDom.bookingPrice.classList.remove('active');
 			bookingDom.confirmBtn.classList.remove('active');
 		}
-	})
+	});
 
 	// ----- SELECT SERVICES -----
 	bookingDom.services.addEventListener('click', (e: Event) => {
 		if (
-			e.target.className === 'booking__services-service' ||
-			e.target.className === 'booking__services-service active'
+			e.target.className === 'booking__services-service'
+			|| e.target.className === 'booking__services-service active'
 		) {
 			e.target.classList.toggle('active');
 			if (e.target.className.search('active') > -1) {
@@ -238,7 +234,7 @@ export const booking = () => {
 			}
 			bookingDom.bookingPrice.innerText = `$${booking.calcTotalPrice()}`;
 		}
-	})
+	});
 
 	// ----- BOOK -----
 	bookingDom.confirmBtn.addEventListener('click', () => {
@@ -257,7 +253,7 @@ export const booking = () => {
 			seats: booking.seats,
 			services: booking.services,
 			totalPrice: booking.priceTotal
-		}
+		};
 
 		bookingSubject.dispatch({
 			ticket: bookingData,
@@ -266,6 +262,6 @@ export const booking = () => {
 				message: 'Thank you for your booking!'
 			},
 			flight: booking.flight
-		})
-	})
+		});
+	});
 };

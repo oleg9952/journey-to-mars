@@ -17,11 +17,11 @@ const babelOptions = (preset) => {
 		presets: [
 			'@babel/preset-env'
 		]
-	}
+	};
 	if (preset) {
-		opts.presets.push(preset)
+		opts.presets.push(preset);
 	}
-	return opts
+	return opts;
 };
  
 module.exports = {
@@ -110,7 +110,6 @@ module.exports = {
 			// 		// 	}
 			// 		// }
 			// 	]
-				
 			// },
 			{
 				test: /\.ts$/,
@@ -121,14 +120,14 @@ module.exports = {
 						loader: 'babel-loader',
 						options: babelOptions('@babel/preset-typescript')
 					},
-					// {
-					// 	loader: require.resolve('eslint-loader'),
-					// 	options: {
-					// 		eslintPath: require.resolve('eslint')
-					// 	}
-					// }
+					{
+						options: {
+							eslintPath: require.resolve('eslint')
+						},
+						loader: require.resolve('eslint-loader')
+					}
 				]
 			}
 		]
 	}
-}
+};

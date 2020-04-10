@@ -1,8 +1,8 @@
+/* eslint-disable @typescript-eslint/no-use-before-define */
 import { profileDom } from '../../../javascript/dom_elements';
 
 export const profileRenderer = (userType: string, data: object): void => {
     const {
-        uid,
         email,
         age,
         firstname,
@@ -13,7 +13,7 @@ export const profileRenderer = (userType: string, data: object): void => {
     if (userType === 'user') {
         // ----- My Page -----
         profileDom.userPic.innerText = firstname.charAt(0);
-        profileDom.userFullName.innerText = `${firstname} ${lastname}`
+        profileDom.userFullName.innerText = `${firstname} ${lastname}`;
         profileDom.userFirstName.innerText = firstname;
         profileDom.userLastName.innerText = lastname;
         profileDom.userAge.innerText = age;
@@ -33,14 +33,14 @@ export const profileRenderer = (userType: string, data: object): void => {
                 );
             }).join('');
         } else {
-            profileDom.ticketsOutput.innerHTML = `No bookings yet...`
+            profileDom.ticketsOutput.innerHTML = 'No bookings yet...';
         }
     } else {
         // ----- Customers -----
         // ----- Bookings -----
         // ----- Chats -----
     }
-}
+};
 
 function generateTicket(
     firstname: string,
@@ -87,5 +87,5 @@ function generateTicket(
                 </div>
             </div>
         </div>
-    `
+    `;
 }

@@ -126,7 +126,7 @@ export const profileDom: object = {
 
     // ----- Admin Pages -----
     // customers: document.querySelector('.profile__user-support'),
-}
+};
 
 // ***** FLIGHTS *****
 export const flightsDom = {
@@ -139,4 +139,4 @@ export const flightsDom = {
     agencies: document.querySelectorAll('.newflight__agencies-agency'),
     // ----- Cards -----
     flightsCardsOutput: document.querySelector('.flights__cards')
-}
+};

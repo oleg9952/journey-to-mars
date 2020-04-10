@@ -27,9 +27,20 @@
         "arrow-parens": 0,
         "arrow-body-style": 0,
         "eol-last": 0,
-        "no-use-before-define": 0,
         "import/no-extraneous-dependencies": "off",
         "prefer-const": "off",
-        "function-paren-newline": "off"
+        "function-paren-newline": "off",
+        
+        "max-classes-per-file": "off",
+        "no-restricted-syntax": "off",
+        "guard-for-in": "off",
+        "no-case-declarations": "off",
+        "no-use-before-define": ["error", { "functions": false, "classes": false }],
+        "max-len": ["error", { "code": 150 }],
+        "import/no-cycle": [2, { "maxDepth": 1 }],
+        "no-shadow": "off",
+        "array-callback-return": "off",
+        "consistent-return": "off",
+        "import/no-mutable-exports": "off"
     }
 }

@@ -1,7 +1,7 @@
-import { firestore } from "../../../../fb_config";
-import { localStorageService } from "../../../javascript/loaclStorageService";
-import { bookingDom } from "../../../javascript/dom_elements";
-import { flightsRenderer } from "../../components/flights/flightsRenderer";
+import { firestore } from '../../../../fb_config';
+import { localStorageService } from '../../../javascript/loaclStorageService';
+import { bookingDom } from '../../../javascript/dom_elements';
+import { flightsRenderer } from '../../components/flights/flightsRenderer';
 
 interface FlightsInterface {
     nasa: Array<string>;
@@ -44,9 +44,9 @@ export const checkFlights = (page: string): void => {
                                 flightsRenderer('renderFlights');
                             }
                         })
-                        .catch((error: object) => console.error(error))
+                        .catch((error: object) => console.error(error));
                 })
-                .catch((error: object) => console.error(error))
+                .catch((error: object) => console.error(error));
         })
-        .catch((error: object) => console.error(error))
-}
+        .catch((error: object) => console.error(error));
+};

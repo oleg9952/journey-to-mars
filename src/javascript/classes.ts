@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import * as moment from 'moment';
 
 // ----- USERS -----
@@ -19,6 +20,7 @@ export class User {
 
         // firebase code
     }
+
     updateProfile(first: string, last: string, age: number) {
         this.firstname = first;
         this.lastname = last;
@@ -51,29 +53,38 @@ export class Admin extends User {
         );
     }
 
-    getAllUsers(): Array<object> {
-        // firebase code
-        const users: Array<object> = null;
-        return users;
-    }
+    // getAllUsers(): Array<object> {
+    //     // firebase code
+    //     const users: Array<object> = null;
+    //     return users;
+    // }
 
-    deleteUser(uid: string) {
-        // firebase code
-    }
+    // deleteUser(uid: string) {
+    //     // firebase code
+    // }
 }
 
 // ----- BOOKING -----
 
 export class Booking {
     agency: string;
+
     agencyPrice: number;
+
     customerDetails: object;
+
     flight: string;
+
     seatClass: string;
+
     seats: Array<string>;
+
     services: Array<string>;
+
     servicePrice: number;
+
     pricePerSeat: object;
+
     priceTotal: number;
 
     constructor() {
@@ -171,10 +182,10 @@ export class Booking {
                 default:
                     break;
             }
-        })
+        });
         this.services.forEach(() => {
             this.priceTotal += this.servicePrice;
-        })
+        });
         return this.priceTotal;
     }
 
@@ -192,7 +203,9 @@ export class Booking {
 
 export class Flight {
     timeNow: object;
+
     timeDiff: number;
+
     duration: number;
 
     constructor(
@@ -224,7 +237,9 @@ export class Flight {
         }).length;
         const total = (25 * 3) - this.seats.length;
         
-        return { business, standard, econom, total };
+        return {
+ business, standard, econom, total 
+};
     }
 
     getDepartureDate(): string {
@@ -243,15 +258,15 @@ export class Flight {
         this.duration = moment.duration(this.duration - 1000, 'milliseconds');
 
         const daysLeft = this.timeNow.diff(this.depTime, 'days') < 0 ? this.timeNow.diff(this.depTime, 'days') * -1 : this.timeNow.diff(this.depTime, 'days');
-        const hoursLeft = this.duration.get('hour') < 10 ? '0' + this.duration.get('hour') : this.duration.get('hour');
-        const minutesLeft = this.duration.get('minute') < 10 ? '0' + this.duration.get('minute') : this.duration.get('minute');
-        const secondsLeft = this.duration.get('second') < 10 ? '0' + this.duration.get('second') : this.duration.get('second');
+        const hoursLeft = this.duration.get('hour') < 10 ? `0${this.duration.get('hour')}` : this.duration.get('hour');
+        const minutesLeft = this.duration.get('minute') < 10 ? `0${this.duration.get('minute')}` : this.duration.get('minute');
+        const secondsLeft = this.duration.get('second') < 10 ? `0${this.duration.get('second')}` : this.duration.get('second');
 
         return {
             daysLeft,
             hoursLeft,
             minutesLeft,
             secondsLeft
-        }
+        };
     }
 }
