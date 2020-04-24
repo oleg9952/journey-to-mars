@@ -1,6 +1,8 @@
 @use '../../../styles/variables.scss' as *;
 @use '../../../styles/mixins.scss' as mixins;
 
+@use './fullscreen/fullscreen.scss';
+
 .gallery {
     min-height: 100vh;
     padding: 40px 15px;
@@ -88,6 +90,11 @@
             background-repeat: no-repeat;
             background-position: center;
             background-size: cover;
+            cursor: pointer;
+            transition: .5s;
+        }
+        .gallery__pictures-picture:hover {
+            filter: invert(100%);
         }
     }
 
@@ -96,6 +103,21 @@
         height: 250px;
         @include mixins.image_background('../assets/placeholders/nothing_found.png');
         background-size: contain;
+        display: none;
+    }
+
+    &__more {
+        font-size: 18px;
+        font-family: $font;
+        padding: 10px 15px;
+        outline: none;
+        border-radius: 5px;
+        border: none;
+        background-color: #fff;
+        cursor: pointer;
+        display: block;
+        margin: 20px auto;
+        box-shadow: 0 0px 3px rgba(0,0,0,0.12), 0 0px 2px rgba(0,0,0,0.24);
         display: none;
     }
 

@@ -10,7 +10,7 @@ export const validateInputs = (action: string, ...inputs: Array<object>): void =
 
     switch (action) {
         case 'signUp':
-            inputs.forEach((input: object) => {
+            inputs.forEach((input: HTMLInputElement) => {
                 if (input.name === 'firstname' && !input.value.length) {
                     toggleEmptyClass(input);
                 } else if (input.name === 'lastname' && !input.value.length) {
@@ -25,7 +25,7 @@ export const validateInputs = (action: string, ...inputs: Array<object>): void =
             });
             break;
         case 'signIn':
-            inputs.forEach((input: object) => {
+            inputs.forEach((input: HTMLInputElement) => {
                 if (input.name === 'email' && !input.value.length) {
                     toggleEmptyClass(input);
                 } else if (input.name === 'password' && !input.value.length) {
@@ -34,7 +34,7 @@ export const validateInputs = (action: string, ...inputs: Array<object>): void =
             });
             break;
         case 'resetPass':
-            inputs.forEach((input: object) => {
+            inputs.forEach((input: HTMLInputElement) => {
                 if (!input.value.length) {
                     toggleEmptyClass(input);
                 }

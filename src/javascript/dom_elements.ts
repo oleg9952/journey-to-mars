@@ -49,7 +49,8 @@ export const galleryDom: object = {
     output: document.querySelector('.gallery__output-pictures'),
     spinner: document.querySelector('.gallery__output-spinner'),
     placeholder: document.querySelector('.gallery__output-nothingfound'),
-    solSelection: document.querySelector('.gallery__sol-inp')
+    solSelection: document.querySelector('.gallery__sol-inp'),
+    showMoreBtn: document.querySelector('.gallery__more')
 };
 
 // ***** BOOKING *****

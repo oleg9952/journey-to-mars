@@ -1,0 +1,54 @@
+.fullscreen {
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, .8);
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    opacity: 0;
+    backdrop-filter: blur(0px);
+    transition: .5s;
+    &__body {
+        height: 80vh;
+        width: 1024px;
+        display: block;
+        position: relative;
+        overflow: hidden;
+        transform: scale(0);
+        transition: 1s;
+    }
+    &__picture {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(1.5);
+        background-color: #000;
+        transition: 1.5s;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-image: url('../assets/booking/booking_bg3.jpg');
+        filter: blur(10px) invert(80%);
+    }
+}
+
+.fullscreen.active {
+    visibility: visible;
+    opacity: 1;
+    backdrop-filter: blur(10px);
+    .fullscreen__body.active {
+        transform: scale(1);
+    }
+    .fullscreen__picture.active {
+        filter: blur(0px) invert(0%);
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
