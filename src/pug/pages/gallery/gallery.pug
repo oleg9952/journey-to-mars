@@ -1,11 +1,13 @@
 extends ../../page-templates/base
 include ../../components/spinner/spinner
+include ./fullscreen/fullscreen
 
 block variables
 	- var title = 'Gallery'
 
 block content
 	.gallery
+		+fullscreen
 		.gallery__interface
 			h1.gallery__title Form Your Request
 			form.gallery__interface-filters
@@ -34,6 +36,7 @@ block content
 				+spinner
 			.gallery__output-pictures
 			.gallery__output-nothingfound
+		button.gallery__more Show more...
 
 				
 

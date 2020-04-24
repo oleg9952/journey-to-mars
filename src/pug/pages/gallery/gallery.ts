@@ -1,5 +1,17 @@
 import { galleryDom } from '../../../javascript/dom_elements';
 import { nasaApi } from '../../../javascript/nasaApi';
+import { LazyLoader } from './lazyLoader';
+import { fullscreenGallery } from './fullscreen/fullscreen';
+
+interface ImagesInterf {
+	imgs: Array<string>;
+	currentChunk: number;
+	imgsPerChunk: number;
+	lastImg: number;
+	firstImg: number;
+	getImgsPerChunk: () => string;
+	loadMoreImgsPerChunk: () => string;
+}
 
 export const gallery = (): void => {
 	let selectedFilter: string = null;
@@ -60,6 +72,7 @@ export const gallery = (): void => {
 	});
 
 	// ----- RxJS -----
+	let images: ImagesInterf = null;
 
 	galleryDom.form.addEventListener('submit', (e: Event) => {
 		e.preventDefault();
@@ -70,13 +83,21 @@ export const gallery = (): void => {
 
 			nasaApi(galleryDom.solSelection.value, selectedFilter)
 				.subscribe({
-					next: (photos: object) => {
+					next: (photos: Array<string>) => {
 						galleryDom.spinner.classList.remove('active');
 						if (photos.length) {
+							images = new LazyLoader(photos);
+							console.log(photos.length);
+							if (photos.length > images.imgsPerChunk) {
+								galleryDom.showMoreBtn.style.display = 'block';
+							} else {
+								galleryDom.showMoreBtn.style.display = 'none';
+							}
 							galleryDom.output.innerHTML = '';
 							galleryDom.output.classList.add('active');
-							galleryDom.output.innerHTML = photos;
+							galleryDom.output.innerHTML = images.getImgsPerChunk();
 						} else {
+							galleryDom.showMoreBtn.style.display = 'none';
 							galleryDom.placeholder.classList.add('active');
 						}
 					},
@@ -86,5 +107,30 @@ export const gallery = (): void => {
 		} else {
 			alert('empty');
 		}
+	});
+
+	// ----- LOAD MORE PICTURES
+	galleryDom.showMoreBtn.addEventListener('click', () => {
+		if (images) {
+			galleryDom.output.innerHTML = images.loadMoreImgsPerChunk();
+
+			if (images.imgsPerChunk >= images.imgs.length) {
+				galleryDom.showMoreBtn.style.display = 'none';
+			}
+		}
+	});
+
+	// ----- FULLSCREEN PICTURE
+
+	galleryDom.output.addEventListener('click', (e: Event) => {
+		if (e.target.className === 'gallery__pictures-picture') {
+			fullscreenGallery(e.target.dataset.img_url, 'open');
+		}
+	});
+
+	document.querySelector('.fullscreen').addEventListener('click', (e: Event): void => {
+		// eslint-disable-next-line no-useless-return
+		if (e.target !== e.currentTarget) return;
+		fullscreenGallery('', 'close');
 	});
 };
