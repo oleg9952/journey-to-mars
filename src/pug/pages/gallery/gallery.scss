@@ -93,9 +93,9 @@
             cursor: pointer;
             transition: .5s;
         }
-        .gallery__pictures-picture:hover {
-            filter: invert(100%);
-        }
+        // .gallery__pictures-picture:hover {
+        //     filter: invert(100%);
+        // }
     }
 
     &__output-nothingfound {
