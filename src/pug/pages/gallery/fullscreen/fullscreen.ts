@@ -3,6 +3,7 @@ export const fullscreenGallery = (imgUrl: string, action: string): void => {
     const fullscreen: HTMLElement = document.querySelector('.fullscreen');
     const body: HTMLElement = document.querySelector('.fullscreen__body');
     const pic: HTMLElement = document.querySelector('.fullscreen__picture');
+    const filter: HTMLElement = document.querySelector('.fullscreen__body-filter');
 
     switch (action) {
         case 'open':
@@ -23,7 +24,11 @@ export const fullscreenGallery = (imgUrl: string, action: string): void => {
             }, 500);
             setTimeout(() => {
                 fullscreen.classList.remove('active');
+                filter.classList.remove('active');
             }, 1000);
+            break;
+        case 'filter':
+            filter.classList.toggle('active');
             break;
         default:
             break;

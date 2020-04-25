@@ -133,4 +133,8 @@ export const gallery = (): void => {
 		if (e.target !== e.currentTarget) return;
 		fullscreenGallery('', 'close');
 	});
+
+	document.querySelector('#enableFilter').addEventListener('click', () => {
+		fullscreenGallery('', 'filter');
+	});
 };
