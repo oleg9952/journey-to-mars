@@ -41,6 +41,7 @@
         "no-shadow": "off",
         "array-callback-return": "off",
         "consistent-return": "off",
-        "import/no-mutable-exports": "off"
+        "import/no-mutable-exports": "off",
+        "no-restricted-globals": "off"
     }
 }

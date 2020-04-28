@@ -39,7 +39,7 @@ module.exports = {
 		port: 4200
 	},
 	resolve: {
-		extensions: ['.ts', '.js']
+		extensions: ['.ts', '.js', '.jsx']
 	},
 	plugins: [
 		...PUG_TO_HTML_PATS.map(item => {
@@ -127,6 +127,14 @@ module.exports = {
 						loader: require.resolve('eslint-loader')
 					}
 				]
+			},
+			{
+				test: /\.jsx$/,
+				exclude: /node_modules/,
+				loader: {
+					loader: 'babel-loader',
+					options: babelOptions('@babel/preset-react')
+				}
 			}
 		]
 	}
