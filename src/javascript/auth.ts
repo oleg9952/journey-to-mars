@@ -95,6 +95,9 @@ export const signIn = (credentials: object, target: object) => {
             fSpinnerSignIn.classList.remove('active');
             resetForm('signIn', target);
             activityLogger(resp.user.uid, 'signIn');
+            setTimeout(() => {
+                location.reload();
+            }, 500);
         })
         .catch((error: object) => {
             fSpinnerSignIn.classList.remove('active');
@@ -118,5 +121,8 @@ export const resetPass = (email: string, target: object) => {
 export const signOut = () => {
         activityLogger(getUserFromStorage().uid, 'signOut');
         auth.signOut()
+            .then(() => {
+                location.reload();
+            })
             .catch((error) => console.error(error));
 };
