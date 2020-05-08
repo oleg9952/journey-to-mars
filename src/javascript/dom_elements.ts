@@ -122,11 +122,14 @@ export const profileDom: object = {
     contentLogins: document.querySelector('#history--logins'),
     contentBookings: document.querySelector('#history--bookings'),
     // My Tickets
-    ticketsOutput: document.querySelector('.profile__mytickets-tickets')
+    ticketsOutput: document.querySelector('.profile__mytickets-tickets'),
 
 
     // ----- Admin Pages -----
-    // customers: document.querySelector('.profile__user-support'),
+    adminPages: document.querySelectorAll('.admine--page'),
+    dashboard: document.querySelector('.dashboard'),
+    customers: document.querySelector('.customers'),
+    supportPage: document.querySelector('.support')
 };
 
 // ***** FLIGHTS *****

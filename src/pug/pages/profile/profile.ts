@@ -1,8 +1,10 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable no-restricted-globals */
 import { profileDom } from '../../../javascript/dom_elements';
 import { getUserFromStorage } from '../../../javascript/user';
 import { profileRenderer } from './profileRenderer';
 import { activityHistory } from '../../components/profile-activity/profile-activity';
+import { renderComponents } from '../../components/support/admin/renderComponents.jsx';
 
 export const profile = (): void => {
     const user: object = getUserFromStorage();
@@ -20,6 +22,8 @@ export const profile = (): void => {
             profileDom.adminContent.classList.add('active');
 
             profileRenderer(user.type, user);
+
+            renderComponents();
             break;
         default:
             break;
@@ -35,15 +39,22 @@ export const profile = (): void => {
         btn.addEventListener('click', (e: Event): void => {
             const self: object = e.currentTarget;
             
+            // nav styles
             profileDom.navBtnParents.forEach((el): void => {
                 el.classList.remove('active');
             });
 
             self.parentNode.classList.add('active');
 
-            profileDom.userPages.forEach((page): void => {
-                page.classList.remove('active');
-            });
+            if (user.type === 'user') {
+                profileDom.userPages.forEach((page): void => {
+                    page.classList.remove('active');
+                });
+            } else {
+                profileDom.adminPages.forEach((page): void => {
+                    page.classList.remove('active');
+                });
+            }
 
             switch (self.innerText) {
                 case 'My Page':
@@ -52,17 +63,14 @@ export const profile = (): void => {
                 case 'My Tickets':
                     profileDom.myTickets.classList.add('active');
                     break;
-                case 'Support':
-                    profileDom.support.classList.add('active');
+                case 'Dashboard':
+                    profileDom.dashboard.classList.add('active');
                     break;
                 case 'Customers':
-                    
+                    profileDom.customers.classList.add('active');
                     break;
-                case 'Bookings':
-                    
-                    break;
-                case 'Chats':
-                    
+                case 'Support':
+                    profileDom.supportPage.classList.add('active');
                     break;
                 default:
                     break;

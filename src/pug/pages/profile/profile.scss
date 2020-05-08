@@ -1,7 +1,10 @@
 @use '../../components/profile-nav/profile-nav.scss';
 @use './user-pages/my-page/my-page.scss';
 @use './user-pages/my-tickets/my-tickets.scss';
-@use './user-pages/support/support.scss';
+
+@use './admin-pages/dashboard/dashboard.scss';
+@use './admin-pages/customers/customers.scss';
+@use './admin-pages/support/support.scss';
 
 .profile {
     min-height: 100vh;
@@ -31,14 +34,12 @@
 
     &__content-user {
         .mypage,
-        .mytickets,
-        .support {
+        .mytickets {
             display: none;
         }
 
         .mypage.active,
-        .mytickets.active,
-        .support.active {
+        .mytickets.active {
             display: block;
         }
 
@@ -49,7 +50,22 @@
     }
 
     &__content-admin {
-        background-color: violet;
+        .dashboard,
+        .customers,
+        .support {
+            display: none;
+        }
+
+        .dashboard.active,
+        .customers.active,
+        .support.active {
+            display: block;
+        }
+
+        // .admine--page {
+        //     opacity: 0;
+        //     animation: fadeInProfilePage .7s forwards;
+        // }
     }
     
 }

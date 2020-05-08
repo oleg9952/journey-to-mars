@@ -1,0 +1,105 @@
+@use '../../../../../styles/mixins.scss' as mixins;
+@use './AdminChat/AdminChat.scss';
+
+.suppholder {
+    // background-color: orange;
+    &__title {
+        @include mixins.section_title;
+    }
+    &__nav {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 30px;
+        .suppholder__nav-btn {
+            background-color: #e40707;
+            width: 250px;
+            height: 70px;
+            display: grid;
+            grid-template-columns: 70px 1fr;
+            align-items: center;
+            margin: 0 10px;
+            border-radius: 20px;
+            color: #fff;
+            cursor: pointer;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+            transition: .3s;
+            i {
+                font-size: 30px;
+                text-align: center;
+            }
+            p {
+                font-size: 24px;
+                padding-left: 20px;
+                font-weight: bold;
+            }
+        }
+        .suppholder__nav-btn.active {
+            background-color: #fff;
+            color: #e40707;
+        }
+    }
+    &__sections {
+        // border: 1px solid black;
+        .suppholder__sections-section {
+            display: none;
+        }
+        .suppholder__sections-section.active {
+            display: block;
+        }
+        .suppholder__section-title {
+            font-size: 28px;
+            font-weight: bold;
+            text-align: center;
+            margin: 15px 0;
+        }
+        .suppholder__section-chats {
+            // border: 1px solid black;
+            margin: 0 auto;
+            max-width: 450px;
+        }
+        .suppholder__chats-chat {
+            min-height: 60px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+            margin-bottom: 15px;
+            display: grid;
+            grid-template-columns: 60px 1fr 60px;
+            align-items: center;
+            background-color: green;
+            color: #ffffff;
+            transition: .3s;
+            cursor: pointer;
+            i {
+                font-size: 24px;
+                text-align: center;
+            }
+            p {
+                font-size: 18px;
+                text-align: center;
+            }
+        }
+        .suppholder__chats-chat:hover {
+            background-color: #fff;
+            color: green;
+        }
+
+        .suppholder__section-chats.archived {
+            .suppholder__chats-chat {
+                background-color: #e40707;
+                i {
+                    color: rgba(255, 255, 255, .5);
+                    transition: .3s;
+                }
+            }
+            .suppholder__chats-chat:hover {
+                background-color: #fff;
+                color: #e40707;
+                i {
+                    color: rgba(228, 7, 7, .5);
+                }
+            }
+        }
+    }
+
+    // ----- CHAT WINDOW -----
+
+}

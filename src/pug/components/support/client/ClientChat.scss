@@ -121,17 +121,12 @@
         
         .bot__body, .livechat__body {
             height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            // display: flex;
+            // justify-content: center;
+            // align-items: center;
         }
 
         // ----- BOT -----
-        // .bot {
-        //     animation: none;
-        //     transform: scale(1);
-        //     visibility: visible;
-        // }
         .bot__questions {
             position: absolute;
             left: 0;
@@ -147,7 +142,7 @@
             overflow: hidden;
             opacity: 0;
             visibility: hidden;
-            transition: .5s 1.5s;
+            transition: .5s;
             .bot__questions-head {
                 background-color: #e40707;
                 display: grid;
@@ -194,9 +189,10 @@
             visibility: visible;
         }
 
-        .bot__body {
+        .bot__body, .livechat__body {
             display: block;
             padding: 40px 10px 10px;
+            // border: 1px solid red;
         }
         .bot__body.active {
             .bot__body-history {
@@ -213,8 +209,10 @@
             overflow-y: scroll;
             padding: 3px 5px 0;
             transition: .3s;
+            // border: 1px solid black;
         }
-        .bot__body-history::-webkit-scrollbar {
+        .bot__body-history::-webkit-scrollbar,
+        .livechat__body-history::-webkit-scrollbar {
             display: none;
         }
         .bot__history-message {
@@ -235,10 +233,16 @@
             border-radius: 0 15px 0 0;
             background-color: #e40707;
             color: #fff;
+            transform: translateX(20px);
+            opacity: 0;
+            animation: mssg .3s forwards;
         }
         .bot__history-message.mssg--user {
             border-radius: 15px 0 0 0;
             margin-left: auto;
+            transform: translateX(-20px);
+            opacity: 0;
+            animation: mssg .3s forwards;
         }
 
 
@@ -246,6 +250,44 @@
             // border: 1px solid red;
             opacity: 0;
             visibility: hidden;
+            height: 50px;
+            display: grid;
+            grid-template-columns: 1fr 50px;
+            transition: .3s;
+            input {
+                padding: 0 15px;
+                font-family: $font;
+                font-size: 15px;
+                outline: none;
+                border: 2px solid #ccc;
+            }
+            button {
+                font-size: 30px;
+                color: #e40707;
+                cursor: pointer;
+                background-color: #fff;
+                border: none;
+                outline: none;
+            }
+        }
+
+        // ----- LIVECHAT -----
+        // .livechat {
+        //     animation: none;
+        //     transform: scale(1);
+        //     visibility: visible;
+        // }
+        .livechat__body {
+            display: grid;
+            grid-template-rows: 1fr 50px;
+        }
+        .livechat__body-history {
+            height: 100%;
+            overflow-y: scroll;
+            padding: 3px 5px 0;
+            transition: .3s;
+        }
+        .livechat__body-chatbox {
             height: 50px;
             display: grid;
             grid-template-columns: 1fr 50px;
@@ -266,8 +308,6 @@
                 outline: none;
             }
         }
-
-        // ----- LIVECHAT -----
     }
     &__chat.hide {
         visibility: hidden;
@@ -313,5 +353,12 @@
     100% {
         visibility: visible;
         transform: scale(1);
+    }
+}
+
+@keyframes mssg {
+    100% {
+        transform: translateX(0px);
+        opacity: 1;
     }
 }
