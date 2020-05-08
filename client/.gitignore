@@ -1,0 +1,15 @@
+# DEV
+dist
+
+# DEPLOY
+# src
+# .eslintignore
+# .eslintrc
+# api_key.js
+# fb_config.js
+# postcss.config.js
+# README.md
+# tsconfig.json
+# webpack.config.js
+# package-lock.json
+# package.json
