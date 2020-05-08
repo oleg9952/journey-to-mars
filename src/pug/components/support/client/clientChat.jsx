@@ -9,8 +9,8 @@
 import React, { useState, useEffect } from 'react'
 import { render } from 'react-dom'
 import { getUserFromStorage } from '../../../../javascript/user'
-import { Bot } from './Bot.jsx'
-import { LiveChat } from './LiveChat.jsx'
+import { Bot } from './Bot/Bot.jsx'
+import { LiveChat } from './LiveChat/LiveChat.jsx'
 
 const ClientChat = () => {   
     // toggle chat window 

@@ -8,8 +8,9 @@
 /* eslint-disable no-multiple-empty-lines */
 /* eslint-disable array-bracket-spacing */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useRef } from 'react'
 import { getQuestions, getAnswer } from './botAPI'
+import { scrollDown } from '../../scrollDown'
 
 export const Bot = ({ handleBot }) => {
     // ***** BOT DATA *****
@@ -35,13 +36,6 @@ export const Bot = ({ handleBot }) => {
 
     // scroll down messages window ref
     const messagesWindow = useRef()
-    const handleScrollDown = () => {
-        messagesWindow.current.scroll({
-            top: messagesWindow.current.scrollHeight,
-            left: 0,
-            behavior: 'smooth'
-        })
-    }
 
     // toggle chatbox
     const [ chatBox, setChatBox ] = useState(true)
@@ -59,7 +53,7 @@ export const Bot = ({ handleBot }) => {
             }])
 
             // scroll down on new message
-            handleScrollDown()
+            scrollDown(messagesWindow)
 
             // get questions from API
             getQuestions()
@@ -75,7 +69,7 @@ export const Bot = ({ handleBot }) => {
                 message: `I don't know your name yet...`
             }])
             // scroll down on new message
-            handleScrollDown()
+            scrollDown(messagesWindow)
         }
     }
 
@@ -94,7 +88,7 @@ export const Bot = ({ handleBot }) => {
                     message: ans.answer
                 }])
                 // scroll down on new message
-                handleScrollDown()  
+                scrollDown(messagesWindow) 
             })
             .catch(err => console.error(err))
     }
@@ -151,6 +145,7 @@ export const Bot = ({ handleBot }) => {
                     <input type="text" 
                         placeholder="Type in your name"
                         name="username"
+                        autoComplete="off"
                     />
                     <button type="submit">
                         <i className="fab fa-telegram-plane"></i>
