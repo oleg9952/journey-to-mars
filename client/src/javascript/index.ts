@@ -9,6 +9,9 @@ import { authForm } from '../pug/components/auth-form/auth-form';
 import { profile } from '../pug/pages/profile/profile';
 import { checkFlights } from '../pug/pages/booking/flightsChecker';
 
+import { adminSocket } from '../pug/components/support/admin/adminSocket';
+import { getUserFromStorage } from './user';
+
 import Chat from '../pug/components/support/client/ClientChat.jsx';
 
 const currentPage = document.title;
@@ -32,3 +35,8 @@ checkFlights(currentPage);
 
 // React components
 const chat = Chat;
+
+// sockets
+
+const user: object = getUserFromStorage();
+adminSocket(user);

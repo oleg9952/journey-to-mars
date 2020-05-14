@@ -15,6 +15,8 @@
 - MomentJS
 - NodeJS
 - ExpressJS (REST API for Bot)
+- socket.io (Support chat)
+- MongoDB (for storing archived chats)
 
 ### Dev Dependencies:
 - Webpack
