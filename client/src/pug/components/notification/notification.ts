@@ -35,6 +35,12 @@ export const notification = (trigger: object): void => {
         case 'no-flight-selected':
             notificationDom.notifMessage.innerText = trigger.message;
             break;
+        case 'newCustomerInTheChat':
+            notificationDom.notifMessage.innerText = trigger.message;
+            break;
+        case 'archive':
+            notificationDom.notifMessage.innerText = trigger.message;
+            break;
         default:
             break;
     }

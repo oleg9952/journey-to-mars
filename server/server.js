@@ -1,9 +1,26 @@
 const express = require('express')
 const app = express()
+const server = require('http').Server(app)
+const io = require('socket.io')(server)
+const mongoose = require('mongoose')
 const path = require('path')
 const port = process.env.PORT || 4500
 
-// Enable CORS for requests from client
+// connect to MongoDB
+mongoose.connect(
+    'mongodb+srv://mars-admin:marsDb2599@cluster0-2u9kc.mongodb.net/test?retryWrites=true&w=majority', 
+    {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    }
+)
+const db = mongoose.connection
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', () => {
+  console.log(`MongoDB - connected`)
+});
+
+// CORS
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*')
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
@@ -29,4 +46,9 @@ app.use((err, req, res, next) => {
     res.render('error', {title: 'Oops...', error: err})
 })
 
-app.listen(port, () => console.log(`Server running on port: ${port}`))
+// chat sockets
+module.exports.io = io
+const { chat } = require('./supportChat/supportSocket')
+io.on('connection', chat)
+
+server.listen(port, () => console.log(`Server running on port: ${port}`))

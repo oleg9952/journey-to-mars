@@ -9,6 +9,7 @@ import {
 } from './dom_elements';
 import { activityLogger } from './activityLogger';
 import { flightsRenderer } from '../pug/components/flights/flightsRenderer';
+import { adminSocket } from '../pug/components/support/admin/adminSocket';
 
 // ***** AUTH-LISTENER *****
 
@@ -97,7 +98,7 @@ export const signIn = (credentials: object, target: object) => {
             activityLogger(resp.user.uid, 'signIn');
             setTimeout(() => {
                 location.reload();
-            }, 500);
+            }, 1500);
         })
         .catch((error: object) => {
             fSpinnerSignIn.classList.remove('active');
@@ -119,10 +120,17 @@ export const resetPass = (email: string, target: object) => {
 };
 
 export const signOut = () => {
-        activityLogger(getUserFromStorage().uid, 'signOut');
-        auth.signOut()
-            .then(() => {
+    const user = getUserFromStorage();
+    const socket = adminSocket(user);
+    if (user.type === 'admin') {
+        socket.emit('adminDisconnect');
+    }
+    activityLogger(user.uid, 'signOut');
+    auth.signOut()
+        .then(() => {
+            setTimeout(() => {
                 location.reload();
-            })
-            .catch((error) => console.error(error));
+            }, 1500);
+        })
+        .catch((error) => console.error(error));
 };

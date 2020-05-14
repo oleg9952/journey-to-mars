@@ -6,16 +6,42 @@
 /* eslint-disable no-multiple-empty-lines */
 /* eslint-disable array-bracket-spacing */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { AdminChat } from './AdminChat/AdminChat.jsx'
+import { adminSocket } from '../adminSocket.ts'
+import { getUserFromStorage } from '../../../../../javascript/user.ts'
+
+const user = getUserFromStorage()
+const socket = adminSocket(user)
 
 export const Support = () => {
+    // DATA
+    const [ activeChats, setActiveChats ] = useState([])
+    const [ archivedChats, setArchivedChats ] = useState([])
+    const [ selectedChat, setSelectedChat ] = useState(null)
+    const handleChatSelection = chat => {
+        setSelectedChat(chat)
+        if (!chat) return
+        socket.emit('adminJoinChat', chat.chatId)
+    }
+    // ----------
+
     const [ sections, setSections ] = useState(true)
     const openChats = () => setSections(true)
     const openQuestions = () => setSections(false)
 
-    const [ chatWindow, setChatWindow ] = useState(false)
-    const toggleChatWindow = () => setChatWindow(!chatWindow)
+    // ----- socket.io ----- //
+    useEffect(() => {
+        socket.emit('getActiveChats')
+        socket.on('getActiveChats', (chats) => {
+            setActiveChats(chats)
+        })
+
+        socket.emit('getArchivedChats')
+        socket.on('getArchivedChats', (chats) => {
+            setArchivedChats(chats)
+        })
+    }, [])
 
     return (
         <div className="suppholder">
@@ -39,37 +65,35 @@ export const Support = () => {
                 <div className={`suppholder__sections-section ${sections ? 'active' : ''}`}>
                     <h1 className="suppholder__section-title">Active</h1>
                     <div className="suppholder__section-chats">
-                        <div className="suppholder__chats-chat"
-                            onClick={toggleChatWindow}
-                        >
-                            <p>1</p>
-                            <p>James Anderson</p>
-                            <i className="fas fa-signal"></i>
-                        </div>
-                        <div className="suppholder__chats-chat"
-                            onClick={toggleChatWindow}
-                        >
-                            <p>2</p>
-                            <p>James Anderson</p>
-                            <i className="fas fa-signal"></i>
-                        </div>
+                        {
+                            activeChats.length ?
+                            activeChats.map((chat, index) => (
+                                <div className="suppholder__chats-chat"
+                                    key={chat.chatId}
+                                    onClick={handleChatSelection.bind(this, chat)}
+                                >
+                                    <p>{ index + 1 }</p>
+                                    <p>{ chat.userName }</p>
+                                    <i className="fas fa-signal"></i>
+                                </div>
+                            )) : 'No active chats yet...'
+                        } 
                     </div>
                     <h1 className="suppholder__section-title">Archived</h1>
                     <div className="suppholder__section-chats archived">
-                        <div className="suppholder__chats-chat"
-                            onClick={toggleChatWindow}
-                        >
-                            <p>1</p>
-                            <p>Alex Brand</p>
-                            <i className="fas fa-signal"></i>
-                        </div>
-                        <div className="suppholder__chats-chat"
-                            onClick={toggleChatWindow}
-                        >
-                            <p>2</p>
-                            <p>Alex Brand</p>
-                            <i className="fas fa-signal"></i>
-                        </div>
+                        {
+                            archivedChats.length ?
+                            archivedChats.map((chat, index) => (
+                                <div className="suppholder__chats-chat"
+                                    key={chat.chatId}
+                                    onClick={handleChatSelection.bind(this, chat)}
+                                >
+                                    <p>{ index + 1 }</p>
+                                    <p>{ chat.userName }</p>
+                                    <i className="fas fa-signal"></i>
+                                </div>
+                            )) : 'No archived chats yet...'
+                        }
                     </div>
                 </div>
                 <div className={`suppholder__sections-section ${sections ? '' : 'active'}`}>
@@ -77,9 +101,11 @@ export const Support = () => {
                 </div>
             </div>
             {
-                chatWindow ?
+                selectedChat ?
                 <AdminChat 
-                    toggleChatWindow={toggleChatWindow}
+                    handleChatSelection={handleChatSelection}
+                    selectedChat={selectedChat}
+                    socket={socket}
                 /> : ''
             }
             

@@ -103,12 +103,12 @@ module.exports = {
 			// 			loader: 'babel-loader',
 			// 			options: babelOptions()
 			// 		},
-			// 		// {
-			// 		// 	loader: 'eslint-loader',
-			// 		// 	options: {
-			// 		// 		sourceMap: true
-			// 		// 	}
-			// 		// }
+			// 		{
+			// 			loader: 'eslint-loader',
+			// 			options: {
+			// 				sourceMap: true
+			// 			}
+			// 		}
 			// 	]
 			// },
 			{

@@ -38,18 +38,18 @@
             color: #fff;
         }
         .adminchat__head-switch {
-            width: 45px;
+            width: 50px;
             height: 30px;
             margin-right: auto;
-            border-radius: 5px;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            grid-gap: 5px;
-            overflow: hidden;
-            cursor: pointer;
-            div {
-                background-color: #fff;
-                box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            i {
+                transition: .3s;
+                cursor: pointer;
+            }
+            i:hover {
+                color: #ffb6b6;
             }
         }
     }
@@ -141,6 +141,24 @@
         .chat__message-text {
             line-height: 20px;
         }
+        .chat__messages-empty {
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+        }
+        .chat__messages-activity {
+            color: rgba(0, 0, 0, 0.4);
+            font-weight: bold;
+            font-style: italic;
+            font-size: 14px;
+            line-height: 50px;
+            display: none;
+        }
+        .chat__messages-activity.active {
+            display: block;
+        }
         // ----- Chat box
         .chat__chatbox {
             height: 50px;
@@ -155,6 +173,13 @@
                 border: 2px solid #ccc;
                 padding: 0 15px;
                 font-size: 16px;
+                transition: .3s;
+            }
+            input:disabled {
+                background-color: #e40707;
+            }
+            input:disabled::placeholder {
+                color: #fff;
             }
             button {
                 font-size: 35px;
