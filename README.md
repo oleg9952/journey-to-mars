@@ -1,10 +1,14 @@
 # Journey-To-Mars
 ------------
-### To run the project:
-1. `npm i` - to init the project
-2. `npm run build` - install dependencies
+### To run the project locally:
+1. `npm i` - pre build
+2. `npm run build` - install dependencies && build
 3. `npm start` - run the project
 4. http://localhost:4500/ - go to the following link
+
+------------
+
+[### Check out the deployed version here.](https://journey-to-mars.herokuapp.com/ "### Check out the deployed version here.")
 
 ------------
 ### Stack:
@@ -22,3 +26,5 @@
 - Webpack
 - Pug
 - Sass
+- Mongoose
+- Nodemon
