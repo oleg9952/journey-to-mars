@@ -1,11 +1,12 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import io from 'socket.io-client';
 import { notification } from '../../notification/notification';
+import { config } from '../../../../../config';
 
 export const adminSocket = (user: object): any => {
     if (!user) return;
     if (user.type !== 'admin') return;
-    const socket: any = io.connect('http://localhost:4500/');
+    const socket: any = io.connect(config.SERV_CONNECT);
 
     // ADMIN CONNECT
     socket.emit('adminConnect', user.uid);

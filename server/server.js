@@ -5,10 +5,12 @@ const io = require('socket.io')(server)
 const mongoose = require('mongoose')
 const path = require('path')
 const port = process.env.PORT || 4500
+const DB_PASS = process.env.DB_PASS || 'marsDb2599'
+
 
 // connect to MongoDB
 mongoose.connect(
-    'mongodb+srv://mars-admin:marsDb2599@cluster0-2u9kc.mongodb.net/test?retryWrites=true&w=majority', 
+    `mongodb+srv://mars-admin:${DB_PASS}@cluster0-2u9kc.mongodb.net/test?retryWrites=true&w=majority`, 
     {
         useNewUrlParser: true,
         useUnifiedTopology: true

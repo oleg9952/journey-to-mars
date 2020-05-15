@@ -13,8 +13,9 @@ import io from 'socket.io-client'
 import { v4 as uuidv4 } from 'uuid'
 import { scrollDown } from '../../scrollDown'
 import { getUserFromStorage } from '../../../../../javascript/user'
+import { config } from '../../../../../../config'
 
-const socket =  io.connect('http://localhost:4500/')
+const socket =  io.connect(config.SERV_CONNECT)
 
 let debounce = null
 let countDown = null
