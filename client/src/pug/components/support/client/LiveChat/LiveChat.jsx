@@ -15,7 +15,7 @@ import { scrollDown } from '../../scrollDown'
 import { getUserFromStorage } from '../../../../../javascript/user'
 import { config } from '../../../../../../config'
 
-const socket =  io.connect(config.SERV_CONNECT)
+const socket =  io.connect(config.DEV)
 
 let debounce = null
 let countDown = null

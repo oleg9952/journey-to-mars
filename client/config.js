@@ -1,3 +1,4 @@
 export const config = {
-    SERV_CONNECT: process.env.SERV_CONNECT || 'http://localhost:4500/'
+    DEV: 'http://localhost:4500/',
+    PROD: 'https://journey-to-mars.herokuapp.com/'
 }

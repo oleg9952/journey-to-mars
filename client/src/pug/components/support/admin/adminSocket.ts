@@ -6,7 +6,7 @@ import { config } from '../../../../../config';
 export const adminSocket = (user: object): any => {
     if (!user) return;
     if (user.type !== 'admin') return;
-    const socket: any = io.connect(config.SERV_CONNECT);
+    const socket: any = io.connect(config.DEV);
 
     // ADMIN CONNECT
     socket.emit('adminConnect', user.uid);
