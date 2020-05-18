@@ -1,4 +1,5 @@
 @use '../../../../components/profile-activity/profile-activity.scss';
+@use '../../../../components/webrtc-camera/camera.scss';
 
 .profile {
     // ----- My Page -----
@@ -18,6 +19,10 @@
             color: #e40707;
             font-size: 70px;
             font-weight: bold;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            cursor: pointer;
         }
         .profile__header-username {
             font-size: 30px;

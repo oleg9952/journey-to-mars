@@ -16,7 +16,8 @@ export const setCurrentUser = (action: string, user?: object): void => {
                     user.lastname,
                     user.type,
                     user.bookings,
-                    user.logs
+                    user.logs,
+                    user.profile_img
                 );
             } else {
                 currentUser = new Admin(
@@ -27,7 +28,8 @@ export const setCurrentUser = (action: string, user?: object): void => {
                     user.lastname,
                     user.type,
                     user.bookings,
-                    user.logs
+                    user.logs,
+                    user.profile_img
                 );
             }
             localStorage.setItem('user', JSON.stringify(currentUser));
@@ -53,7 +55,14 @@ function authUpdateUi(action: string): void {
             case 'signedIn':
                 navDom.signInBtn.classList.remove('active');
                 navDom.userOnline.classList.add('active');
-                navDom.userLetter.innerText = currentUser.firstname.charAt(0).toUpperCase();
+                if (currentUser.profile_img) {
+                    navDom.userLetter.style.display = 'none';
+                    document.querySelector('.nav__column-user')
+                        .style.backgroundImage = `url(${currentUser.profile_img})`;
+                } else {
+                    navDom.userLetter.innerText = currentUser.firstname.charAt(0).toUpperCase();
+                }
+                
                 break;
             case 'signedOut':
                 navDom.signInBtn.classList.add('active');

@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
+/* eslint-disable @typescript-eslint/camelcase */
 import { profileDom } from '../../../javascript/dom_elements';
 
 export const profileRenderer = (userType: string, data: object): void => {
@@ -7,12 +8,17 @@ export const profileRenderer = (userType: string, data: object): void => {
         age,
         firstname,
         lastname,
-        bookings
+        bookings,
+        profile_img
     } = data;
 
     if (userType === 'user') {
         // ----- My Page -----
-        profileDom.userPic.innerText = firstname.charAt(0);
+        if (profile_img) {
+            profileDom.userPic.style.backgroundImage = `url(${profile_img})`;
+        } else {
+            profileDom.userPic.innerText = firstname.charAt(0);
+        }
         profileDom.userFullName.innerText = `${firstname} ${lastname}`;
         profileDom.userFirstName.innerText = firstname;
         profileDom.userLastName.innerText = lastname;

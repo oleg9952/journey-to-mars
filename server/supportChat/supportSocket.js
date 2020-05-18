@@ -9,7 +9,7 @@ const {
     removeChat
  } = require('./activeChats')
  
-let adminId = '5KLohNWx0MTH2WrYlHCdMZgyTmn1'
+let adminId = 'iyBskpuGRmRM5JS6ItuOhHXOdri1'
 let adminOnline = false
 
 module.exports.chat = (socket) => {

@@ -1,9 +1,11 @@
 include ../../../../components/profile-activity/profile-activity
+include ../../../../components/webrtc-camera/camera
 
 mixin my-page
     .profile__user-page.mypage.active
+        +camera
         .profile__mypage-header
-            .profile__header-picture J
+            .profile__header-picture
             h2.profile__header-username James Anderson
         .profile__mypage-body
             .profile__body-userdetails

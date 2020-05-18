@@ -74,6 +74,7 @@ export const signUpNewUser = async (credentials: object, target: object) => {
                 firstname,
                 lastname,
                 age,
+                profile_img: null,
                 type: 'user'
             })
             .then(() => {
