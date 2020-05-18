@@ -5,6 +5,7 @@ import { getUserFromStorage } from '../../../javascript/user';
 import { profileRenderer } from './profileRenderer';
 import { activityHistory } from '../../components/profile-activity/profile-activity';
 import { renderComponents } from '../../components/support/admin/renderComponents.jsx';
+import { cameraFunc } from '../../components/webrtc-camera/camera';
 
 export const profile = (): void => {
     const user: object = getUserFromStorage();
@@ -16,6 +17,7 @@ export const profile = (): void => {
 
             profileRenderer(user.type, user);
             activityHistory();
+            cameraFunc();
             break;
         case 'admin':
             profileDom.adminNav.classList.add('active');

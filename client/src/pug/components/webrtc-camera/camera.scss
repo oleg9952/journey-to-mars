@@ -1,0 +1,131 @@
+@use '../../../styles/mixins.scss' as mixins;
+
+.camera {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100vh;
+    background: 
+        radial-gradient(ellipse at top, #b10101, rgba(0, 0, 0, 1)),
+        radial-gradient(ellipse at bottom, #1f3b8a, rgba(0, 0, 0, 1));
+    z-index: 2;
+    opacity: 0;
+    visibility: hidden;
+    transition: .5s;
+    &__holder {
+        width: 768px;
+        height: 60%;
+        position: absolute;
+        top: 45%;
+        left: 50%;
+        transform: translate(-50%, -30%);
+        border-radius: 25px;
+        transition: .7s;
+    }
+    &__body {
+        width: 100%;
+        height: 100%;
+        background-color: black;
+        border-radius: 25px;
+        overflow: hidden;
+        position: relative;
+        border: 10px solid #fff;
+        canvas {
+            display: none;
+        }
+        video {
+            position: absolute;
+            width: 100%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: none;
+        }
+        .camera__result {
+            width: 100%;
+            height: 100%;
+            display: none;
+            object-fit: cover;
+        }
+        .camera__result.active {
+            display: block;
+        }
+        .camera__flash {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            background-color: #fff;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            visibility: hidden;
+            transition: .2s;
+            z-index: 1;
+        }
+        .camera__flash.active {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+    &__controls {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translate(-50%, 70px);
+        width: 200px;
+        height: 70px;
+        background-color: #fff;
+        border-radius: 0 0 25px 25px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        overflow: hidden;
+        button {
+            border: none;
+            outline: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 35px;
+            color: #fff;
+            cursor: pointer;
+            transition: .3s;
+        }
+        button:first-child {
+            background-color: #e40707;
+            i:last-child {
+                display: none;
+            }
+        }
+        button:first-child.active {
+            i:first-child {
+                display: none;
+            }
+            i:last-child {
+                display: block;
+            }
+        }
+        button:first-child:hover {
+            background-color: #f56363;
+        }
+        button:last-child {
+            background-color: #04af04;
+        }
+        button:last-child:hover {
+            background-color: #46ec46;
+        }
+    }
+}
+
+.camera.active {
+    opacity: 1;
+    visibility: visible;
+    .camera__holder {
+        transform: translate(-50%, -50%);
+    }
+    .camera__body {
+        video {
+            display: block;
+        }
+    }
+}

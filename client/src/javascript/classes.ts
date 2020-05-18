@@ -12,7 +12,8 @@ export class User {
         public lastname: string,
         public type: string,
         public bookings: Array<object>,
-        public logs: object
+        public logs: object,
+        public profile_img: string,
     ) {}
     
     changeEmail(newEmail: string) {

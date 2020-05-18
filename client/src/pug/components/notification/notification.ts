@@ -41,6 +41,9 @@ export const notification = (trigger: object): void => {
         case 'archive':
             notificationDom.notifMessage.innerText = trigger.message;
             break;
+        case 'profile_photo':
+            notificationDom.notifMessage.innerText = trigger.message;
+            break;
         default:
             break;
     }
