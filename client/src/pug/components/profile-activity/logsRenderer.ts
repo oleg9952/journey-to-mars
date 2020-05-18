@@ -75,7 +75,7 @@ export const logsRenderer = (filter: string): string => {
 function generateActivityRecord(date: number, type: string): string {
     const recordDate = new Date(date);
     const day: string = recordDate.getDay() > 10 ? `0${recordDate.getDate()}` : `${recordDate.getDate()}`;
-    const month: string = recordDate.getMonth() < 10 ? `0${recordDate.getMonth()}` : `${recordDate.getMonth()}`;
+    const month: string = (recordDate.getMonth() + 1) < 10 ? `0${(recordDate.getMonth() + 1)}` : `${(recordDate.getMonth() + 1)}`;
     const year: string = `${recordDate.getFullYear()}`;
     const hour: string = recordDate.getHours() < 10 ? `0${recordDate.getHours()}` : `${recordDate.getHours()}`;
     const minute: string = recordDate.getMinutes() < 10 ? `0${recordDate.getMinutes()}` : `${recordDate.getMinutes()}`;
