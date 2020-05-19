@@ -86,7 +86,7 @@ function generateTicket(
                     <p class="profile__ticket-item">${agency}</p>
                     <p class="profile__ticket-item">----</p>
                     <p class="profile__ticket-item capitalize">${seats.join(', ')}</p>
-                    <p class="profile__ticket-item capitalize">${services.join(', ')}</p>
+                    <p class="profile__ticket-item capitalize">${services.length ? services.join(', ') : '---'}</p>
                     <p class="profile__ticket-item">----</p>
                     <p class="profile__ticket-item">----</p>
                     <p class="profile__ticket-item">$${totalPrice}</p>

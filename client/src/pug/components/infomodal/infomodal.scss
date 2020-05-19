@@ -15,6 +15,7 @@
     display: none;
     opacity: 0;
     animation: animateInfoModal .7s forwards;
+    background-color: rgba(0, 0, 0, .6);
     &__close-btn {
         position: absolute;
         width: 50px;
@@ -26,6 +27,7 @@
         background-color: rgba(0, 0, 0, 0.3);
         box-shadow: 0 0px 6px rgba(0,0,0,0.16), 0 0px 6px rgba(0,0,0,0.23);
         transition: .3s;
+        z-index: 2;
         .infomodal__btn-line {
             width: 30px;
             height: 5px;
