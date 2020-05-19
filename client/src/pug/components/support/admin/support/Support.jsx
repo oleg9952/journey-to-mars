@@ -76,7 +76,12 @@ export const Support = () => {
                                     <p>{ chat.userName }</p>
                                     <i className="fas fa-signal"></i>
                                 </div>
-                            )) : 'No active chats yet...'
+                            )) : (
+                                <div className="noChats">
+                                    <i className="far fa-folder-open"></i>
+                                    <p>No active chats yet...</p>
+                                </div>
+                            )
                         } 
                     </div>
                     <h1 className="suppholder__section-title">Archived</h1>
@@ -92,12 +97,20 @@ export const Support = () => {
                                     <p>{ chat.userName }</p>
                                     <i className="fas fa-signal"></i>
                                 </div>
-                            )) : 'No archived chats yet...'
+                            )) : (
+                                <div className="noChats">
+                                    <i className="far fa-folder-open"></i>
+                                    <p>No archived chats yet...</p>
+                                </div>
+                            )
                         }
                     </div>
                 </div>
                 <div className={`suppholder__sections-section ${sections ? '' : 'active'}`}>
-                    <h1>Questions</h1>
+                    <div className="noChats">
+                        <i className="far fa-folder-open"></i>
+                        <p>No questions...</p>
+                    </div>
                 </div>
             </div>
             {

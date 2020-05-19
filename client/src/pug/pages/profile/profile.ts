@@ -65,12 +65,12 @@ export const profile = (): void => {
                 case 'My Tickets':
                     profileDom.myTickets.classList.add('active');
                     break;
-                case 'Dashboard':
-                    profileDom.dashboard.classList.add('active');
-                    break;
-                case 'Customers':
-                    profileDom.customers.classList.add('active');
-                    break;
+                // case 'Dashboard':
+                //     profileDom.dashboard.classList.add('active');
+                //     break;
+                // case 'Customers':
+                //     profileDom.customers.classList.add('active');
+                //     break;
                 case 'Support':
                     profileDom.supportPage.classList.add('active');
                     break;
