@@ -1,12 +1,12 @@
 let activeChats = []
 
 module.exports.createChat = (userId, userName) => {
-    activeChats = [...activeChats, {
+    activeChats = [{
         chatId: userId,
         userName,
         online: true,
         history: []
-    }]
+    }, ...activeChats]
 }
 
 module.exports.getChats = () => {

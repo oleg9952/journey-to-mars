@@ -37,6 +37,9 @@ export const AdminChat = ({ handleChatSelection, selectedChat, socket }) => {
             message: form.message.value
         })
 
+        clearTimeout(debounce)
+        debounce = null
+
         form.reset()
     }
 
