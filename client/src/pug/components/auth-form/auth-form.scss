@@ -1,0 +1,339 @@
+@use '../../../styles/mixins.scss' as mixins;
+
+.auth {
+    background: 
+        radial-gradient(ellipse at top, #206681, rgba(0, 0, 0, 0.5)),
+        radial-gradient(ellipse at bottom, #104e15, rgba(0, 0, 0, 0.5));
+    backdrop-filter: blur(15px);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 3;
+    display: none;
+    opacity: 0;
+    animation: fadeIn .5s forwards;
+    &__form {
+        width: 450px;
+        height: 500px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(.8);
+        animation: showForm 1s forwards;
+        animation-delay: .3s;
+    }
+
+    // ----- SIGN IN -----
+
+    &__form-signin {
+        @include mixins.form_wrapper(60px, 0deg);
+    }
+    &__signin-icon {
+        @include mixins.form_icon;
+    }
+    &__signin-title {
+        @include mixins.form_title;
+    }
+    &__signin-subtitle {
+        @include mixins.form_subtitle;
+    }
+    &__signin-inputs {
+        display: flex;
+        flex-direction: column;
+        padding: 0 70px;
+        margin-bottom: 30px;
+        .auth__inputs-input {
+            height: 40px;
+            outline: none;
+            background-color: transparent;
+            border: none;
+            border-bottom: 3px solid rgba(0, 0, 0, 0.3);
+            font-size: 18px;
+            transition: .3s;
+            color: #000;
+        }
+        .auth__inputs-input:nth-child(1) {
+            margin-bottom: 10px;
+        }
+        .auth__inputs-input::placeholder {
+            color: rgba(0, 0, 0, 0.3);
+        }
+        .auth__inputs-input:focus::placeholder {
+            color: #000;
+        }
+        .auth__inputs-input:focus {
+            border-color: #000;
+        }
+
+        .auth__inputs-input.empty {
+            background-color: red;
+        }
+        .auth__inputs-input.empty::placeholder {
+            color: #fff;
+        }
+    }
+    &__signin-submit {
+        @include mixins.form_submit-btn;
+    }
+    &__signin-submit:hover {
+        background-color: rgba(0, 0, 0, 1);
+    }
+
+    &__signin-alternative {
+        text-align: center;
+        margin-bottom: 10px;
+        text-decoration: underline;
+        cursor: pointer;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 15px;
+    }
+    &__signin-alternative:hover {
+        color: #000;
+    }
+
+    // ----- SIGN UP -----
+
+    &__form-signup {
+        @include mixins.form_wrapper(30px, 180deg);
+    }
+    &__form-backbtn {
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 30px;
+        color: rgba(0, 0, 0, 0.5);
+        cursor: pointer;
+        transition: .3s;
+    }
+    &__form-backbtn:hover {
+        color: #000;
+    }
+    &__signup-icon {
+        @include mixins.form_icon;
+    }
+    &__signup-title {
+        @include mixins.form_title;
+    }   
+    
+    &__signup-inputs {
+        display: flex;
+        flex-direction: column;
+        padding: 0 70px;
+        margin-bottom: 30px;
+        .auth__inputs-input {
+            height: 40px;
+            outline: none;
+            background-color: transparent;
+            border: none;
+            border-bottom: 3px solid rgba(0, 0, 0, 0.3);
+            font-size: 18px;
+            transition: .3s;
+            color: #000;
+            margin-bottom: 10px;
+        }
+        .auth__inputs-input:last-child {
+            margin-bottom: 0;
+        }
+        .auth__inputs-input::placeholder {
+            color: rgba(0, 0, 0, 0.3);
+        }
+        .auth__inputs-input:focus::placeholder {
+            color: #000;
+        }
+        .auth__inputs-input:focus {
+            border-color: #000;
+        }
+
+        .auth__inputs-input.empty {
+            background-color: red;
+        }
+        .auth__inputs-input.empty::placeholder {
+            color: #fff;
+        }
+    }
+    &__signup-submit {
+        @include mixins.form_submit-btn;
+    }
+    &__signup-submit:hover {
+        background-color: rgba(0, 0, 0, 1);
+    }
+
+    // ----- PASSWORD RESET -----
+
+    &__form-reset {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        background-color: #fff;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        padding-top: 80px;
+        visibility: hidden;
+        opacity: 0;
+        transform: scale(.5);
+        transition: .5s;
+    }
+    &__form-backbtn {
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 30px;
+        color: rgba(0, 0, 0, 0.5);
+        cursor: pointer;
+        transition: .3s;
+    }
+    &__reset-icon {
+        @include mixins.form_icon;
+    }
+    &__reset-title {
+        @include mixins.form_title;
+    }
+    &__reset-subtitle {
+        @include mixins.form_subtitle;
+    }
+    &__reset-inputs {
+        display: flex;
+        flex-direction: column;
+        padding: 0 70px;
+        margin-bottom: 30px;
+        .auth__inputs-input {
+            height: 40px;
+            outline: none;
+            background-color: transparent;
+            border: none;
+            border-bottom: 3px solid rgba(0, 0, 0, 0.3);
+            font-size: 18px;
+            transition: .3s;
+            color: #000;
+        }
+        .auth__inputs-input:nth-child(1) {
+            margin-bottom: 10px;
+        }
+        .auth__inputs-input::placeholder {
+            color: rgba(0, 0, 0, 0.3);
+        }
+        .auth__inputs-input:focus::placeholder {
+            color: #000;
+        }
+        .auth__inputs-input:focus {
+            border-color: #000;
+        }
+
+        .auth__inputs-input.empty {
+            background-color: red;
+        }
+        .auth__inputs-input.empty::placeholder {
+            color: #fff;
+        }
+    }
+    &__reset-submit {
+        @include mixins.form_submit-btn;
+    }
+    &__reset-submit:hover {
+        background-color: rgba(0, 0, 0, 1);
+    }
+
+    // ----- DINAMICS -----
+
+    &__form-signin.active {
+        top: 0;
+        left: 0;
+        transform: perspective(1000px) rotateY(180deg);
+    }
+    &__form-signup.active {
+        top: 0;
+        left: 0;
+        transform: perspective(1000px) rotateY(360deg);
+    }
+    &__form-reset.active {
+        visibility: visible;
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.auth.active {
+    display: block;
+}
+
+@media screen and (max-width: 460px) {
+    .auth {
+        &__form {
+            width: 98%;
+        }
+        &__signin-inputs {
+            padding: 0;
+            .auth__inputs-input {
+                width: 290px;
+                margin: 0 auto;
+            }
+        }
+        &__signup-inputs {
+            padding: 0;
+            .auth__inputs-input {
+                width: 290px;
+                margin: 0 auto 10px;
+            }
+        }
+        &__reset-inputs {
+            padding: 0;
+            .auth__inputs-input {
+                width: 290px;
+                margin: 0 auto 10px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 460px) {
+    .auth {
+        &__form {
+            width: 98%;
+        }
+    }
+}
+
+@keyframes animateGradient {
+    0% {
+        filter: hue-rotate(0deg);
+    }
+    50% {
+        filter: hue-rotate(360deg);
+    }
+    100% {
+        filter: hue-rotate(0deg);
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    } 100% {
+        opacity: 1;
+    }
+}
+
+@keyframes showForm {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(.8);
+    } 100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+

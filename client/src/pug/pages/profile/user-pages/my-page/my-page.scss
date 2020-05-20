@@ -1,0 +1,85 @@
+@use '../../../../components/profile-activity/profile-activity.scss';
+@use '../../../../components/webrtc-camera/camera.scss';
+
+.profile {
+    // ----- My Page -----
+
+    &__mypage-header {
+        margin: 0 auto;
+        .profile__header-picture {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background-color: #fff;
+            margin: 0 auto 15px;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #e40707;
+            font-size: 70px;
+            font-weight: bold;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            cursor: pointer;
+        }
+        .profile__header-username {
+            font-size: 30px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+    }
+
+    &__mypage-body {
+        // ----- USER DETAILS -----
+        .profile__body-userdetails {
+            max-width: 700px;
+            min-height: 200px;
+            margin: 0 auto 25px;
+            background-color: #fff;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+            border-radius: 5px;
+        }
+        .profile__userdetails-header {
+            border-bottom: 2px solid #ccc;
+            height: 50px;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 15px;
+            color: #e40707;
+            font-weight: bold;
+            .profile__header-column {
+                display: flex;
+                align-items: center;
+            }
+            i {
+                display: block;
+                margin-right: 10px;
+            }
+            .profile--edit {
+                cursor: pointer;
+            }
+        }
+        .profile__userdetails-body {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            .profile__body-column {
+                padding: 15px;
+                min-height: 50px;
+                font-size: 18px;
+            }
+            .profile__body-column:first-child {
+                text-align: right;
+                font-weight: bold;
+            }
+            .profile__userdetails-item {
+                display: block;
+                line-height: 50px;
+            }
+        }
+    }
+}

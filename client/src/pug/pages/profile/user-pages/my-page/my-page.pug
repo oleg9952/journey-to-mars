@@ -1,0 +1,33 @@
+include ../../../../components/profile-activity/profile-activity
+include ../../../../components/webrtc-camera/camera
+
+mixin my-page
+    .profile__user-page.mypage.active
+        +camera
+        .profile__mypage-header
+            .profile__header-picture
+            h2.profile__header-username James Anderson
+        .profile__mypage-body
+            .profile__body-userdetails
+                .profile__userdetails-header
+                    .profile__header-column
+                        i.fas.fa-id-card
+                        p.profile__header-text Profile Details
+                    .profile__header-column
+                        i.fas.fa-user-edit
+                        p.profile__header-text.profile--edit Edit
+                .profile__userdetails-body
+                    .profile__body-column
+                        p.profile__userdetails-item First Name
+                        p.profile__userdetails-item Last Name
+                        p.profile__userdetails-item Age
+                        p.profile__userdetails-item Email
+                    .profile__body-column
+                        p.profile__userdetails-item#user--first-name James
+                        p.profile__userdetails-item#user--last-name Anderson
+                        p.profile__userdetails-item#user--age 43
+                        p.profile__userdetails-item#user--email james.anderson@gmail.com
+            +profile-activity
+
+
+

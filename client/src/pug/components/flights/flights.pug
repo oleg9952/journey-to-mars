@@ -1,0 +1,57 @@
+mixin flights
+    .newflight
+        form.newflight__form
+            h2.newflight__form-title Agency
+            .newflight__form-agencies
+                .newflight__agencies-agency.flight--nasa NASA
+                .newflight__agencies-agency.flight--ukraine SSAU
+                .newflight__agencies-agency.flight--spacex SpaceX
+            h2.newflight__form-title Date
+            .newflight__form-date
+                input(
+                    type="number", 
+                    name="date"
+                    placeholder="31"
+                    max="31"
+                    required
+                )
+                input(
+                    type="number", 
+                    name="month"
+                    placeholder="12"
+                    max="12"
+                    required
+                )
+                input(
+                    type="number", 
+                    name="year"
+                    placeholder="2030"
+                    max="2030"
+                    required
+                )
+            h2.newflight__form-title Time
+            .newflight__form-time
+                input(
+                    type="number", 
+                    name="hour"
+                    placeholder="15"
+                    max="23"
+                    required
+                )
+                input(
+                    type="number", 
+                    name="minute"
+                    placeholder="00"
+                    max="59"
+                    required
+                )
+            button.newflight__form-submit(type="submit") Add
+                
+    .flights
+        .flights__bg
+        .flights__newflight-btn
+            i.fas.fa-plus-circle
+            p.flights__btn-text Add Flight
+        h1.flights__title Upcoming Flights
+        .flights__cards
+                

@@ -1,0 +1,16 @@
+mixin profile-activity
+    .profile__body-useractivity
+        .profile__useractivity-header
+            i.fas.fa-history
+            p.profile__header-text Activity History
+        .profile__useractivity-body
+            .profile__body-filter
+                ul.profile__filter-filters
+                    li.profile__filters-filter.active All
+                    li.profile__filters-filter Logins
+                    li.profile__filters-filter Bookings
+            .profile__body-activities
+                .profile__activities-content.active#history--all
+                .profile__activities-content#history--logins
+                .profile__activities-content#history--bookings
+                

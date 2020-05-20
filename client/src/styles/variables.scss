@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css?family=Oxanium:400,700&display=swap');
+
+// ***** GENERAL *****
+$font: 'Oxanium', cursive;
+
+// ***** COMPONENTS *****
+// --- header ---
+$headerTitleColor: #fff;
+// --- navigation ---
+$navLinksColor: #fff;
+$navLinksHoverColor: #e40707;
+$navLinksSize: 18px;
+
+// ***** PAGES *****
+// --- gallery ---
+$galleryFilterBtnHoverBgColor: #e40707; 
+$galleryFilterBtnHoverColor: #fff;

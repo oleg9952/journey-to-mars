@@ -1,0 +1,99 @@
+@use '../../../styles/mixins.scss' as mixins;
+
+.spinner {
+	width: 250px;
+	height: 250px;
+	border-radius: 50%;
+	position: relative;
+	justify-content: center;
+	align-items: center;
+	display: flex;
+	&__sun {
+		position: absolute;
+		width: 60px;
+		height: 60px;
+		background-color: rgb(255, 251, 6);
+		box-shadow: 0 0 10px orange, 0 0 25px rgb(255, 251, 6);
+		border-radius: 50%;
+	}
+	&__orbit-mars {
+		width: 100%;
+		height: 100%;
+		border-radius: 50%;
+		border: 2px solid rgba(0, 0, 0, 0.1);
+		animation: spin 6s infinite linear;
+		position: absolute;	
+		top: 0;
+		left: 0;
+		.spinner__mars-planet {
+			width: 11%;
+			height: 11%;
+			border-radius: 50%;
+			background-color: rgb(224, 154, 1);
+			position: absolute;
+			top: 0;
+			left: 0;
+			transform: translateY(200%);
+		}
+	}
+
+	&__orbit-earth {
+		width: 70%;
+		height: 70%;
+		border-radius: 50%;
+		border: 2px solid rgba(0, 0, 0, 0.1);
+		animation: spin2 4s infinite linear;
+		position: absolute;	
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		.spinner__earth-planet {
+			width: 11%;
+			height: 11%;
+			border-radius: 50%;
+			background-color: rgb(9, 133, 248);
+			position: absolute;
+			top: 0;
+			left: 0;
+			transform: translateY(200%);
+		}
+	}
+
+	&__orbit-mercury {
+		width: 45%;
+		height: 45%;
+		border-radius: 50%;
+		border: 2px solid rgba(0, 0, 0, 0.1);
+		animation: spin2 2s infinite linear;
+		position: absolute;	
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		.spinner__mercury-planet {
+			width: 11%;
+			height: 11%;
+			border-radius: 50%;
+			background-color: #000;
+			position: absolute;
+			top: 0;
+			left: 0;
+			transform: translateY(200%);
+		}
+	}
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	} 100% {
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes spin2 {
+	0% {
+		transform: translate(-50%, -50%) rotate(0deg);
+	} 100% {
+		transform: translate(-50%, -50%) rotate(360deg);
+	}
+}

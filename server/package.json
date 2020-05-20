@@ -1,0 +1,27 @@
+{
+  "name": "journey-to-mars",
+  "version": "1.0.0",
+  "description": "server.js",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm i",
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@git.epam.com:oleh_parkhomenko/journey-to-mars.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.3",
+    "pug": "^2.0.4"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.9.14",
+    "socket.io": "^2.3.0"
+  }
+}

@@ -1,0 +1,152 @@
+@use '../../../styles/variables.scss' as *;
+@use '../../../styles/mixins.scss' as mixins;
+
+@use './fullscreen/fullscreen.scss';
+
+.gallery {
+    min-height: 100vh;
+    padding: 40px 15px;
+    &__interface {
+        max-width: 1200px;
+        margin: 0 auto 30px;
+    }
+    &__title {
+        @include mixins.section_title;
+    }
+    &__filters-title {
+        padding: 0 0 15px;
+        font-size: 28px;
+    }
+    &__filters-cameras {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 15px;
+        margin-bottom: 30px;
+        .gallery__cameras-camera {
+            padding: 15px 10px;
+            background-color: #fff;
+            font-size: 18px;
+            text-align: center;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 0px 3px rgba(0,0,0,0.12), 0 0px 2px rgba(0,0,0,0.24);
+            transition: 0.3s;
+        }
+        .gallery__cameras-camera:hover,
+        .gallery__cameras-camera.active {
+            background-color: $galleryFilterBtnHoverBgColor;
+            color: $galleryFilterBtnHoverColor;
+        }
+    }
+    &__filters-sol {
+        font-size: 18px;
+        margin-bottom: 30px;
+        .gallery__sol-inp {
+            font-size: 15px;
+            outline: none;
+            outline: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            border: none;
+            box-shadow: 0 0px 3px rgba(0,0,0,0.12), 0 0px 2px rgba(0,0,0,0.24);
+        }
+    }
+    &__filters-submit {
+        padding: 10px 35px;
+        border-radius: 5px;
+        outline: none;
+        font-size: 18px;
+        border: none;
+        box-shadow: 0 0px 3px rgba(0,0,0,0.12), 0 0px 2px rgba(0,0,0,0.24);
+        background-color: #fff;
+        cursor: pointer;
+        transition: .3s;
+    }
+    &__filters-submit:hover {
+        background-color: $galleryFilterBtnHoverBgColor;
+        color: $galleryFilterBtnHoverColor;
+    }
+    &__pictures-output {
+        // border: 1px solid red;
+        max-width: 1200px;
+        min-height: 50px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+    }
+
+    &__output-spinner {
+        display: none;
+    }
+
+    &__output-pictures {
+        width: 100%;
+        display: none;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 10px;
+        .gallery__pictures-picture {
+            height: 300px;
+            box-shadow: 0 0px 3px rgba(0,0,0,0.12), 0 0px 2px rgba(0,0,0,0.24);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            cursor: pointer;
+            transition: .5s;
+        }
+        // .gallery__pictures-picture:hover {
+        //     filter: invert(100%);
+        // }
+    }
+
+    &__output-nothingfound {
+        width: 300px;
+        height: 250px;
+        @include mixins.image_background('../assets/placeholders/nothing_found.png');
+        background-size: contain;
+        display: none;
+    }
+
+    &__more {
+        font-size: 18px;
+        font-family: $font;
+        padding: 10px 15px;
+        outline: none;
+        border-radius: 5px;
+        border: none;
+        background-color: #fff;
+        cursor: pointer;
+        display: block;
+        margin: 20px auto;
+        box-shadow: 0 0px 3px rgba(0,0,0,0.12), 0 0px 2px rgba(0,0,0,0.24);
+        display: none;
+    }
+
+    // ***** DINAMICS *****
+
+    &__output-spinner.active,
+    &__output-nothingfound.active {
+        display: block;
+    }
+
+    &__output-pictures.active {
+        display: grid;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .gallery {
+        &__filters-cameras,
+        &__output-pictures {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .gallery {
+        &__filters-cameras,
+        &__output-pictures {
+            grid-template-columns: repeat(1, 1fr);
+        }
+    }
+}

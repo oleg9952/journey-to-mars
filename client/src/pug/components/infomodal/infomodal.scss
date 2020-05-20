@@ -1,0 +1,298 @@
+@use '../../../styles/mixins.scss' as mixins;
+
+.infomodal {
+    position: fixed;
+    min-height: 100vh;
+    width: 100%;
+    top: 0;
+    left: 0;
+    backdrop-filter: blur(20px);
+    z-index: 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-y: scroll;
+    display: none;
+    opacity: 0;
+    animation: animateInfoModal .7s forwards;
+    background-color: rgba(0, 0, 0, .6);
+    &__close-btn {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        right: 15px;
+        top: 15px;
+        cursor: pointer;
+        border-radius: 50%;
+        background-color: rgba(0, 0, 0, 0.3);
+        box-shadow: 0 0px 6px rgba(0,0,0,0.16), 0 0px 6px rgba(0,0,0,0.23);
+        transition: .3s;
+        z-index: 2;
+        .infomodal__btn-line {
+            width: 30px;
+            height: 5px;
+            background-color: rgb(191, 191, 191);
+            border-radius: 15px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .infomodal__btn-line:nth-child(1) {
+            transform: translate(-50%, -50%) rotate(-45deg);
+        }
+        .infomodal__btn-line:nth-child(2) {
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+    }
+    &__close-btn:hover {
+        cursor: pointer;
+        box-shadow: 0 0 28px rgba(0,0,0,0.25), 0 0 10px rgba(0,0,0,0.22);
+    }
+    &__content {
+        width: 1200px;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, 0);
+        padding: 100px 15px 40px;
+        display: none;
+        .infomodal__content-title {
+            @include mixins.section_title;
+            color: #fff;
+            text-shadow: 0 0 5px #000;
+            margin-bottom: 15px;
+            @include mixins.init_state(.7s);
+        }
+        .infomodal__picture {
+            width: 250px;
+            height: 200px;
+            float: right;
+            margin-left: 15px;
+            @include mixins.init_state(.9s);
+        }
+        .nasa--logo {
+            @include mixins.image_background('../assets/agencies-logos/nasa.png');
+        }
+        .ukraine--logo {
+            @include mixins.image_background('../assets/agencies-logos/ukraine.png');
+            background-size: contain;
+        } 
+        .spacex--logo {
+            @include mixins.image_background('../assets/agencies-logos/spacex.jpg');
+            background-size: contain;
+        }          
+        .infomodal__text {
+            font-size: 18px;
+            color: #fff;
+            line-height: 30px;
+            text-shadow: 0 0 3px #000;
+            margin-bottom: 15px;
+            @include mixins.init_state(1.1s);
+        }
+        // iframe {
+        //     @include mixins.init_state(1.3s);
+        // }
+        // ***** Video Player *****
+        .player__wrapper {
+            min-height: 50px;
+            width: 100%;
+            position: relative;
+            margin-bottom: 20px;
+            overflow: hidden;
+            background-color: #000;
+            @include mixins.init_state(1.3s);
+        }
+        .player__wrapper:hover > .controls {
+            visibility: visible;
+            opacity: 1;
+        }
+        .video {
+            width: 100%;
+            outline: none;
+            margin: 0;
+            padding: 0;
+            border: none;
+        }
+        .controls {
+            background-color: rgba(0, 0, 0, 0.6);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            visibility: hidden;
+            opacity: 0;
+            transition: .5s;
+        }
+        .buttons {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 450px;
+            height: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            button {
+                border-radius: 50%;
+                padding: 30px;
+                background-color: rgba(255, 255, 255, .4);
+                cursor: pointer;
+                outline: none;
+                border: none;
+                transition: .3s;
+                i {
+                    color: #000;
+                    font-size: 30px;
+                    transition: inherit;
+                }
+            }
+            button:hover {
+                background-color: rgba(3, 170, 112, .4);
+                i {
+                    color: #fff;
+                }
+            }
+            #playPause {
+                .fa-play {
+                    display: block;
+                }
+                .fa-pause {
+                    display: none;
+                }
+            }
+            #playPause.active {
+                .fa-play {
+                    display: none;
+                }
+                .fa-pause {
+                    display: block;
+                }
+            }
+            .winding.active {
+                background-color: rgba(3, 170, 112, .4);
+                i {
+                    color: #fff;
+                }
+            }
+        }
+        .timer {
+            position: absolute;
+            bottom: 70px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: rgba(228, 7, 7, .7);
+            font-weight: bold;
+            font-size: 30px;
+            text-shadow: 0 0 3px #000;
+            p {
+                margin: 0 3px;
+            }
+        }
+        .time__line {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 20px);
+            height: 60px;
+            display: grid;
+            grid-template-columns: 60px 1fr 60px;
+            .time--planet {
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: contain;
+            }
+            .planet--earth {
+                background-image: url('../assets/player/earth.svg');
+            }
+            .planet--mars {
+                background-image: url('../assets/player/mars.svg');
+            }
+            .time-bar {
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .time-bar-line {
+                height: 5px;
+                background-image: linear-gradient(to right, #03aa6f, #679c34, #988700, #c16908, #db3f3d);
+                width: 100%;
+            }
+            .rocket-path {
+                position: absolute;
+                height: 30px;
+                top: 0;
+                left: 0;
+                width: calc(100% - 50px);
+            }
+            .rocket {
+                position: absolute;
+                height: 100%;
+                width: 50px;
+                top: 0;
+                left: 0;
+                border-radius: 50%;
+                background-position: center;
+                background-size: 80%;
+                background-repeat: no-repeat;
+                background-image: url('../assets/player/rocket.svg');
+                transform: rotate(45deg);
+                transition: .4s linear;
+            }
+        }
+    }
+}
+
+.infomodal.show--nasa {
+    display: block;
+    .nasa--info {
+        display: block;
+    }
+}
+
+.infomodal.show--ukr {
+    display: block;
+    .ukr--info {
+        display: block;
+    }
+}
+
+.infomodal.show--spacex {
+    display: block;
+    .spacex--info {
+        display: block;
+    }
+}
+
+@keyframes animateInfoModal {
+    0% {
+        opacity: 0;
+    } 100% {
+        opacity: 1;
+    }
+}
+
+@keyframes animateInfo {
+    0% {
+        transform: translateY(25px);
+        opacity: 0;
+    } 100% {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .infomodal {
+        &__content {
+            width: 100%;
+        }
+    }
+}

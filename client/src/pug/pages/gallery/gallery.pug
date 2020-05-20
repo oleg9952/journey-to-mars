@@ -1,0 +1,42 @@
+extends ../../page-templates/base
+include ../../components/spinner/spinner
+include ./fullscreen/fullscreen
+
+block variables
+	- var title = 'Gallery'
+
+block content
+	.gallery
+		+fullscreen
+		.gallery__interface
+			h1.gallery__title Form Your Request
+			form.gallery__interface-filters
+				h2.gallery__filters-title Rover Cameras
+				.gallery__filters-cameras
+					.gallery__cameras-camera#FHAZ Front Hazard Avoidance Camera
+					.gallery__cameras-camera#RHAZ Rear Hazard Avoidance Camera
+					.gallery__cameras-camera#MAST Mast Camera
+					.gallery__cameras-camera#CHEMCAM Chemistry and Camera Complex
+					.gallery__cameras-camera#MAHLI Mars Hand Lens Imager
+					.gallery__cameras-camera#MARDI Mars Descent Imager
+					.gallery__cameras-camera#NAVCAM Navigation Camera
+					.gallery__cameras-camera#PANCAM Panoramic Camera
+					.gallery__cameras-camera#all All
+				.gallery__filters-sol
+					label(for='sol') Sol:
+					input.gallery__sol-inp(
+						type="number", 
+						name="sol", 
+						placeholder="Sol..." 
+						max="1000"
+					)
+				button.gallery__filters-submit(type="submit") Search
+		.gallery__pictures-output
+			.gallery__output-spinner
+				+spinner
+			.gallery__output-pictures
+			.gallery__output-nothingfound
+		button.gallery__more Show more...
+
+				
+

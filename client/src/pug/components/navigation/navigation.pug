@@ -1,0 +1,37 @@
+mixin nav
+    .nav
+        .content
+            .nav__column.column-left
+                ul.nav__column-list
+                    li.nav__list-item
+                        a.nav__item-link(href="./index.html") Home
+                    li.nav__list-item
+                        a.nav__item-link(href="./booking.html") Booking
+                    li.nav__list-item
+                        a.nav__item-link(href="./gallery.html") Gallery
+                .nav__column-mobile
+                    .nav__mobile-line
+                    .nav__mobile-line
+                    .nav__mobile-line
+            .nav__column.column--middle
+                .nav__column-logo
+                .nav__column-agencies
+                    .nav__agencies-agency.agency--one
+                    .nav__agencies-agency.agency--two
+                    .nav__agencies-agency.agency--three
+            .nav__column.column--right
+                .nav__column-btn#sign--in.active
+                    p.nav__btn-text Sign in
+                    i.nav__btn-icon.fas.fa-sign-in-alt
+                .nav__column-useronline
+                    .nav__column-user
+                        p.nav__user-letter L
+                    ul.nav__column-usernav
+                        li.nav__usernav-listitem
+                            a.nav__listitem-link(href="./profile.html") My Profile
+                        //- li.nav__usernav-listitem
+                        //-     a.nav__listitem-link(href="#") Tickets
+                        li.nav__usernav-listitem
+                            a.nav__listitem-link#sign--out(href="#") Sign out
+
+

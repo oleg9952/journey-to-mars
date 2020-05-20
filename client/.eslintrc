@@ -1,0 +1,48 @@
+{
+    "parser": "@typescript-eslint/parser",
+    "extends": [
+        "airbnb-typescript/base"
+    ],
+    "parserOptions": {
+        "ecmaVersion": 2018,
+        "sourceType": "module",
+        "project": "./tsconfig.json"
+    },
+    "rules": {
+        "linebreak-style": 0,
+        "no-alert": "off",
+        "no-console": "off",
+        "indent": "off",
+        "@typescript-eslint/indent": "off",
+        "no-tabs": 0,
+        "no-mixed-spaces-and-tabs": [
+            2,
+            "smart-tabs"
+        ],
+        "no-undef": 0,
+        "no-plusplus": 0,
+        "import/prefer-default-export": "off",
+        "comma-dangle": 0,
+        "no-trailing-spaces": 0,
+        "arrow-parens": 0,
+        "arrow-body-style": 0,
+        "eol-last": 0,
+        "import/no-extraneous-dependencies": "off",
+        "prefer-const": "off",
+        "function-paren-newline": "off",
+        
+        "max-classes-per-file": "off",
+        "no-restricted-syntax": "off",
+        "guard-for-in": "off",
+        "no-case-declarations": "off",
+        "no-use-before-define": ["error", { "functions": false, "classes": false }],
+        "max-len": ["error", { "code": 150 }],
+        "import/no-cycle": [2, { "maxDepth": 1 }],
+        "no-shadow": "off",
+        "array-callback-return": "off",
+        "consistent-return": "off",
+        "import/no-mutable-exports": "off",
+        "no-restricted-globals": "off",
+        "prefer-template": "off"
+    }
+}
