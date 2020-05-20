@@ -341,6 +341,9 @@
 
         }
     }
+    &__next::-webkit-scrollbar {
+        display: none;
+    }
     &__next.active {
         display: block;
     }

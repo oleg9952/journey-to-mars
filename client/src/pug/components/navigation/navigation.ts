@@ -1,5 +1,7 @@
 import { navDom } from '../../../javascript/dom_elements';
 import { signOut } from '../../../javascript/auth';
+import { initVideo } from '../infomodal/videos';
+import { VidPlayerInterf } from '../../../javascript/videoPlayer';
 
 export const navigation = (currentPage: string) => {
 	// ----- Intersection Observer -----
@@ -53,6 +55,12 @@ export const navigation = (currentPage: string) => {
 		}
 	});
 
+	const videos = [
+		initVideo('#nasaVideo'),
+		initVideo('#urkVideo'),
+		initVideo('#spacexVid')
+	];
+
 	const triggers: Array<string> = [
 		'show--nasa',
 		'show--ukr',
@@ -62,6 +70,10 @@ export const navigation = (currentPage: string) => {
 	navDom.closeBtn.addEventListener('click', () => {
 		document.body.style.overflow = 'visible';
 		triggers.forEach((trigger) => navDom.infomodal.classList.remove(trigger));
+		videos.forEach((vid: { player: VidPlayerInterf, playBtn: HTMLElement }) => {
+			vid.player.stopMedia();
+			vid.playBtn.classList.remove('active');
+		});
 	});
 
 	// ----- USER-NAV -----

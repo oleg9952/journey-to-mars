@@ -47,6 +47,9 @@ export const LiveChat = ({ handleLiveChat }) => {
             message: chatbox.message.value
         })
 
+        clearTimeout(debounce)
+        debounce = null
+
         chatbox.reset()
     }
 
